@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nat Turner's Rebellion - Lesson Slides</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-main: #ffffff;
+      --accent-brown: #8b5a3c;
+      --accent-blue: #2563eb;
+      --accent-green: #059669;
+      --accent-gold: #eab308;
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --highlight: #fef3c7;
+      --border-strong: #111827;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: #111827;
+      color: var(--text-main);
+      overflow: hidden;
+    }
+
+    .slide {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      background-color: var(--bg-main);
+      padding: 24px 32px;
+      position: relative;
+    }
+
+    .slide-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      height: calc(100% - 80px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    header.lesson-header {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .lesson-title {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: var(--accent-brown);
+      letter-spacing: 0.05em;
+    }
+
+    .lesson-subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .big-question {
+      font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+      font-weight: 700;
+      margin: 12px 0;
+      padding: 8px 12px;
+      border-left: 6px solid var(--accent-blue);
+      background-color: #eff6ff;
+    }
+
+    .section-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-blue);
+      margin-bottom: 4px;
+    }
+
+    .chunk {
+      margin-bottom: 12px;
+    }
+
+    .chunk-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--accent-brown);
+    }
+
+    .chunk-body {
+      font-size: 1rem;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    ul.step-list {
+      margin-top: 6px;
+      margin-left: 1.4rem;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    ul.step-list li {
+      margin-bottom: 4px;
+    }
+
+    .highlight {
+      background-color: var(--highlight);
+      font-weight: 700;
+    }
+
+    .underline {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+    }
+
+    .text-muted {
+      color: var(--text-muted);
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .tag-blue {
+      background-color: #dbeafe;
+      color: #1d4ed8;
+    }
+
+    .tag-green {
+      background-color: #dcfce7;
+      color: #15803d;
+    }
+
+    .tag-gold {
+      background-color: #fef3c7;
+      color: #92400e;
+    }
+
+    .card {
+      border-radius: 12px;
+      border: 2px solid #e5e7eb;
+      padding: 12px 16px;
+      background-color: #f9fafb;
+      margin-bottom: 10px;
+    }
+
+    .timeline-callout {
+      border-left: 6px solid var(--accent-brown);
+      background-color: #fff7ed;
+    }
+
+    .sources-callout {
+      border-left: 6px solid var(--accent-blue);
+      background-color: #eff6ff;
+    }
+
+    .organizer-callout {
+      border-left: 6px solid var(--accent-green);
+      background-color: #ecfdf3;
+    }
+
+    .exit-callout {
+      border-left: 6px solid var(--accent-gold);
+      background-color: #fffbeb;
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .nav-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 10px 24px;
+      background-color: rgba(15, 23, 42, 0.9);
+      color: #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .nav-btn {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: none;
+      background-color: #e5e7eb;
+      color: #111827;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .nav-btn.primary {
+      background-color: var(--accent-blue);
+      color: #ffffff;
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+
+    .nav-hint {
+      font-size: 0.8rem;
+      color: #cbd5f5;
+    }
+
+    /* Make content scrollable on very small screens */
+    @media (max-height: 650px) {
+      .slide-inner {
+        height: auto;
+        max-height: none;
+        overflow-y: auto;
+        padding-bottom: 72px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- SLIDE 1 - Welcome and Objective -->
+  <section class="slide" id="slide-1">
+    <div class="slide-inner">
+      <header class="lesson-header">
+        <h1 class="lesson-title">Nat Turner's Rebellion</h1>
+        <p class="lesson-subtitle">Guided lesson using a timeline, primary sources, and a graphic organizer</p>
+      </header>
+
+      <div>
+        <div class="big-question">
+          Big Question: <span class="highlight">How do different people describe Nat Turner and his rebellion?</span>
+        </div>
+
+        <div class="card timeline-callout">
+          <div class="section-label">Today we will</div>
+          <ul class="step-list">
+            <li><strong>Look at a timeline</strong> of Nat Turner’s Rebellion in 1831.</li>
+            <li><strong>Read 3 sources</strong> that talk about Nat Turner in different ways.</li>
+            <li><strong>Fill out a graphic organizer</strong> to compare what each source says.</li>
+            <li><strong>Explain our own thinking</strong> about how we see Nat Turner and the rebellion.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="section-label">Success check</div>
+          <p class="chunk-body">
+            By the end of class you should be able to say:
+          </p>
+          <ul class="step-list">
+            <li>“I can <span class="highlight">tell what is happening</span> in each source.”</li>
+            <li>“I can <span class="highlight">name whose point of view</span> is shown.”</li>
+            <li>“I can <span class="highlight">describe emotions or motives</span> in the source.”</li>
+            <li>“I can <span class="highlight">explain how the source helps me understand</span> the rebellion.”</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav-bar">
+        <span class="nav-hint">Use the <strong>Next</strong> button or your <strong>→ arrow key</strong> to move.</span>
+        <div class="nav-buttons">
+          <button class="nav-btn" disabled>Back</button>
+          <button class="nav-btn primary" data-next="2">Next</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2 - Brain warm up -->
+  <section class="slide" id="slide-2">
+    <div class="slide-inner">
+      <header class="lesson-header">
+        <h1 class="lesson-title">Warm Up: Rebellion and Resistance</h1>
+        <p class="lesson-subtitle">Getting our brains ready</p>
+      </header>
+
+      <div>
+        <div class="card">
+          <div class="chunk-title">Step 1: Silent Think</div>
+          <p class="chunk-body">
+            Take <span class="highlight">one quiet minute</span> to think:
+          </p>
+          <ul class="step-list">
+            <li>What words come to mind when you hear the word <strong>rebellion</strong>?</li>
+            <li>Why might people choose to <strong>resist</strong> something that feels unfair?</li>
+          </ul>
+          <p class="note">If it helps you focus, close your eyes or look at one spot on the desk.</p>
+        </div>
+
+        <div class="card">
+          <div class="chunk-title">Step 2: Quick Write</div>
+          <p class="chunk-body">
+            In your notebook, write <span class="highlight">2 or 3 complete sentences</span>:
+          </p>
+          <ul class="step-list">
+            <li>Finish this sentence: <em>“People rebel when…”</em></li>
+            <li>Write one example of a person or group who resisted something. It can be from history, a movie, or your own life.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="chunk-title">Step 3: Turn and Talk</div>
+          <p class="chunk-body">
+            Turn to a partner and share <span class="highlight">one idea</span>. Listen for:
+          </p>
+          <ul class="step-list">
+            <li>What feels <strong>similar</strong> about your ideas.</li>
+            <li>What feels <strong>different</strong>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav-bar">
+        <span class="nav-hint">Warm up finished? Move on to the timeline.</span>
+        <div class="nav-buttons">
+          <button class="nav-btn" data-prev="1">Back</button>
+          <button class="nav-btn primary" data-next="3">Next</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3 - Timeline overview -->
+  <section class="slide" id="slide-3">
+    <div class="slide-inner">
+      <header class="lesson-header">
+        <h1 class="lesson-title">Step 1: Read the Timeline</h1>
+        <p class="lesson-subtitle">Nat Turner's Rebellion – 1831 Timeline</p>
+      </header>
+
+      <div>
+        <div class="card timeline-callout">
+          <span class="tag tag-blue">Timeline</span>
+          <div class="chunk-title" style="margin-top:6px;">How to read this timeline</div>
+          <ul class="step-list">
+            <li><strong>Look at the date box</strong> first. Say the date out loud in your head.</li>
+            <li><strong>Read the bold words</strong> in the sentence. These show important actions.</li>
+            <li>Notice any <span class="highlight">yellow highlight</span>. This shows key details like how many people died or exact times.</li>
+            <li>Ask yourself: <span class="underline">What changed</span> because of this event?</li>
+          </ul>
+          <p class="note">
+            On your paper timeline handout, you can lightly underline or circle important words that help you follow the story.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="section-label">Focus while reading</div>
+          <div class="chunk-body">
+            As we go through each date:
+          </div>
+          <ul class="step-list">
+            <li>Use your finger or a pencil to follow along the line of text.</li>
+            <li>After each date, pause and whisper to yourself: <em>“What just happened?”</em></li>
+            <li>If your mind starts to wander, gently bring it back by rereading the <span class="highlight">bold words</span>.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="chunk-title">Quick check after the timeline</div>
+          <ul class="step-list">
+            <li>What <strong>starts</strong> the rebellion?</li>
+            <li>When does Nat Turner get <strong>captured</strong>?</li>
+            <li>What finally happens to Nat?</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav-bar">
+        <span class="nav-hint">Use the timeline handout while we talk through this slide.</span>
+        <div class="nav-buttons">
+          <button class="nav-btn" data-prev="2">Back</button>
+          <button class="nav-btn primary" data-next="4">Next</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4 - Transition to sources -->
+  <section class="slide" id="slide-4">
+    <div class="slide-inner">
+      <header class="lesson-header">
+        <h1 class="lesson-title">Step 2: Meet the Sources</h1>
+        <p class="lesson-subtitle">Three different voices about Nat Turner</p>
+      </header>
+
+      <div>
+        <div class="card sources-callout">
+          <div class="chunk-title">Your three source stations</div>
+          <ul class="step-list">
+            <li><span class="highlight">Document A:</span> Nat Turner’s <strong>confession</strong> written down by lawyer Thomas Gray.</li>
+            <li><span class="highlight">Document B:</span> A <strong>newspaper editor</strong> reacting to the rebellion.</li>
+            <li><span class="highlight">Document C:</span> Henry Highland Garnet, an <strong>abolitionist</strong>, giving a speech years later.</li>
+          </ul>
+          <p class="note">
+            Each person looks at Nat Turner in a different way. Our job is to notice and compare.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="chunk-title">Tips for staying focused while reading</div>
+          <ul class="step-list">
+            <li>Use your finger or a pen to track under each line as you read.</li>
+            <li>Circle names and dates. They are anchors that help your brain stay in the story.</li>
+            <li>Put a <strong>small symbol</strong> in the margin:
+              <ul class="step-list" style="margin-top:4px;">
+                <li>❤ if someone shows a strong emotion</li>
+                <li>★ if you see a strong opinion</li>
+                <li>? if you are confused or have a question</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="chunk-title">Graphic organizer reminder</div>
+          <p class="chunk-body">
+            You have a paper chart with <strong>five rows</strong> for stations and <strong>four columns</strong> with questions.
+            We will fill it in <span class="highlight">one box at a time</span> so it does not feel overwhelming.
+          </p>
+        </div>
+      </div>
+
+      <div class="nav-bar">
+        <span class="nav-hint">Next: Document A, Nat Turner’s own words and Gray’s words.</span>
+        <div class="nav-buttons">
+          <button class="nav-btn" data-prev="3">Back</button>
+          <button class="nav-btn primary" data-next="5">Next</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5 - Document A -->
+  <section class="slide" id="slide-5">
+    <div class="slide-inner">
+      <header class="lesson-header">
+        <h1 class="lesson-title">Document A – Confessions of Nat Turner</h1>
+        <p class="lesson-subtitle">Station 1 on your organizer</p>
+      </header>
+
+      <div>
+        <div class="card sources-callout">
+          <span class="tag tag-green">Primary Source</span>
+          <div class="chunk-title" style="margin-top:6px;">What you are reading</div>
+          <p class="chunk-body">
+            Thomas Gray visited Nat Turner in jail and wrote down what Nat said.  
+            In this document you see <span class="highlight">Nat’s voice</span> and <span class="highlight">Gray’s voice</span>.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="chunk-title">How to read Document A</div>
+          <ul class="step-list">
+            <li>When you see <strong>“Thomas R. Gray:”</strong> remember this is the <strong>lawyer</strong> talking.</li>
+            <li>When you see <strong>“Nathaniel Turner:”</strong> this is <strong>Nat talking about himself</strong>.</li>
+            <li>Underline one sentence where Nat talks about his <span class="highlight">purpose or calling</span>.</li>
+            <li>Underline one sentence where Gray gives his <span class="highlight">opinion about Nat</span>.</li>
+          </ul>
+        </div>
+
+        <div class="card organizer-callout">
+          <div class="chunk-title">Filling your organizer – Station 1</div>
+          <ul class="step-list">
+            <li><strong>Column 1 – What is happening?</strong>  
+              Write: Nat is in jail, talking about his life and why he led the rebellion.</li>
+            <li><strong>Column 2 – Whose perspective?</strong>  
+              Write both: Nat Turner and Thomas Gray.</li>
+            <li><strong>Column 3 – Emotions or motivations?</strong>  
+              List words like <em>chosen, religious, angry, disgusted</em>.</li>
+            <li><strong>Column 4 – Complexity of the rebellion?</strong>  
+              Explain how religion, visions, and Gray’s fear make the story more complicated.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav-bar">
+        <span class="nav-hint">Use your Document A handout as you fill row 1.</span>
+        <div class="nav-buttons">
+          <button class="nav-btn" data-prev="4">Back</button>
+          <button class="nav-btn primary" data-next="6">Next</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6 - Document B -->
+  <section class="slide" id="slide-6">
+    <div class="slide-inner">
+      <header class="lesson-header">
+        <h1 class="lesson-title">Document B – Newspaper Editor</h1>
+        <p class="lesson-subtitle">Station 2 on your organizer</p>
+      </header>
+
+      <div>
+        <div class="card sources-callout" style="border-left-color:#f97373;background-color:#fef2f2;">
+          <span class="tag tag-gold">Secondary Source</span>
+          <div class="chunk-title" style="margin-top:6px;">What you are reading</div>
+          <p class="chunk-body">
+            A newspaper editor is reacting to the rebellion right after it happens.
+            He calls Nat’s actions <span class="highlight">“mischief”</span> and says Nat tried to control other enslaved people.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="chunk-title">How to read Document B</div>
+          <ul class="step-list">
+            <li>Circle words that show strong <strong>judgment</strong>, like “pretending,” “trick,” or “disruption.”</li>
+            <li>Ask yourself: <span class="underline">Does this writer like Nat Turner or dislike him?</span></li>
+            <li>Notice that this source comes from a paper in Virginia, a slave state. That affects the point of view.</li>
+          </ul>
+        </div>
+
+        <div class="card organizer-callout">
+          <div class="chunk-title">Filling your organizer – Station 2</div>
+          <ul class="step-list">
+            <li><strong>Column 1 – What is happening?</strong>  
+              The editor is explaining how Nat planned the rebellion and tried to influence others.</li>
+            <li><strong>Column 2 – Whose perspective?</strong>  
+              A white editor who wants readers to fear Nat.</li>
+            <li><strong>Column 3 – Emotions or motivations?</strong>  
+              The editor shows fear, anger, and a desire to protect slavery.</li>
+            <li><strong>Column 4 – Complexity?</strong>  
+              This source reminds us many white people saw Nat as a dangerous criminal, not a freedom fighter.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav-bar">
+        <span class="nav-hint">Pause here while students complete Station 2.</span>
+        <div class="nav-buttons">
+          <button class="nav-btn" data-prev="5">Back</button>
+          <button class="nav-btn primary" data-next="7">Next</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 7 - Document C -->
+  <section class="slide" id="slide-7">
+    <div class="slide-inner">
+      <header class="lesson-header">
+        <h1 class="lesson-title">Document C – Henry Highland Garnet</h1>
+        <p class="lesson-subtitle">Station 3 on your organizer</p>
+      </header>
+
+      <div>
+        <div class="card sources-callout" style="border-left-color:#22c55e;background-color:#ecfdf3;">
+          <span class="tag tag-green">Primary Source</span>
+          <div class="chunk-title" style="margin-top:6px;">What you are reading</div>
+          <p class="chunk-body">
+            Garnet is a Black abolitionist speaking to enslaved people in 1843, years after the rebellion.
+            He tells them it is better to <span class="highlight">“die freemen than live to be slaves.”</span>
+            He calls Nat Turner <strong>patriotic</strong> and <strong>noble</strong>.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="chunk-title">How to read Document C</div>
+          <ul class="step-list">
+            <li>Put a heart symbol next to lines where Garnet encourages action.</li>
+            <li>Underline phrases that show respect for Nat, like “noble and brave.”</li>
+            <li>Remember: Garnet is talking to people who are still enslaved. He wants to inspire them.</li>
+          </ul>
+        </div>
+
+        <div class="card organizer-callout">
+          <div class="chunk-title">Filling your organizer – Station 3</div>
+          <ul class="step-list">
+            <li><strong>Column 1 – What is happening?</strong>  
+              Garnet is giving a speech asking enslaved people to fight for freedom.</li>
+            <li><strong>Column 2 – Whose perspective?</strong>  
+              A Black abolitionist who sees Nat as a hero.</li>
+            <li><strong>Column 3 – Emotions or motivations?</strong>  
+              Hope, courage, anger at slavery, a desire for freedom.</li>
+            <li><strong>Column 4 – Complexity?</strong>  
+              This source shows that some people honored Nat Turner as brave, not just violent.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav-bar">
+        <span class="nav-hint">You can add more stations later if you have extra sources.</span>
+        <div class="nav-buttons">
+          <button class="nav-btn" data-prev="6">Back</button>
+          <button class="nav-btn primary" data-next="8">Next</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 8 - Organizer columns explained -->
+  <section class="slide" id="slide-8">
+    <div class="slide-inner">
+      <header class="lesson-header">
+        <h1 class="lesson-title">Step 3: Use the Graphic Organizer</h1>
+        <p class="lesson-subtitle">What goes in each column?</p>
+      </header>
+
+      <div>
+        <div class="card organizer-callout">
+          <div class="chunk-title">Your chart has 5 rows and 4 big questions</div>
+          <ul class="step-list">
+            <li><strong>Row numbers 1–5:</strong> Each row matches a station or source.</li>
+            <li><strong>Column 1 – What is happening?</strong>  
+              Write a short summary in your own words. One or two sentences is enough.</li>
+            <li><strong>Column 2 – Whose perspective is shown?</strong>  
+              Name the person and what role they play (lawyer, editor, abolitionist, etc.).</li>
+            <li><strong>Column 3 – What emotions or motivations are revealed?</strong>  
+              Use feeling words: <em>afraid, angry, hopeful, proud, desperate</em>.</li>
+            <li><strong>Column 4 – How does this source help us understand the complexity of the rebellion?</strong>  
+              Explain what this source adds to the story that the other sources do not.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="chunk-title">If you get stuck</div>
+          <ul class="step-list">
+            <li>Look back at the <span class="highlight">timeline</span> to remind yourself what happened.</li>
+            <li>Reread one key sentence in the source and ask:  
+              <em>“What does this tell me about how the writer feels?”</em></li>
+            <li>Ask a partner: each person shares one sentence for a box, then you both write.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav-bar">
+        <span class="nav-hint">Once most boxes are filled, move to the final reflection.</span>
+        <div class="nav-buttons">
+          <button class="nav-btn" data-prev="7">Back</button>
+          <button class="nav-btn primary" data-next="9">Next</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 9 - Exit reflection -->
+  <section class="slide" id="slide-9">
+    <div class="slide-inner">
+      <header class="lesson-header">
+        <h1 class="lesson-title">Step 4: Put it all together</h1>
+        <p class="lesson-subtitle">Exit reflection</p>
+      </header>
+
+      <div>
+        <div class="card exit-callout">
+          <div class="chunk-title">Final thinking question</div>
+          <p class="chunk-body">
+            Look at all of your organizer answers for Stations 1, 2, and 3.
+          </p>
+          <ul class="step-list">
+            <li>Which author treats Nat Turner the <span class="highlight">most positively</span>?</li>
+            <li>Which author treats him the <span class="highlight">most negatively</span>?</li>
+            <li>What is <strong>one way</strong> your view of Nat Turner changed after reading these sources?</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="chunk-title">Exit ticket (write on your paper or in your notebook)</div>
+          <p class="chunk-body">
+            Write a short paragraph (4–6 sentences) answering:
+          </p>
+          <p class="big-question" style="font-size:1rem;margin-top:8px;">
+            <span class="highlight">“How should we remember Nat Turner today?”</span>
+          </p>
+          <ul class="step-list">
+            <li>Use at least <strong>two sources</strong> in your answer. Mention them by name.</li>
+            <li>Use at least <strong>one feeling word</strong> and <strong>one motive word</strong>.</li>
+            <li>Underline one sentence that you feel especially proud of.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav-bar">
+        <span class="nav-hint">Nice work. When finished, turn in your organizer and exit ticket.</span>
+        <div class="nav-buttons">
+          <button class="nav-btn" data-prev="8">Back</button>
+          <button class="nav-btn primary" disabled>End</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Simple slide navigation
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    let current = 0;
+
+    function showSlide(index) {
+      if (index < 0 || index >= slides.length) return;
+      slides[current].style.display = "none";
+      current = index;
+      slides[current].style.display = "block";
+    }
+
+    // Initial display
+    slides.forEach(s => (s.style.display = "none"));
+    slides[0].style.display = "block";
+
+    // Button navigation
+    document.querySelectorAll(".nav-btn[data-next]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const target = parseInt(btn.getAttribute("data-next"), 10) - 1;
+        showSlide(target);
+      });
+    });
+
+    document.querySelectorAll(".nav-btn[data-prev]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const target = parseInt(btn.getAttribute("data-prev"), 10) - 1;
+        showSlide(target);
+      });
+    });
+
+    // Arrow key navigation
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") {
+        if (current < slides.length - 1) showSlide(current + 1);
+      }
+      if (e.key === "ArrowLeft") {
+        if (current > 0) showSlide(current - 1);
+      }
+    });
+  </script>
+</body>
+</html>
