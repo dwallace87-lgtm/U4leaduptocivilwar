@@ -2,103 +2,242 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Enslaved Peoples of America in the 1800s – Video Notes</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <title>Expansion of Slavery: Cotton Gin & Inventions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
+    :root {
+      --bg: #ffffff;
+      --accent1: #2563eb;
+      --accent2: #ec4899;
+      --accent3: #22c55e;
+      --accent-soft: #e0f2fe;
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --highlight: #fef3c7;
+      --danger: #fee2e2;
+      --border: rgba(148, 163, 184, 0.5);
+    }
+
     * {
       box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      padding: 20px;
-      background: #0f172a;
-      font-family: "Patrick Hand", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding: 0;
+      background-color: var(--bg);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text-main);
     }
 
-    .page {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 60px;
-      background:
-        repeating-linear-gradient(
-          to bottom,
-          #ffffff,
-          #ffffff 26px,
-          #dbeafe 26px,
-          #dbeafe 27px
-        );
-      border-left: 5px solid #fca5a5;
-      border-radius: 18px;
-      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.5);
+    .deck {
+      min-height: 100vh;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 12px 24px;
+    }
+
+    .slides-wrapper {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slides {
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .slide {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 24px 28px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+      border: 3px solid var(--border);
       position: relative;
+      overflow: hidden;
+      display: none;
+      min-height: 60vh;
     }
 
-    .page::before {
+    .slide.active {
+      display: block;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .slide::before {
       content: "";
       position: absolute;
-      inset: 20px;
-      border-radius: 14px;
-      border: 2px dashed rgba(148, 163, 184, 0.6);
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(59, 130, 246, 0.10), transparent 55%),
+                  radial-gradient(circle at 100% 100%, rgba(236, 72, 153, 0.10), transparent 55%);
+      opacity: 0.8;
       pointer-events: none;
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .title-slide {
+      border-image: linear-gradient(90deg, var(--accent1), var(--accent2)) 1;
+      border-width: 4px;
     }
 
     h1, h2, h3 {
       margin: 0;
+      letter-spacing: 0.03em;
     }
 
-    h1.title {
-      font-size: 32px;
-      color: #0f172a;
-      text-align: center;
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 1.7rem;
       margin-bottom: 4px;
     }
 
-    h2.subtitle {
-      font-size: 22px;
-      color: #2563eb;
-      text-align: center;
-      margin-bottom: 16px;
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 6px;
     }
 
-    .handwritten-tag {
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .tagline {
       display: inline-block;
-      padding: 2px 10px;
+      padding: 4px 10px;
       border-radius: 999px;
-      background: #fef3c7;
-      border: 1px solid #facc15;
-      font-size: 16px;
-      color: #92400e;
+      background: var(--accent-soft);
+      font-size: 0.9rem;
+      color: var(--accent1);
+      font-weight: 600;
       margin-bottom: 10px;
     }
 
-    .header-row {
+    .pill-row {
       display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      font-size: 16px;
-      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+      margin-bottom: 6px;
     }
 
-    .header-row span {
-      border-bottom: 2px solid #94a3b8;
-      min-width: 160px;
-      display: inline-block;
-      padding-bottom: 2px;
+    .pill {
+      font-size: 0.85rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.04);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+      white-space: nowrap;
     }
 
-    .directions {
-      font-size: 16px;
-      margin-bottom: 18px;
-      line-height: 1.4;
+    .emoji-label {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      font-weight: 600;
     }
 
-    .highlight {
-      background: #fef08a;
-      padding: 0 3px;
-      border-radius: 3px;
+    p {
+      font-size: 1.05rem;
+      line-height: 1.5;
+      margin: 4px 0 10px;
+    }
+
+    ul, ol {
+      padding-left: 1.3rem;
+      margin: 8px 0 4px;
+    }
+
+    li {
+      font-size: 1.02rem;
+      margin-bottom: 4px;
+    }
+
+    .highlight-box {
+      background: var(--highlight);
+      border-left: 6px solid var(--accent2);
+      padding: 10px 14px;
+      border-radius: 12px;
+      margin: 8px 0 10px;
+    }
+
+    .focus-box {
+      background: #eff6ff;
+      border-left: 6px solid var(--accent1);
+      padding: 10px 14px;
+      border-radius: 12px;
+      margin: 8px 0 10px;
+    }
+
+    .warning-box {
+      background: var(--danger);
+      border-left: 6px solid #ef4444;
+      padding: 10px 14px;
+      border-radius: 12px;
+      margin: 8px 0 10px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.08);
+      color: #15803d;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .step-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent1);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 4px;
+    }
+
+    .key-words {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .key-words span {
+      font-size: 0.9rem;
+      padding: 4px 8px;
+      border-radius: 10px;
+      background: rgba(244, 114, 182, 0.08);
+      border: 1px dashed rgba(236, 72, 153, 0.7);
+      font-weight: 600;
     }
 
     .underline {
@@ -106,353 +245,438 @@
       text-decoration-thickness: 2px;
     }
 
-    .section {
-      margin-top: 12px;
-      padding: 10px 14px;
-      border-radius: 12px;
-      background: rgba(248, 250, 252, 0.7);
-      border: 1px solid #cbd5f5;
-      position: relative;
+    .italic {
+      font-style: italic;
     }
 
-    .section-label {
-      position: absolute;
-      top: -14px;
-      left: 10px;
-      background: #e0f2fe;
-      border-radius: 999px;
-      padding: 0 10px;
-      font-size: 14px;
-      color: #0369a1;
-      border: 1px solid #7dd3fc;
+    .bold {
+      font-weight: 700;
     }
 
-    .section h3 {
-      font-size: 20px;
-      color: #1e293b;
-      margin-bottom: 4px;
+    .tiny-note {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 4px;
     }
 
-    .section-sub {
-      font-size: 15px;
-      color: #475569;
-      margin-bottom: 8px;
-    }
-
-    .question {
-      font-size: 16px;
+    .checklist {
+      list-style: none;
+      padding-left: 0;
       margin: 6px 0 2px;
     }
 
-    .answer-line {
-      border-bottom: 1.5px solid #9ca3af;
-      display: block;
+    .checklist li::before {
+      content: "▢";
+      margin-right: 8px;
+      color: var(--accent2);
+    }
+
+    .exit-ticket {
+      border-top: 2px dashed rgba(148, 163, 184, 0.8);
+      margin-top: 10px;
+      padding-top: 10px;
+    }
+
+    .controls {
       width: 100%;
-      height: 22px;
-      margin-bottom: 4px;
-    }
-
-    .answer-block {
-      border: 1.5px dashed #9ca3af;
-      border-radius: 8px;
-      min-height: 56px;
-      margin: 4px 0 8px;
-      padding: 4px 8px;
-    }
-
-    .word-bank {
-      font-size: 15px;
-      margin: 4px 0 6px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: #e0f2fe;
-      border: 1px dashed #60a5fa;
-      display: inline-block;
-    }
-
-    .word-bank span {
-      font-style: italic;
-      color: #0369a1;
-    }
-
-    .mc-options {
-      margin-left: 12px;
-      margin-top: 2px;
-      font-size: 16px;
-    }
-
-    .mc-option {
+      max-width: 1100px;
       display: flex;
-      align-items: flex-start;
-      gap: 4px;
-      margin-bottom: 2px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 14px;
     }
 
-    .mc-option-letter {
-      width: 18px;
+    .btn {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #e5e7eb;
+      color: #111827;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
     }
 
-    .mc-option-text {
-      border-bottom: 1px dotted #94a3b8;
-      padding-bottom: 1px;
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color: #ffffff;
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn:disabled {
+      opacity: 0.4;
+      cursor: default;
+      box-shadow: none;
+      transform: none;
+    }
+
+    .btn:not(:disabled):hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.22);
+    }
+
+    .slide-indicator {
       flex: 1;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
     }
 
-    .note-box {
-      font-size: 14px;
+    .slide-indicator span {
+      font-weight: 700;
+      color: var(--accent1);
+    }
+
+    .hint {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
       margin-top: 4px;
-      padding: 4px 8px;
-      border-radius: 8px;
-      background: #f1f5f9;
-      border: 1px dashed #94a3b8;
     }
 
-    .note-box small {
-      color: #64748b;
-    }
-
-    .tiny {
-      font-size: 13px;
-    }
-
-    em {
-      color: #7c2d12;
-    }
-
-    @media print {
-      body {
-        background: #ffffff;
+    @media (max-width: 768px) {
+      .deck {
+        padding: 12px 8px 18px;
       }
-      .page {
-        box-shadow: none;
+
+      .slide {
+        padding: 16px 16px 18px;
+        border-radius: 16px;
+        min-height: 65vh;
+      }
+
+      h1 {
+        font-size: 1.9rem;
+      }
+
+      h2 {
+        font-size: 1.45rem;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .controls {
+        flex-wrap: wrap;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <h1 class="title">Enslaved Peoples of America in the 1800s</h1>
-    <h2 class="subtitle">Video Notes: Cotton Gin, Slavery, and Expansion</h2>
+  <div class="deck">
+    <div class="slides-wrapper">
+      <div class="slides">
+        <!-- Slide 1: Title and Big Picture -->
+        <section class="slide title-slide" data-index="0">
+          <div class="slide-content">
+            <div class="tagline">Unit 3 · Slavery and Sectionalism</div>
+            <h1>Expansion of Slavery</h1>
+            <p class="subtitle">
+              Cotton Gin, New Inventions, and How Technology Can Have a Dark Side
+            </p>
 
-    <div class="header-row">
-      <div>Name: <span></span></div>
-      <div>Period: <span></span></div>
-      <div>Date: <span></span></div>
-    </div>
+            <div class="pill-row">
+              <div class="pill">📺 Step 1: Cotton Gin Video Notes</div>
+              <div class="pill">📖 Step 2: Wayground Reading Activity</div>
+              <div class="pill">✍🏽 Step 3: Reflection and Exit Ticket</div>
+            </div>
 
-    <div class="handwritten-tag">
-      Clip: <span class="underline">"How inventions change history (for better and for worse)"</span> by Kenneth C. Davis
-    </div>
+            <div class="focus-box">
+              <div class="emoji-label">Today we are asking:</div>
+              <p>
+                <span class="bold">Can an invention be both helpful and harmful at the same time?</span>
+              </p>
+            </div>
 
-    <div class="directions">
-      <span class="highlight"><strong>Directions:</strong></span>
-      While you watch the video, <em>use this page as your notes.</em>
-      Fill in the blanks, choose the best answers, and write in 1–2 complete sentences when asked.
-      You should get all your information from the video.
-    </div>
-
-    <!-- Part 1 -->
-    <div class="section">
-      <div class="section-label">Part 1</div>
-      <h3>Cotton Gin: Cause and Effect</h3>
-      <p class="section-sub">
-        Use the word bank to show how the cotton gin changed cotton work and the demand for enslaved labor.
-      </p>
-
-      <p class="word-bank">
-        <strong>Word Bank:</strong>
-        <span>more</span> • <span>less</span> • <span>faster</span> • <span>slower</span>
-      </p>
-
-      <p class="question">
-        1. The cotton gin made it <span class="highlight">____________________</span> and easier to clean cotton.
-      </p>
-      <span class="answer-line"></span>
-
-      <p class="question">
-        2. This meant planters could grow much <span class="highlight">____________________</span> cotton.
-      </p>
-      <span class="answer-line"></span>
-
-      <p class="question">
-        3. As a result, they needed <span class="highlight">____________________</span> enslaved workers to plant and pick the cotton.
-      </p>
-      <span class="answer-line"></span>
-    </div>
-
-    <!-- Part 2 -->
-    <div class="section">
-      <div class="section-label">Part 2</div>
-      <h3>Cotton Production Numbers</h3>
-      <p class="section-sub">
-        Use the word bank and what you hear in the video to track how fast cotton production grew.
-      </p>
-
-      <p class="word-bank">
-        <strong>Word Bank:</strong>
-        <span>3,000</span> • <span>100,000</span> • <span>4 million</span>
-      </p>
-
-      <p class="question">
-        4. In 1790, the United States produced about <span class="highlight">____________________</span> bales of cotton a year.
-      </p>
-      <span class="answer-line"></span>
-
-      <p class="question">
-        5. By 1801, the United States produced about <span class="highlight">____________________</span> bales of cotton a year.
-      </p>
-      <span class="answer-line"></span>
-
-      <p class="question">
-        6. As America expanded west, yearly cotton production exploded to <span class="highlight">____________________</span> bales.
-      </p>
-      <span class="answer-line"></span>
-    </div>
-
-    <!-- Part 3 -->
-    <div class="section">
-      <div class="section-label">Part 3</div>
-      <h3>Growth of the Enslaved Population</h3>
-      <p class="section-sub">
-        Use the numbers you hear in the video to see how the enslaved population changed over time.
-      </p>
-
-      <p class="word-bank">
-        <strong>Word Bank:</strong>
-        <span>700,000</span> • <span>1,000,000</span> • <span>4,000,000</span>
-      </p>
-
-      <p class="question">
-        7. In 1790, there were about <span class="highlight">____________________</span> enslaved people in the United States.
-      </p>
-      <span class="answer-line"></span>
-
-      <p class="question">
-        8. By 1810, that number increased to more than <span class="highlight">____________________</span> enslaved people.
-      </p>
-      <span class="answer-line"></span>
-
-      <p class="question">
-        9. By 1860, the number of enslaved people had grown to nearly <span class="highlight">____________________</span>.
-      </p>
-      <span class="answer-line"></span>
-    </div>
-
-    <!-- Part 4 - MC -->
-    <div class="section">
-      <div class="section-label">Part 4</div>
-      <h3>American Ideals vs Slavery</h3>
-      <p class="section-sub">
-        Think about what the video says about the ideas of the American Revolution and the reality of slavery.
-      </p>
-
-      <!-- Q10 MC -->
-      <p class="question">
-        10. Which sentence from the video best shows that slavery went against the ideals and principles of the American Revolution?
-        <span class="tiny">(Circle one.)</span>
-      </p>
-      <div class="mc-options">
-        <div class="mc-option">
-          <div class="mc-option-letter">A.</div>
-          <div class="mc-option-text">
-            Slavery was a tragic American fact of life in the early years of the new republic.
+            <p class="tiny-note">
+              Keep your notes organized and colorful so your future self will thank you later.
+            </p>
           </div>
-        </div>
-        <div class="mc-option">
-          <div class="mc-option-letter">B.</div>
-          <div class="mc-option-text">
-            Slavery contradicted the ideals and principles for which Americans had fought their revolution.
+        </section>
+
+        <!-- Slide 2: Objective and Key Words -->
+        <section class="slide" data-index="1">
+          <div class="slide-content">
+            <h2>📌 Today's Objective</h2>
+            <div class="highlight-box">
+              <p>
+                <span class="bold">Today I will be able to:</span>
+                <span class="italic">
+                  explain how the cotton gin and other inventions led to the
+                  <span class="underline">expansion of slavery</span> in the United States
+                </span>
+                by taking video notes and analyzing primary source documents.
+              </p>
+            </div>
+
+            <h3>Key Ideas to Keep in Mind</h3>
+            <ul>
+              <li>Inventions can solve problems <span class="bold">and</span> create new ones.</li>
+              <li>The cotton gin made cleaning cotton faster, which changed the entire economy of the South.</li>
+              <li>As cotton profits grew, <span class="underline bold">slavery expanded</span> instead of shrinking.</li>
+            </ul>
+
+            <div class="key-words">
+              <span>cotton gin</span>
+              <span>invention</span>
+              <span>profits</span>
+              <span>plantations</span>
+              <span>expansion of slavery</span>
+              <span>cause and effect</span>
+            </div>
           </div>
-        </div>
-        <div class="mc-option">
-          <div class="mc-option-letter">C.</div>
-          <div class="mc-option-text">
-            The cotton gin helped planters clean cotton faster and made the cotton business more profitable.
+        </section>
+
+        <!-- Slide 3: Agenda / Game Plan -->
+        <section class="slide" data-index="2">
+          <div class="slide-content">
+            <h2>🧠 Game Plan For Today</h2>
+
+            <ol>
+              <li>
+                <span class="bold">Warm Up</span>  
+                Can an invention be both good and bad at the same time?  
+                Write a quick example from real life.
+              </li>
+              <li>
+                <span class="bold">Cotton Gin Video + Notes</span>  
+                Watch a short video and fill in your video notes organizer.
+              </li>
+              <li>
+                <span class="bold">Mini Share Out</span>  
+                Turn and talk: What surprised you about the cotton gin?
+              </li>
+              <li>
+                <span class="bold">Wayground Reading Activity</span>  
+                Read documents about cotton, slavery, and invention, then answer questions.
+              </li>
+              <li>
+                <span class="bold">Exit Ticket</span>  
+                Explain how the cotton gin helped expand slavery in your own words.
+              </li>
+            </ol>
+
+            <div class="warning-box">
+              <span class="badge">Tip for focus</span>
+              <p>
+                If your mind starts to wander, put a tiny star ⭐ next to the sentence that brought you back.
+                That tells your brain, "I came back. I did not give up."
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="mc-option">
-          <div class="mc-option-letter">D.</div>
-          <div class="mc-option-text">
-            Large mills in Great Britain and New England were hungry for cotton to mass produce cloth.
+        </section>
+
+        <!-- Slide 4: Cotton Gin Video Notes -->
+        <section class="slide" data-index="3">
+          <div class="slide-content">
+            <h2>📺 Part 1 · Cotton Gin Video Notes</h2>
+            <p>
+              While you watch the video, your goal is to catch the
+              <span class="bold underline">big ideas</span>, not every single word.
+            </p>
+
+            <div class="two-col">
+              <div>
+                <div class="step-label">Set up your page</div>
+                <ul class="checklist">
+                  <li>Title at the top: <span class="bold">"Cotton Gin Video Notes"</span></li>
+                  <li>Date in the corner</li>
+                  <li>Draw two columns: <span class="italic">"Good effects"</span> and <span class="italic">"Harmful effects"</span></li>
+                </ul>
+
+                <div class="highlight-box">
+                  <p class="bold underline">As you watch, write:</p>
+                  <ul>
+                    <li><span class="bold">3 ways</span> the cotton gin helped cotton production.</li>
+                    <li><span class="bold">3 ways</span> the cotton gin caused slavery to grow.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div>
+                <div class="step-label">Color code your thinking</div>
+                <ul>
+                  <li><span class="bold">Green</span> for things that seem positive or helpful.</li>
+                  <li><span class="bold">Red</span> for things that seem harmful or unfair.</li>
+                  <li><span class="bold">Blue</span> for questions or things you are confused about.</li>
+                </ul>
+
+                <p class="tiny-note">
+                  Example question in blue:  
+                  <span class="italic">"If the cotton gin did the work faster, why did they still need more enslaved people?"</span>
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
+
+        <!-- Slide 5: Transition to Wayground Activity -->
+        <section class="slide" data-index="4">
+          <div class="slide-content">
+            <h2>🔁 From Video To Reading</h2>
+            <p>
+              The video showed you <span class="bold">what</span> the cotton gin did.
+              The documents will help you see <span class="bold">how</span> it changed real people’s lives.
+            </p>
+
+            <div class="focus-box">
+              <p class="bold underline">Before we move to Wayground, check your notes:</p>
+              <ul class="checklist">
+                <li>I wrote at least 3 "good" effects of the cotton gin.</li>
+                <li>I wrote at least 3 "harmful" effects connected to slavery.</li>
+                <li>I wrote at least 1 question I still have.</li>
+              </ul>
+            </div>
+
+            <p class="tiny-note">
+              If you are missing any box, add it now. Two extra minutes of effort will save you stress later.
+            </p>
+          </div>
+        </section>
+
+        <!-- Slide 6: Wayground Activity -->
+        <section class="slide" data-index="5">
+          <div class="slide-content">
+            <h2>📖 Part 2 · Wayground Reading Activity</h2>
+
+            <div class="step-label">What you will do in Wayground</div>
+            <ol>
+              <li>Log in and open the assignment: <span class="bold">"Expansion of Slavery: Cotton Gin and Inventions"</span>.</li>
+              <li>Read each document about cotton, slavery, and invention.</li>
+              <li>Answer all questions in your own words using <span class="bold">complete sentences</span>.</li>
+            </ol>
+
+            <div class="two-col">
+              <div>
+                <h3>How to answer the questions</h3>
+                <ul>
+                  <li>Use your <span class="bold">video notes</span> plus the document to build your answer.</li>
+                  <li>Underline or highlight the sentence in the document that helped you the most.</li>
+                  <li>Add at least <span class="bold">one extra detail</span> from class or your notes that is not in the document.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3>Sentence starters you can steal</h3>
+                <ul>
+                  <li><span class="italic">"One way the cotton gin helped expand slavery was..."</span></li>
+                  <li><span class="italic">"The document shows that..."</span></li>
+                  <li><span class="italic">"This connects to the video because..."</span></li>
+                  <li><span class="italic">"Another important effect was..."</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 7: Exit Ticket -->
+        <section class="slide" data-index="6">
+          <div class="slide-content">
+            <h2>✍🏽 Exit Ticket · Wrap Up Your Thinking</h2>
+            <p>
+              In <span class="bold">2 to 4 sentences</span>, answer this question in your notebook:
+            </p>
+
+            <div class="highlight-box">
+              <p class="bold">
+                How did the cotton gin help <span class="underline">expand slavery</span> in the United States?
+              </p>
+            </div>
+
+            <p>Make sure your answer includes:</p>
+            <ul class="checklist">
+              <li>The cotton gin as the <span class="bold">cause</span>.</li>
+              <li>More cotton and more money as a short term <span class="bold">effect</span>.</li>
+              <li>Growth of plantations and slavery as a deeper <span class="bold">effect</span>.</li>
+            </ul>
+
+            <div class="exit-ticket">
+              <p class="tiny-note">
+                If you finish early, add a final line that starts with  
+                <span class="italic">"In my opinion, this shows that inventions can be..."</span>  
+                and explain your own point of view.
+              </p>
+            </div>
+          </div>
+        </section>
       </div>
-
-      <!-- Q11 MC -->
-      <p class="question" style="margin-top: 10px;">
-        11. What is the best short margin note to describe the problem the video points out in Question 10?
-        <span class="tiny">(Circle one.)</span>
-      </p>
-      <div class="mc-options">
-        <div class="mc-option">
-          <div class="mc-option-letter">A.</div>
-          <div class="mc-option-text">
-            Slavery supports American freedom and keeps the country equal and fair.
-          </div>
-        </div>
-        <div class="mc-option">
-          <div class="mc-option-letter">B.</div>
-          <div class="mc-option-text">
-            Slavery fits perfectly with American democratic ideals and values forever.
-          </div>
-        </div>
-        <div class="mc-option">
-          <div class="mc-option-letter">C.</div>
-          <div class="mc-option-text">
-            Slavery is just a normal part of early United States life and government.
-          </div>
-        </div>
-        <div class="mc-option">
-          <div class="mc-option-letter">D.</div>
-          <div class="mc-option-text">
-            Slavery vs American ideals (hypocrisy between the words and the reality).
-          </div>
-        </div>
-      </div>
-
-      <div class="note-box">
-        <small>
-          <strong>Hint:</strong>
-          Think about the difference between what leaders said about freedom and equality and what was actually happening.
-        </small>
-      </div>
     </div>
 
-    <!-- Part 5 -->
-    <div class="section">
-      <div class="section-label">Part 5</div>
-      <h3>Invention, Expansion, and Slavery</h3>
-      <p class="section-sub">
-        Use what you heard in the video to connect the <span class="highlight">cotton gin</span> and
-        <span class="highlight">westward expansion</span> to the spread of slavery.
-      </p>
-
-      <p class="question">
-        12. On this page or in your notebook, jot down a short quote or key phrase from the video that:
-      </p>
-      <ul style="margin-top: 0; margin-bottom: 4px; padding-left: 26px; font-size: 15px;">
-        <li>
-          talks about the <strong>Industrial Revolution</strong> and factories needing cotton.
-        </li>
-        <li>
-          talks about the <strong>Louisiana Purchase</strong> and the United States expanding west.
-        </li>
-      </ul>
-
-      <p class="question">
-        13. In 1–2 sentences, explain:
-        <em>How did the cotton gin and westward expansion work together to increase slavery in the United States?</em>
-      </p>
-
-      <div class="answer-block">
-        <span class="tiny">
-          You can start with:
-          <br>
-          <strong>The cotton gin increased demand for cotton, so ____________________________________________.</strong><br>
-          <strong>When the United States expanded west after the Louisiana Purchase, _____________________________, which increased the spread of slavery.</strong>
-        </span>
+    <div class="controls">
+      <button class="btn" id="prevBtn">
+        ◀ Back
+      </button>
+      <div class="slide-indicator">
+        Slide <span id="currentSlide">1</span> of <span id="totalSlides">7</span>
       </div>
+      <button class="btn btn-primary" id="nextBtn">
+        Next ▶
+      </button>
+    </div>
+    <div class="hint">
+      Tip: You can also use the left and right arrow keys to change slides.
     </div>
   </div>
+
+  <script>
+    (function() {
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      const currentSlideSpan = document.getElementById("currentSlide");
+      const totalSlidesSpan = document.getElementById("totalSlides");
+
+      let currentIndex = 0;
+      const total = slides.length;
+      totalSlidesSpan.textContent = total;
+
+      function showSlide(index) {
+        if (index < 0 || index >= total) return;
+        slides.forEach(slide => slide.classList.remove("active"));
+        slides[index].classList.add("active");
+        currentIndex = index;
+        currentSlideSpan.textContent = index + 1;
+
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === total - 1;
+      }
+
+      prevBtn.addEventListener("click", () => {
+        showSlide(currentIndex - 1);
+      });
+
+      nextBtn.addEventListener("click", () => {
+        showSlide(currentIndex + 1);
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") {
+          if (currentIndex < total - 1) showSlide(currentIndex + 1);
+        } else if (e.key === "ArrowLeft") {
+          if (currentIndex > 0) showSlide(currentIndex - 1);
+        }
+      });
+
+      // start on slide 1
+      showSlide(0);
+    })();
+  </script>
 </body>
 </html>
