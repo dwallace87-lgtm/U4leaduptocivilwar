@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Frederick Douglass - Notebook Primary Source</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Optional handwriting style font -->
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --page-bg: #fdfcf7;
+      --line-color: rgba(99, 179, 237, 0.6);
+      --margin-line: rgba(248, 113, 113, 0.8);
+      --text-main: #111827;
+      --text-muted: #6b7280;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #e5e7eb;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .page-wrap {
+      padding: 24px 12px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .notebook-page {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      min-height: 80vh;
+      background-color: var(--page-bg);
+      background-image:
+        repeating-linear-gradient(
+          to bottom,
+          var(--line-color) 0px,
+          var(--line-color) 1px,
+          transparent 1px,
+          transparent 28px
+        );
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.25);
+      padding: 36px 40px 40px 72px;
+      overflow: hidden;
+    }
+
+    /* Red margin line */
+    .notebook-page::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 52px;
+      width: 2px;
+      background: var(--margin-line);
+      opacity: 0.95;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      font-family: "Patrick Hand", "Segoe Print", system-ui, sans-serif;
+      font-size: 1.35rem;
+      line-height: 1.9;
+      color: var(--text-main);
+      white-space: pre-line;
+    }
+
+    .header {
+      margin-bottom: 18px;
+    }
+
+    .header-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .header-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    .primary-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .quote-block {
+      margin-top: 10px;
+    }
+
+    .attribution {
+      margin-top: 18px;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    .highlight {
+      background: rgba(254, 240, 138, 0.7);
+      padding: 0 2px;
+    }
+
+    @media (max-width: 768px) {
+      .notebook-page {
+        padding: 26px 18px 30px 52px;
+        border-radius: 14px;
+      }
+
+      .notebook-page::before {
+        left: 38px;
+      }
+
+      .content {
+        font-size: 1.15rem;
+      }
+
+      .header-title {
+        font-size: 1.35rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="notebook-page">
+      <div class="content">
+        <div class="primary-label">Primary Source for Reading Aloud</div>
+        <div class="header">
+          <div class="header-title">Frederick Douglass</div>
+          <div class="header-sub">“What to the Slave is the Fourth of July?”</div>
+        </div>
+
+        <div class="quote-block">
+“Would to God, both for your sakes and ours, that an affirmative answer could be truthfully returned to these questions! Then would my task be light, and my burden easy and delightful. For who is there so cold, that a nation’s sympathy could not warm him? Who so obdurate and dead to the claims of gratitude, that would not thankfully acknowledge such priceless benefits? Who so stolid and selfish, that would not give his voice to swell the hallelujahs of a nation’s jubilee, when the chains of servitude had been torn from his limbs? I am not that man. In a case like that, the dumb might eloquently speak, and the 'lame man leap as an hart.'
+
+But such is not the state of the case. I say it with a sad sense of the disparity between us. I am not included within the pale of glorious anniversary! Your high independence only reveals the immeasurable distance between us. The blessings in which you, this day, rejoice, are not enjoyed in common. The rich inheritance of justice, liberty, prosperity and independence, bequeathed by your fathers, is shared by you, not by me. The sunlight that brought light and healing to you, has brought stripes and death to me. This Fourth July is yours, not mine. You may rejoice, I must mourn.”
+        </div>
+
+        <div class="attribution">
+          - Frederick Douglass, July 5, 1852
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
