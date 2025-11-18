@@ -74,19 +74,19 @@
             animation: modalFadeIn 0.2s ease-out forwards;
         }
 
-        /* Tab Styling */
-        .tab-btn.active {
-            background-color: #4f46e5; /* Indigo 600 */
-            color: white;
-            border-color: #4f46e5;
+        /* Scrollbar for sidebar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
         }
-        .tab-btn.inactive {
-            background-color: white;
-            color: #475569; /* Slate 600 */
-            border-color: #cbd5e1; /* Slate 300 */
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1e293b; 
         }
-        .tab-btn.inactive:hover {
-            background-color: #f1f5f9; /* Slate 100 */
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #475569; 
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #64748b; 
         }
     </style>
 </head>
@@ -95,32 +95,20 @@
     <div class="max-w-6xl mx-auto">
         
         <!-- Main Header -->
-        <header class="mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div>
-                <h1 class="text-3xl font-extrabold text-slate-900">
-                    Historical Source Analysis
-                </h1>
-                <p class="text-slate-500">Comparison of Slavery Statistics & Domestic Trade</p>
-            </div>
-            
-            <!-- Navigation Tabs -->
-            <div class="flex gap-2 bg-white p-1 rounded-lg shadow-sm border border-slate-200">
-                <button onclick="switchTab('docB')" id="tab-docB" class="tab-btn active px-6 py-2 rounded-md font-bold text-sm transition-all duration-200 border">
-                    Document B
-                </button>
-                <button onclick="switchTab('docC')" id="tab-docC" class="tab-btn inactive px-6 py-2 rounded-md font-bold text-sm transition-all duration-200 border">
-                    Document C
-                </button>
-            </div>
+        <header class="mb-8 border-b border-slate-200 pb-6">
+            <h1 class="text-3xl font-extrabold text-slate-900">
+                Historical Source Analysis
+            </h1>
+            <p class="text-slate-500 mt-1">Comparison of Slavery Statistics (Doc B) & Domestic Trade (Doc C)</p>
         </header>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
             <!-- LEFT COLUMN: Document Content Area -->
-            <div class="lg:col-span-2 relative">
+            <div class="lg:col-span-2 flex flex-col gap-12">
                 
                 <!-- DOCUMENT B CONTENT -->
-                <div id="content-docB" class="transition-opacity duration-300">
+                <div id="content-docB">
                     <div class="bg-white rounded-xl shadow-xl border-l-8 border-indigo-600 overflow-hidden relative">
                         <div class="absolute top-4 right-4 opacity-5 text-9xl pointer-events-none">
                             <i class="fas fa-chart-pie text-slate-900"></i>
@@ -193,8 +181,8 @@
                     </div>
                 </div>
 
-                <!-- DOCUMENT C CONTENT (Hidden by default) -->
-                <div id="content-docC" class="hidden transition-opacity duration-300">
+                <!-- DOCUMENT C CONTENT -->
+                <div id="content-docC">
                     <div class="bg-white rounded-xl shadow-xl border-l-8 border-red-600 overflow-hidden relative">
                         <div class="absolute top-4 right-4 opacity-5 text-9xl pointer-events-none">
                             <i class="fas fa-ship text-slate-900"></i>
@@ -246,7 +234,7 @@
 
             <!-- RIGHT COLUMN: Dynamic Word Bank -->
             <div class="lg:col-span-1">
-                <div class="bg-slate-800 rounded-xl shadow-xl p-6 text-white sticky top-6">
+                <div class="bg-slate-800 rounded-xl shadow-xl p-6 text-white sticky top-6 max-h-[90vh] overflow-y-auto custom-scrollbar">
                     <div class="flex items-center gap-3 mb-6 border-b border-slate-600 pb-4">
                         <div class="bg-indigo-500 p-2 rounded-lg">
                             <i class="fas fa-book-open text-white"></i>
@@ -255,7 +243,8 @@
                     </div>
 
                     <!-- WORD BANK B -->
-                    <div id="wb-docB" class="space-y-4 font-sans">
+                    <div class="mb-2 text-xs font-bold text-slate-400 uppercase tracking-widest">Document B Terms</div>
+                    <div id="wb-docB" class="space-y-4 font-sans mb-8">
                         <div class="term-card bg-slate-700 p-4 rounded-lg border-l-4 border-yellow-400">
                             <h3 class="font-bold text-yellow-400 text-sm uppercase tracking-wide mb-1">Transatlantic Trade</h3>
                             <p class="text-slate-300 text-sm leading-snug">The transportation of enslaved people across the Atlantic Ocean from Africa to the Americas.</p>
@@ -278,8 +267,9 @@
                         </div>
                     </div>
 
-                    <!-- WORD BANK C (Hidden by Default) -->
-                    <div id="wb-docC" class="hidden space-y-4 font-sans">
+                    <!-- WORD BANK C -->
+                    <div class="mb-2 text-xs font-bold text-slate-400 uppercase tracking-widest border-t border-slate-600 pt-6">Document C Terms</div>
+                    <div id="wb-docC" class="space-y-4 font-sans">
                         <div class="term-card bg-slate-700 p-4 rounded-lg border-l-4 border-yellow-400">
                             <h3 class="font-bold text-yellow-400 text-sm uppercase tracking-wide mb-1">Cargo</h3>
                             <p class="text-slate-300 text-sm leading-snug">Goods carried on a ship. Used here to dehumanize enslaved people.</p>
@@ -298,7 +288,7 @@
                         </div>
                     </div>
 
-                    <div class="mt-6 text-center">
+                    <div class="mt-6 text-center pt-6 border-t border-slate-600">
                         <button onclick="document.querySelectorAll('.doc-font').forEach(el => el.classList.toggle('text-xl'))" class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-sm font-semibold transition-colors">
                             <i class="fas fa-text-height mr-2"></i> Toggle Text Size
                         </button>
@@ -333,27 +323,6 @@
     </div>
 
     <script>
-        // Tab Switching Logic
-        function switchTab(docId) {
-            // Update Buttons
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-                btn.classList.add('inactive');
-            });
-            document.getElementById('tab-' + docId).classList.add('active');
-            document.getElementById('tab-' + docId).classList.remove('inactive');
-
-            // Hide All Content and Word Banks
-            document.getElementById('content-docB').classList.add('hidden');
-            document.getElementById('content-docC').classList.add('hidden');
-            document.getElementById('wb-docB').classList.add('hidden');
-            document.getElementById('wb-docC').classList.add('hidden');
-
-            // Show Selected
-            document.getElementById('content-' + docId).classList.remove('hidden');
-            document.getElementById('wb-' + docId).classList.remove('hidden');
-        }
-
         // Modal Logic
         function showModal(title, description) {
             const modal = document.getElementById('definitionModal');
