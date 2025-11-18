@@ -55,7 +55,8 @@
         );
       border-radius: 20px;
       box-shadow: 0 20px 50px rgba(15, 23, 42, 0.35);
-      padding: 40px 50px 46px 88px;
+      /* ↓ slightly less top padding so content starts higher */
+      padding: 28px 50px 40px 88px;
       overflow: hidden;
       border: 1px solid rgba(148, 163, 184, 0.7);
     }
@@ -115,7 +116,8 @@
     }
 
     .header {
-      margin-bottom: 18px;
+      /* ↓ shrink gap under the title/subtitle */
+      margin-bottom: 4px;
     }
 
     .header-title {
@@ -131,7 +133,7 @@
 
     .primary-label {
       display: inline-block;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
       font-size: 1rem;
       color: var(--text-muted);
       letter-spacing: 0.16em;
@@ -139,7 +141,8 @@
     }
 
     .quote-block {
-      margin-top: 10px;
+      /* ↓ almost no extra space before the quote text */
+      margin-top: 2px;
     }
 
     .attribution {
@@ -181,7 +184,7 @@
 
     @media (max-width: 768px) {
       .notebook-page {
-        padding: 30px 20px 32px 64px;
+        padding: 24px 20px 30px 64px;
         border-radius: 16px;
         min-height: 90vh;
       }
