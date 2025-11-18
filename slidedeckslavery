@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Expansion of Slavery: Cotton Gin & Inventions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --accent1: #2563eb;
+      --accent2: #ec4899;
+      --accent3: #22c55e;
+      --accent-soft: #e0f2fe;
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --highlight: #fef3c7;
+      --danger: #fee2e2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text-main);
+    }
+
+    .page {
+      min-height: 100vh;
+      padding: 24px 16px 40px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .slides {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .slide {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 24px 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+      border: 3px solid rgba(148, 163, 184, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(59, 130, 246, 0.10), transparent 55%),
+                  radial-gradient(circle at 100% 100%, rgba(236, 72, 153, 0.10), transparent 55%);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .title-slide {
+      border-image: linear-gradient(90deg, var(--accent1), var(--accent2)) 1;
+      border-width: 4px;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      letter-spacing: 0.03em;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+      margin-bottom: 4px;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .tagline {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      font-size: 0.9rem;
+      color: var(--accent1);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+      margin-bottom: 6px;
+    }
+
+    .pill {
+      font-size: 0.85rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.04);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .emoji-label {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.5;
+      margin: 4px 0 10px;
+    }
+
+    ul, ol {
+      padding-left: 1.3rem;
+      margin: 8px 0 4px;
+    }
+
+    li {
+      font-size: 1.02rem;
+      margin-bottom: 4px;
+    }
+
+    .highlight-box {
+      background: var(--highlight);
+      border-left: 6px solid var(--accent2);
+      padding: 10px 14px;
+      border-radius: 12px;
+      margin: 8px 0 10px;
+    }
+
+    .focus-box {
+      background: #eff6ff;
+      border-left: 6px solid var(--accent1);
+      padding: 10px 14px;
+      border-radius: 12px;
+      margin: 8px 0 10px;
+    }
+
+    .warning-box {
+      background: var(--danger);
+      border-left: 6px solid #ef4444;
+      padding: 10px 14px;
+      border-radius: 12px;
+      margin: 8px 0 10px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.08);
+      color: #15803d;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .step-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent1);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 4px;
+    }
+
+    .key-words {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .key-words span {
+      font-size: 0.9rem;
+      padding: 4px 8px;
+      border-radius: 10px;
+      background: rgba(244, 114, 182, 0.08);
+      border: 1px dashed rgba(236, 72, 153, 0.7);
+      font-weight: 600;
+    }
+
+    .underline {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+    }
+
+    .italic {
+      font-style: italic;
+    }
+
+    .bold {
+      font-weight: 700;
+    }
+
+    .tiny-note {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .checklist {
+      list-style: none;
+      padding-left: 0;
+      margin: 6px 0 2px;
+    }
+
+    .checklist li::before {
+      content: "▢";
+      margin-right: 8px;
+      color: var(--accent2);
+    }
+
+    .exit-ticket {
+      border-top: 2px dashed rgba(148, 163, 184, 0.8);
+      margin-top: 10px;
+      padding-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .page {
+        padding: 18px 10px 30px;
+      }
+      .slide {
+        padding: 16px 16px 18px;
+        border-radius: 16px;
+      }
+      h1 {
+        font-size: 1.9rem;
+      }
+      h2 {
+        font-size: 1.45rem;
+      }
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="slides">
+      <!-- Slide 1: Title and Big Picture -->
+      <section class="slide title-slide">
+        <div class="slide-content">
+          <div class="tagline">Unit 3 · Slavery and Sectionalism</div>
+          <h1>Expansion of Slavery</h1>
+          <p class="subtitle">
+            Cotton Gin, New Inventions, and How Technology Can Have a Dark Side
+          </p>
+
+          <div class="pill-row">
+            <div class="pill">📺 Step 1: Cotton Gin Video Notes</div>
+            <div class="pill">📖 Step 2: Wayground Reading Activity</div>
+            <div class="pill">✍🏽 Step 3: Reflection and Exit Ticket</div>
+          </div>
+
+          <div class="focus-box">
+            <div class="emoji-label">Today we are asking:</div>
+            <p>
+              <span class="bold">Can an invention be both helpful and harmful at the same time?</span>
+            </p>
+          </div>
+
+          <p class="tiny-note">
+            Keep your notes organized and colorful so your future self will thank you later.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 2: Objective and Key Words -->
+      <section class="slide">
+        <div class="slide-content">
+          <h2>📌 Today's Objective</h2>
+          <div class="highlight-box">
+            <p>
+              <span class="bold">Today I will be able to:</span>
+              <span class="italic">
+                explain how the cotton gin and other inventions led to the
+                <span class="underline">expansion of slavery</span> in the United States
+              </span>
+              by taking video notes and analyzing primary source documents.
+            </p>
+          </div>
+
+          <h3>Key Ideas to Keep in Mind</h3>
+          <ul>
+            <li>Inventions can solve problems <span class="bold">and</span> create new ones.</li>
+            <li>The cotton gin made cleaning cotton faster, which changed the entire economy of the South.</li>
+            <li>As cotton profits grew, <span class="underline bold">slavery expanded</span> instead of shrinking.</li>
+          </ul>
+
+          <div class="key-words">
+            <span>cotton gin</span>
+            <span>invention</span>
+            <span>profits</span>
+            <span>plantations</span>
+            <span>expansion of slavery</span>
+            <span>cause and effect</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 3: Agenda / Game Plan -->
+      <section class="slide">
+        <div class="slide-content">
+          <h2>🧠 Game Plan For Today</h2>
+
+          <ol>
+            <li>
+              <span class="bold">Warm Up</span>  
+              Can an invention be both good and bad at the same time?  
+              Write a quick example from real life.
+            </li>
+            <li>
+              <span class="bold">Cotton Gin Video + Notes</span>  
+              Watch a short video and fill in your video notes organizer.
+            </li>
+            <li>
+              <span class="bold">Mini Share Out</span>  
+              Turn and talk: What surprised you about the cotton gin?
+            </li>
+            <li>
+              <span class="bold">Wayground Reading Activity</span>  
+              Read documents about cotton, slavery, and invention, then answer questions.
+            </li>
+            <li>
+              <span class="bold">Exit Ticket</span>  
+              Explain how the cotton gin helped expand slavery in your own words.
+            </li>
+          </ol>
+
+          <div class="warning-box">
+            <span class="badge">Tip for focus</span>
+            <p>
+              If your mind starts to wander, put a tiny star ⭐ next to the sentence that brought you back.
+              That tells your brain, "I came back. I did not give up."
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 4: Cotton Gin Video Notes -->
+      <section class="slide">
+        <div class="slide-content">
+          <h2>📺 Part 1 · Cotton Gin Video Notes</h2>
+          <p>
+            While you watch the video, your goal is to catch the
+            <span class="bold underline">big ideas</span>, not every single word.
+          </p>
+
+          <div class="two-col">
+            <div>
+              <div class="step-label">Set up your page</div>
+              <ul class="checklist">
+                <li>Title at the top: <span class="bold">"Cotton Gin Video Notes"</span></li>
+                <li>Date in the corner</li>
+                <li>Draw two columns: <span class="italic">"Good effects"</span> and <span class="italic">"Harmful effects"</span></li>
+              </ul>
+
+              <div class="highlight-box">
+                <p class="bold underline">As you watch, write:</p>
+                <ul>
+                  <li><span class="bold">3 ways</span> the cotton gin helped cotton production.</li>
+                  <li><span class="bold">3 ways</span> the cotton gin caused slavery to grow.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <div class="step-label">Color code your thinking</div>
+              <ul>
+                <li><span class="bold">Green</span> for things that seem positive or helpful.</li>
+                <li><span class="bold">Red</span> for things that seem harmful or unfair.</li>
+                <li><span class="bold">Blue</span> for questions or things you are confused about.</li>
+              </ul>
+
+              <p class="tiny-note">
+                Example question in blue:  
+                <span class="italic">"If the cotton gin did the work faster, why did they still need more enslaved people?"</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 5: Transition to Wayground Activity -->
+      <section class="slide">
+        <div class="slide-content">
+          <h2>🔁 From Video To Reading</h2>
+          <p>
+            The video showed you <span class="bold">what</span> the cotton gin did.
+            The documents will help you see <span class="bold">how</span> it changed real people’s lives.
+          </p>
+
+          <div class="focus-box">
+            <p class="bold underline">Before we move to Wayground, check your notes:</p>
+            <ul class="checklist">
+              <li>I wrote at least 3 "good" effects of the cotton gin.</li>
+              <li>I wrote at least 3 "harmful" effects connected to slavery.</li>
+              <li>I wrote at least 1 question I still have.</li>
+            </ul>
+          </div>
+
+          <p class="tiny-note">
+            If you are missing any box, add it now. Two extra minutes of effort will save you stress later.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 6: Wayground Activity -->
+      <section class="slide">
+        <div class="slide-content">
+          <h2>📖 Part 2 · Wayground Reading Activity</h2>
+
+          <div class="step-label">What you will do in Wayground</div>
+          <ol>
+            <li>Log in and open the assignment: <span class="bold">"Expansion of Slavery: Cotton Gin and Inventions"</span>.</li>
+            <li>Read each document about cotton, slavery, and invention.</li>
+            <li>Answer all questions in your own words using <span class="bold">complete sentences</span>.</li>
+          </ol>
+
+          <div class="two-col">
+            <div>
+              <h3>How to answer the questions</h3>
+              <ul>
+                <li>Use your <span class="bold">video notes</span> plus the document to build your answer.</li>
+                <li>Underline or highlight the sentence in the document that helped you the most.</li>
+                <li>Add at least <span class="bold">one extra detail</span> from class or your notes that is not in the document.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3>Sentence starters you can steal</h3>
+              <ul>
+                <li><span class="italic">"One way the cotton gin helped expand slavery was..."</span></li>
+                <li><span class="italic">"The document shows that..."</span></li>
+                <li><span class="italic">"This connects to the video because..."</span></li>
+                <li><span class="italic">"Another important effect was..."</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 7: Exit Ticket -->
+      <section class="slide">
+        <div class="slide-content">
+          <h2>✍🏽 Exit Ticket · Wrap Up Your Thinking</h2>
+          <p>
+            In <span class="bold">2 to 4 sentences</span>, answer this question in your notebook:
+          </p>
+
+          <div class="highlight-box">
+            <p class="bold">
+              How did the cotton gin help <span class="underline">expand slavery</span> in the United States?
+            </p>
+          </div>
+
+          <p>Make sure your answer includes:</p>
+          <ul class="checklist">
+            <li>The cotton gin as the <span class="bold">cause</span>.</li>
+            <li>More cotton and more money as a short term <span class="bold">effect</span>.</li>
+            <li>Growth of plantations and slavery as a deeper <span class="bold">effect</span>.</li>
+          </ul>
+
+          <div class="exit-ticket">
+            <p class="tiny-note">
+              If you finish early, add a final line that starts with  
+              <span class="italic">"In my opinion, this shows that inventions can be..."</span>  
+              and explain your own point of view.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
