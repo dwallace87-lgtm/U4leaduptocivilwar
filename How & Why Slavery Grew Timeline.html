@@ -9,396 +9,322 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
     <style>
-        /* Base Settings */
+        /* 1. RICH BACKGROUND */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f5f5f4; /* Stone-100 */
-            background-image: radial-gradient(#e7e5e4 1px, transparent 1px);
-            background-size: 24px 24px;
-            color: #1c1917;
+            /* Deep Blue/Black background for high contrast */
+            background-color: #0f172a; 
+            background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, #020617 100%);
+            min-height: 100vh;
+            color: #e2e8f0;
         }
 
-        /* The Historical Document Font */
+        /* 2. PAPER TEXTURE & STYLING */
+        .historical-paper {
+            background-color: #fdfbf7; /* Warm off-white */
+            /* CSS noise pattern to simulate paper grain */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            color: #292524;
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.5), /* Deep lift shadow */
+                0 0 0 1px rgba(0,0,0,0.1), /* Subtle outline */
+                inset 0 0 40px rgba(0,0,0,0.05); /* Inner vignette */
+        }
+
         .source-text {
             font-family: 'Crimson Pro', serif;
-            line-height: 1.9;
-            font-size: 1.25rem;
+            line-height: 2;
+            font-size: 1.35rem;
         }
 
-        /* Paper Effect for the Document */
-        .paper-shadow {
-            box-shadow: 
-                0 1px 1px rgba(0,0,0,0.15), 
-                0 10px 0 -5px #eee, 
-                0 10px 1px -4px rgba(0,0,0,0.15), 
-                0 20px 0 -10px #eee, 
-                0 20px 1px -9px rgba(0,0,0,0.15);
+        /* 3. FANCY DIVIDERS & BORDERS */
+        .fancy-border-bottom {
+            border-bottom: 3px double #d6d3d1;
         }
-        
+
         /* Interactive Terms */
         .glossary-term {
             cursor: help;
-            border-bottom: 2px dotted #57534e;
+            border-bottom: 2px dotted #78716c;
+            position: relative;
+            z-index: 10;
             transition: all 0.2s ease;
         }
         .glossary-term:hover {
             background-color: #292524;
             color: #fafaf9;
-            border-radius: 4px;
             padding: 0 4px;
             margin: 0 -4px;
+            border-radius: 4px;
             text-decoration: none;
             border-bottom: none;
         }
 
-        /* Marker/Highlighter Effects */
+        /* Highlighters - "Marker" look */
         .highlight-base {
-            padding: 2px 4px;
-            border-radius: 4px;
-            box-decoration-break: clone;
-            -webkit-box-decoration-break: clone;
+            padding: 2px 0;
+            background-image: linear-gradient(to right, var(--hl-color) 0%, var(--hl-color) 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 88%;
+            transition: background-size 0.2s;
+        }
+        .highlight-base:hover {
+            background-size: 100% 100%;
         }
 
-        .highlight-legal {
-            background-color: rgba(252, 211, 77, 0.4); /* Amber */
-            color: #78350f;
-        }
-        .highlight-geo {
-            background-color: rgba(110, 231, 183, 0.4); /* Emerald */
-            color: #064e3b;
-        }
-        .highlight-econ {
-            background-color: rgba(147, 197, 253, 0.4); /* Blue */
-            color: #1e3a8a;
-        }
-
-        /* Lined Paper Effect for Notepad */
-        .lined-paper {
-            background-color: #fef9c3;
-            background-image: linear-gradient(#facc15 1px, transparent 1px);
-            background-size: 100% 2rem;
-            line-height: 2rem;
-            padding-top: 0.5rem;
-        }
+        .hl-legal { --hl-color: rgba(251, 191, 36, 0.6); } /* Amber */
+        .hl-geo { --hl-color: rgba(52, 211, 153, 0.6); }   /* Emerald */
+        .hl-econ { --hl-color: rgba(96, 165, 250, 0.6); }  /* Blue */
 
         /* Animations */
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(10px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .definition-active {
-            display: block !important;
-            animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .slide-in {
+            animation: slideUp 0.5s ease-out forwards;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="flex flex-col min-h-screen">
 
-    <header class="bg-slate-900 text-white sticky top-0 z-50 backdrop-blur-md bg-opacity-95 border-b border-slate-700 shadow-xl">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center">
-            <div class="flex items-center gap-4">
-                <div class="bg-amber-500 p-2 rounded-lg text-slate-900">
-                    <i data-lucide="feather" class="w-6 h-6"></i>
+    <nav class="bg-slate-900/80 backdrop-blur border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-amber-600 rounded flex items-center justify-center shadow-lg shadow-amber-900/20">
+                    <i data-lucide="scroll-text" class="text-white w-6 h-6"></i>
                 </div>
                 <div>
-                    <h1 class="text-2xl font-extrabold tracking-tight text-stone-100">Documenting Slavery</h1>
-                    <p class="text-slate-400 text-sm font-medium uppercase tracking-widest">Primary Source Analysis</p>
+                    <h1 class="font-['Cinzel'] font-bold text-lg tracking-wider text-amber-50">Archive Reader</h1>
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-slate-400">Source Analysis Module</div>
                 </div>
             </div>
             
-            <div class="mt-4 md:mt-0 flex gap-2 bg-slate-800 p-2 rounded-lg border border-slate-700">
-                <div class="flex items-center gap-2 text-xs px-3 py-1 rounded bg-slate-900/50 border border-amber-900/50">
-                    <span class="w-3 h-3 rounded-full bg-amber-400"></span> Legal
+            <div class="flex gap-3 text-xs font-bold tracking-wide">
+                <div class="hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-amber-500/30 text-amber-400">
+                    <div class="w-2 h-2 bg-amber-400 rounded-full"></div> Legal
                 </div>
-                <div class="flex items-center gap-2 text-xs px-3 py-1 rounded bg-slate-900/50 border border-emerald-900/50">
-                    <span class="w-3 h-3 rounded-full bg-emerald-400"></span> Geo/Crops
+                <div class="hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-emerald-500/30 text-emerald-400">
+                    <div class="w-2 h-2 bg-emerald-400 rounded-full"></div> Geography
                 </div>
-                <div class="flex items-center gap-2 text-xs px-3 py-1 rounded bg-slate-900/50 border border-blue-900/50">
-                    <span class="w-3 h-3 rounded-full bg-blue-400"></span> Economics
+                <div class="hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-blue-500/30 text-blue-400">
+                    <div class="w-2 h-2 bg-blue-400 rounded-full"></div> Economics
                 </div>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <main class="flex-grow p-4 md:p-8 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <main class="flex-grow p-6 md:p-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-        <div class="lg:col-span-8 space-y-8">
+        <div class="lg:col-span-8 space-y-6">
             
-            <div class="bg-white rounded-xl shadow-sm border border-stone-200 p-6 flex gap-4 items-start">
-                <div class="bg-indigo-100 p-3 rounded-full text-indigo-600 shrink-0 hidden md:block">
-                    <i data-lucide="glasses" class="w-6 h-6"></i>
-                </div>
+            <div class="flex justify-between items-end pb-2 border-b border-slate-700">
                 <div>
-                    <h2 class="text-lg font-bold text-slate-800 mb-2 uppercase tracking-wide">Instructions</h2>
-                    <ol class="list-decimal list-inside space-y-1 text-slate-600 font-medium">
-                        <li><span class="text-indigo-600 font-bold">Preview</span> the writing task in the sidebar.</li>
-                        <li><span class="text-indigo-600 font-bold">Read</span> Document A carefully. Click dotted words for definitions.</li>
-                        <li><span class="text-indigo-600 font-bold">Take notes</span> on the shift from tobacco to cotton.</li>
-                    </ol>
+                    <h2 class="text-2xl font-bold text-slate-100">Document A</h2>
+                    <p class="text-slate-400 text-sm">U.S. Census Bureau, Published 1909</p>
+                </div>
+                <div class="text-right hidden sm:block">
+                    <span class="text-xs uppercase tracking-widest text-slate-500">Topic</span>
+                    <div class="text-amber-500 font-serif italic">The Tobacco-Cotton Shift</div>
                 </div>
             </div>
 
-            <div class="relative">
-                <div class="absolute -top-3 -left-2 z-10">
-                    <span class="bg-slate-800 text-white text-sm font-bold px-4 py-1 rounded shadow-lg transform -rotate-2 inline-block border border-slate-600">
-                        Document A
-                    </span>
-                </div>
-
-                <div class="bg-white rounded-sm p-8 md:p-12 paper-shadow border border-stone-200 relative overflow-hidden">
-                    
-                    <div class="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
-                        <i data-lucide="file-text" class="w-32 h-32 text-slate-900"></i>
-                    </div>
-
-                    <div class="border-b-2 border-stone-800 pb-6 mb-8 text-center">
-                        <h3 class="font-serif font-bold text-3xl text-stone-900 mb-2">Statistics of Slaves</h3>
-                        <p class="text-stone-500 italic font-serif text-lg">Published 1909 &mdash; U.S. Census Bureau</p>
-                    </div>
-
-                    <div class="source-text text-stone-800 space-y-8">
-                        
-                        <div class="relative pl-6 border-l-4 border-transparent hover:border-stone-200 transition-colors duration-300">
-                            <span class="absolute left-0 top-1 text-xs text-stone-300 font-sans select-none">01</span>
-                            <p>
-                                ...The higher percentage shown for the decade 1800 to 1810 reflects the 
-                                <span class="glossary-term highlight-base highlight-legal font-bold" onclick="showDef('importation', 'The act of bringing goods or people into a country from abroad.')">large importation of negroes</span> 
-                                during the years immediately preceding 
-                                <span class="highlight-base highlight-legal font-bold">January 1, 1808</span>, 
-                                after which date the 
-                                <span class="glossary-term highlight-base highlight-legal" onclick="showDef('prohibited', 'Forbidden by law; banned completely.')">international trade in slaves was prohibited</span> 
-                                in the United States...
-                            </p>
-                            <p class="mt-4">
-                                ...the growth in the number of slaves hereafter can be attributed to the 
-                                <span class="glossary-term highlight-base highlight-econ font-bold" onclick="showDef('domestic slave trade', 'The internal buying and selling of enslaved people within US borders (e.g., Virginia to Alabama).')">domestic slave trade</span> 
-                                and rapid forced population increase amongst the slaves.
-                            </p>
-                        </div>
-
-                        <div class="flex items-center justify-center gap-4 opacity-50">
-                            <div class="h-px bg-stone-300 w-12"></div>
-                            <span class="text-stone-400 font-serif italic">* * *</span>
-                            <div class="h-px bg-stone-300 w-12"></div>
-                        </div>
-
-                        <div class="relative pl-6 border-l-4 border-transparent hover:border-stone-200 transition-colors duration-300">
-                            <span class="absolute left-0 top-1 text-xs text-stone-300 font-sans select-none">15</span>
-                            <p>
-                                ...<span class="highlight-base highlight-geo font-bold">Delaware, Maryland and Virginia</span> were principally in the cultivation of 
-                                <span class="highlight-base highlight-geo font-bold">tobacco</span> in early years. The 
-                                <span class="glossary-term highlight-base highlight-geo" onclick="showDef('soil impoverished', 'The soil lost all nutrients because the same crop was grown repeatedly without rest.')">soil was rapidly impoverished</span> 
-                                by this crop, and as a result the center of tobacco culture tended to move farther 
-                                <span class="highlight-base highlight-geo">westward</span>...
-                            </p>
-                        </div>
-
-                        <div class="relative pl-6 border-l-4 border-transparent hover:border-stone-200 transition-colors duration-300">
-                            <span class="absolute left-0 top-1 text-xs text-stone-300 font-sans select-none">22</span>
-                            <p>
-                                As the cultivation of tobacco became 
-                                <span class="highlight-base highlight-econ italic">somewhat less profitable</span>, the 
-                                <span class="glossary-term highlight-base highlight-geo font-bold" onclick="showDef('acquisition', 'The act of gaining possession of new land (e.g., Louisiana Purchase).')">acquisition of new territory</span> 
-                                in the far South (<span class="highlight-base highlight-geo">Georgia, Mississippi, Louisiana</span>) and the expansion of 
-                                <span class="highlight-base highlight-geo font-bold border-b-2 border-emerald-500">cotton growing</span> 
-                                made slave labor 
-                                <span class="highlight-base highlight-econ font-bold">highly profitable</span>.
-                            </p>
-                            <p class="mt-4">
-                                After 1808, the 
-                                <span class="glossary-term highlight-base highlight-econ" onclick="showDef('market price', 'The monetary cost to purchase an enslaved person.')">market price of negroes advanced rapidly</span>, 
-                                because of the 
-                                <span class="highlight-base highlight-econ font-bold">increasing demand</span> for their services in the cotton fields...
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="lg:col-span-4 space-y-6">
-
-            <div class="sticky top-24 space-y-6">
+            <div class="historical-paper rounded-sm relative p-8 md:p-12 slide-in">
                 
-                <div id="definition-box" class="hidden bg-slate-800 text-white p-5 rounded-xl shadow-2xl border-l-4 border-amber-400 relative overflow-hidden group">
-                    <div class="absolute -right-6 -top-6 w-24 h-24 bg-slate-700 rounded-full opacity-50 group-hover:scale-110 transition-transform"></div>
+                <div class="text-center border-b-4 border-double border-stone-300 pb-6 mb-8">
+                    <h3 class="font-['Cinzel'] text-3xl text-stone-900 font-bold uppercase tracking-widest">Statistics of Slaves</h3>
+                    <p class="text-stone-500 font-serif italic mt-2 text-lg">Section: Growth & Distribution 1790-1900</p>
+                </div>
+
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
+                    <i data-lucide="scale" class="w-64 h-64 text-black"></i>
+                </div>
+
+                <div class="space-y-10 source-text relative z-10">
                     
-                    <div class="relative z-10">
-                        <div class="flex justify-between items-start mb-2">
-                            <h4 class="font-bold uppercase text-xs tracking-wider text-amber-400">Vocabulary</h4>
-                            <button onclick="hideDef()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-4 h-4"></i></button>
+                    <div class="relative pl-8 group">
+                        <span class="absolute left-0 top-2 font-sans text-xs font-bold text-stone-400 select-none border border-stone-300 rounded px-1">1</span>
+                        
+                        <p class="text-stone-800">
+                            ...The higher percentage shown for the decade 1800 to 1810 reflects the 
+                            <span class="glossary-term highlight-base hl-legal font-bold" onclick="showDef('importation', 'Bringing goods or people into a country from abroad.')">large importation of negroes</span> 
+                            during the years immediately preceding 
+                            <span class="highlight-base hl-legal font-bold">January 1, 1808</span>, 
+                            after which date the 
+                            <span class="glossary-term highlight-base hl-legal" onclick="showDef('prohibited', 'Forbidden by law; banned.')">international trade in slaves was prohibited</span> 
+                            in the United States...
+                        </p>
+                        <div class="mt-4 p-4 bg-amber-50 border-l-4 border-amber-300 rounded-r text-base italic text-stone-700">
+                            <span class="font-bold text-stone-900 not-italic text-sm uppercase block mb-1">Key Insight:</span>
+                            ...growth hereafter can be attributed to the 
+                            <span class="glossary-term highlight-base hl-econ font-bold text-red-900" onclick="showDef('domestic slave trade', 'Selling enslaved people within the US (e.g., Virginia to Alabama) instead of importing them.')">domestic slave trade</span> 
+                            and forced population increase.
                         </div>
-                        <h5 id="def-term" class="text-2xl font-serif font-bold mb-2 text-white">Term</h5>
-                        <p id="def-text" class="text-slate-300 leading-relaxed text-sm">Definition goes here.</p>
+                    </div>
+
+                    <div class="flex items-center gap-4 opacity-30">
+                        <div class="h-px bg-stone-900 flex-grow"></div>
+                        <div class="font-serif italic text-lg">~</div>
+                        <div class="h-px bg-stone-900 flex-grow"></div>
+                    </div>
+
+                    <div class="relative pl-8">
+                         <span class="absolute left-0 top-2 font-sans text-xs font-bold text-stone-400 select-none border border-stone-300 rounded px-1">2</span>
+                        <p class="text-stone-800">
+                            ...<span class="highlight-base hl-geo font-bold">Delaware, Maryland and Virginia</span> were principally in the cultivation of 
+                            <span class="highlight-base hl-geo font-bold">tobacco</span> in early years. The 
+                            <span class="glossary-term highlight-base hl-geo" onclick="showDef('soil impoverished', 'The soil lost nutrients because the same crop was planted too many times.')">soil was rapidly impoverished</span> 
+                            by this crop, and as a result the center of tobacco culture tended to move farther 
+                            <span class="highlight-base hl-geo">westward</span>...
+                        </p>
+                    </div>
+
+                     <div class="flex items-center gap-4 opacity-30">
+                        <div class="h-px bg-stone-900 flex-grow"></div>
+                        <div class="font-serif italic text-lg">~</div>
+                        <div class="h-px bg-stone-900 flex-grow"></div>
+                    </div>
+
+                    <div class="relative pl-8">
+                         <span class="absolute left-0 top-2 font-sans text-xs font-bold text-stone-400 select-none border border-stone-300 rounded px-1">3</span>
+                        <p class="text-stone-800">
+                            As tobacco became 
+                            <span class="highlight-base hl-econ italic">less profitable</span>, the 
+                            <span class="glossary-term highlight-base hl-geo font-bold" onclick="showDef('acquisition', 'Getting new land (e.g., Louisiana Purchase).')">acquisition of new territory</span> 
+                            in the far South (<span class="highlight-base hl-geo">Mississippi, Louisiana</span>) and the expansion of 
+                            <span class="highlight-base hl-geo font-bold text-emerald-900">cotton growing</span> 
+                            made slave labor 
+                            <span class="highlight-base hl-econ font-bold">highly profitable</span>.
+                        </p>
+                        <p class="mt-4 text-stone-800">
+                            After 1808, the 
+                            <span class="glossary-term highlight-base hl-econ" onclick="showDef('market price', 'The cost to buy an enslaved person.')">market price of negroes advanced rapidly</span>, 
+                            because of the 
+                            <span class="highlight-base hl-econ font-bold">increasing demand</span> in the cotton fields.
+                        </p>
                     </div>
                 </div>
 
-                <div class="bg-white p-5 rounded-xl shadow-sm border border-stone-200">
-                    <div class="flex items-center gap-2 mb-4 border-b border-stone-100 pb-2">
-                        <div class="p-1 bg-emerald-100 text-emerald-600 rounded">
-                            <i data-lucide="check-circle-2" class="w-5 h-5"></i>
-                        </div>
+                <div class="absolute bottom-8 right-8 transform -rotate-12 opacity-80 border-2 border-red-800 text-red-800 px-2 py-1 rounded font-bold uppercase text-xs tracking-widest font-sans mix-blend-multiply select-none">
+                    Exhibit A
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-4 space-y-6 relative">
+
+            <div id="definition-box" class="hidden bg-slate-800/90 backdrop-blur-md border-l-4 border-amber-500 p-6 rounded-lg shadow-xl transform transition-all duration-300 relative">
+                <div class="absolute right-2 top-2 text-slate-500 hover:text-white cursor-pointer" onclick="hideDef()">
+                    <i data-lucide="x-circle" class="w-5 h-5"></i>
+                </div>
+                <h4 class="text-amber-500 text-xs font-bold uppercase tracking-wider mb-1">Dictionary</h4>
+                <h5 id="def-term" class="text-xl font-serif font-bold text-white mb-2">Term</h5>
+                <p id="def-text" class="text-slate-300 text-sm leading-relaxed">Definition text...</p>
+            </div>
+
+            <div class="bg-white p-1 rounded shadow-lg rotate-1 hover:rotate-0 transition-transform duration-300">
+                <div class="bg-white border border-stone-200 p-5 rounded-sm pattern-grid-lg">
+                    <div class="flex items-center gap-2 mb-3 border-b-2 border-stone-100 pb-2">
+                        <i data-lucide="help-circle" class="text-indigo-500 w-5 h-5"></i>
                         <h3 class="font-bold text-stone-800">Quick Check</h3>
                     </div>
-                    
-                    <p class="text-stone-600 text-sm font-medium mb-3">What caused the shift from tobacco to cotton?</p>
-                    
+                    <p class="text-stone-600 text-sm mb-3 font-medium">Why did planters move from Tobacco to Cotton?</p>
                     <div class="space-y-2">
-                        <button onclick="checkAnswer(this, false)" class="w-full text-left px-3 py-2 rounded border border-stone-200 hover:bg-stone-50 text-sm transition-all flex justify-between items-center group">
-                            <span>A. War with Britain</span>
-                            <i data-lucide="circle" class="w-4 h-4 text-stone-300 group-hover:text-stone-400"></i>
+                        <button onclick="checkAnswer(this, false)" class="w-full text-left px-3 py-2 rounded bg-stone-50 hover:bg-stone-100 text-sm border border-stone-200 transition-colors text-stone-600 font-medium">
+                            A. War with Britain
                         </button>
-                        <button onclick="checkAnswer(this, true)" class="w-full text-left px-3 py-2 rounded border border-stone-200 hover:bg-stone-50 text-sm transition-all flex justify-between items-center group">
-                            <span>B. Soil Depletion</span>
-                            <i data-lucide="circle" class="w-4 h-4 text-stone-300 group-hover:text-stone-400"></i>
-                        </button>
-                        <button onclick="checkAnswer(this, false)" class="w-full text-left px-3 py-2 rounded border border-stone-200 hover:bg-stone-50 text-sm transition-all flex justify-between items-center group">
-                            <span>C. New Laws</span>
-                            <i data-lucide="circle" class="w-4 h-4 text-stone-300 group-hover:text-stone-400"></i>
+                        <button onclick="checkAnswer(this, true)" class="w-full text-left px-3 py-2 rounded bg-stone-50 hover:bg-stone-100 text-sm border border-stone-200 transition-colors text-stone-600 font-medium">
+                            B. Soil Depletion
                         </button>
                     </div>
-                    <div id="feedback-area" class="mt-3 text-xs font-bold h-4"></div>
+                    <div id="feedback-area" class="mt-2 h-4 text-xs font-bold"></div>
                 </div>
-
-                <div class="bg-yellow-50 rounded-xl shadow-md border border-yellow-200 relative overflow-hidden">
-                    <div class="h-4 bg-stone-800 w-full opacity-10"></div>
-                    <div class="absolute top-0 left-0 w-full h-4 flex justify-evenly z-10">
-                         <div class="w-2 h-4 bg-stone-800 rounded-b-full opacity-80"></div>
-                        <div class="w-2 h-4 bg-stone-800 rounded-b-full opacity-80"></div>
-                        <div class="w-2 h-4 bg-stone-800 rounded-b-full opacity-80"></div>
-                        <div class="w-2 h-4 bg-stone-800 rounded-b-full opacity-80"></div>
-                        <div class="w-2 h-4 bg-stone-800 rounded-b-full opacity-80"></div>
-                        <div class="w-2 h-4 bg-stone-800 rounded-b-full opacity-80"></div>
-                    </div>
-
-                    <div class="p-5 pt-6">
-                        <div class="flex justify-between items-center mb-2">
-                            <h3 class="font-handwriting text-yellow-900 font-bold">Student Notes</h3>
-                            <span id="save-status" class="text-xs text-yellow-600 font-mono">Autosave on</span>
-                        </div>
-                        <textarea id="student-notes" class="w-full h-64 lined-paper bg-transparent border-none focus:ring-0 text-slate-700 text-lg resize-none font-serif" placeholder="Start typing here..."></textarea>
-                        
-                        <div class="mt-2 pt-2 border-t border-yellow-200 flex justify-end">
-                            <button onclick="clearNotes()" class="text-xs text-red-500 hover:text-red-700 font-medium hover:underline">Clear Page</button>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+
+            <div class="bg-yellow-200 rounded-t-lg shadow-xl mt-8 transform -rotate-1 relative">
+                <div class="h-8 bg-red-900 rounded-t-lg flex items-center justify-center">
+                     <span class="text-red-200 text-xs font-bold tracking-widest">STUDENT NOTES</span>
+                </div>
+                
+                <div class="bg-yellow-100 p-0 min-h-[300px] relative border-x border-b border-yellow-300 rounded-b-lg">
+                    <div class="absolute top-0 bottom-0 left-8 w-px bg-red-400/50 z-10"></div>
+                    
+                    <textarea id="student-notes" 
+                        class="w-full h-full min-h-[300px] bg-transparent border-none resize-none p-4 pl-10 text-lg text-blue-900 font-handwriting leading-8 focus:ring-0"
+                        style="background-image: linear-gradient(transparent 31px, #9ca3af 32px); background-size: 100% 32px; line-height: 32px;"
+                        placeholder="Type your analysis here..."></textarea>
+                </div>
+                
+                <div class="absolute -bottom-6 right-0 text-slate-500 text-xs flex gap-2">
+                    <span id="save-status">Autosave ready</span>
+                    <button onclick="clearNotes()" class="text-red-400 hover:text-red-300 underline">Clear</button>
+                </div>
+            </div>
+
         </div>
 
     </main>
 
-    <footer class="bg-stone-200 text-stone-500 text-center py-6 mt-12 text-sm">
-        <p>Interactive History Lab &copy; 2023</p>
-    </footer>
-
     <script>
-        // Initialize Icons
         lucide.createIcons();
 
-        // 1. Definition Box Logic
+        // Definition Logic
         function showDef(term, definition) {
             const box = document.getElementById('definition-box');
-            const termEl = document.getElementById('def-term');
-            const textEl = document.getElementById('def-text');
-            
-            termEl.textContent = term;
-            textEl.textContent = definition;
-            
-            // Reset animation
-            box.classList.remove('definition-active');
-            void box.offsetWidth; // trigger reflow
-            box.classList.add('definition-active');
+            document.getElementById('def-term').textContent = term;
+            document.getElementById('def-text').textContent = definition;
+            box.classList.remove('hidden');
+            box.classList.add('animate-pulse');
+            setTimeout(() => box.classList.remove('animate-pulse'), 500);
         }
 
         function hideDef() {
-            const box = document.getElementById('definition-box');
-            box.classList.remove('definition-active');
-            box.classList.add('hidden');
+            document.getElementById('definition-box').classList.add('hidden');
         }
 
-        // 2. Quick Check Logic
+        // Quiz Logic
         function checkAnswer(btn, isCorrect) {
-            const allBtns = btn.parentElement.querySelectorAll('button');
             const feedback = document.getElementById('feedback-area');
-            
-            // Reset all buttons
-            allBtns.forEach(b => {
-                b.className = "w-full text-left px-3 py-2 rounded border border-stone-200 hover:bg-stone-50 text-sm transition-all flex justify-between items-center group";
-                const icon = b.querySelector('svg');
-                if(icon) icon.outerHTML = '<i data-lucide="circle" class="w-4 h-4 text-stone-300 group-hover:text-stone-400"></i>';
-            });
-            lucide.createIcons(); // Re-render icons
+            // Reset buttons
+            const allBtns = btn.parentElement.querySelectorAll('button');
+            allBtns.forEach(b => b.className = "w-full text-left px-3 py-2 rounded bg-stone-50 hover:bg-stone-100 text-sm border border-stone-200 transition-colors text-stone-600 font-medium");
 
-            if (isCorrect) {
-                btn.classList.remove('border-stone-200', 'hover:bg-stone-50');
-                btn.classList.add('bg-emerald-50', 'border-emerald-500', 'text-emerald-800');
-                
-                // Change Icon
-                const icon = btn.querySelector('.lucide-circle');
-                if(icon) {
-                    const check = document.createElement('i');
-                    check.setAttribute('data-lucide', 'check');
-                    check.className = "w-4 h-4 text-emerald-600";
-                    icon.replaceWith(check);
-                    lucide.createIcons();
-                }
-
+            if(isCorrect) {
+                btn.className = "w-full text-left px-3 py-2 rounded bg-emerald-100 border border-emerald-400 text-emerald-800 font-bold shadow-sm";
                 feedback.textContent = "Correct! Tobacco ruined the soil.";
-                feedback.className = "mt-3 text-xs font-bold h-4 text-emerald-600";
+                feedback.className = "mt-2 h-4 text-xs font-bold text-emerald-400";
             } else {
-                btn.classList.remove('border-stone-200', 'hover:bg-stone-50');
-                btn.classList.add('bg-red-50', 'border-red-300', 'text-red-800');
-                
-                // Change Icon
-                const icon = btn.querySelector('.lucide-circle');
-                if(icon) {
-                    const x = document.createElement('i');
-                    x.setAttribute('data-lucide', 'x');
-                    x.className = "w-4 h-4 text-red-500";
-                    icon.replaceWith(x);
-                    lucide.createIcons();
-                }
-
-                feedback.textContent = "Try again. Look for 'soil was rapidly impoverished'.";
-                feedback.className = "mt-3 text-xs font-bold h-4 text-red-500";
+                btn.className = "w-full text-left px-3 py-2 rounded bg-red-100 border border-red-400 text-red-800 font-medium";
+                feedback.textContent = "Incorrect. Check the text about 'soil'.";
+                feedback.className = "mt-2 h-4 text-xs font-bold text-red-400";
             }
         }
 
-        // 3. Note Saving Logic
-        const noteArea = document.getElementById('student-notes');
-        const statusArea = document.getElementById('save-status');
+        // Notes Logic
+        const notes = document.getElementById('student-notes');
+        const status = document.getElementById('save-status');
 
-        window.onload = function() {
-            const savedNotes = localStorage.getItem('slaveryDocNotes');
-            if (savedNotes) {
-                noteArea.value = savedNotes;
-            }
-        };
+        notes.value = localStorage.getItem('archiveNotes') || '';
 
-        noteArea.addEventListener('input', function() {
-            localStorage.setItem('slaveryDocNotes', this.value);
-            statusArea.textContent = "Saving...";
-            statusArea.className = "text-xs text-amber-600 font-mono animate-pulse";
-            
-            // Debounce the "Saved" message
-            clearTimeout(window.saveTimeout);
-            window.saveTimeout = setTimeout(() => {
-                statusArea.textContent = "Saved ✓";
-                statusArea.className = "text-xs text-green-600 font-mono";
+        notes.addEventListener('input', () => {
+            localStorage.setItem('archiveNotes', notes.value);
+            status.textContent = "Saving...";
+            status.className = "text-amber-400";
+            setTimeout(() => {
+                status.textContent = "Saved ✓";
+                status.className = "text-emerald-400";
             }, 800);
         });
 
         function clearNotes() {
-            if(confirm("Are you sure you want to clear your notes?")) {
-                localStorage.removeItem('slaveryDocNotes');
-                noteArea.value = "";
-                statusArea.textContent = "Notes cleared";
-                statusArea.className = "text-xs text-slate-400 font-mono";
+            if(confirm("Rip up this page?")) {
+                notes.value = '';
+                localStorage.removeItem('archiveNotes');
+                status.textContent = "Cleared";
             }
         }
     </script>
