@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Origins & Growth: Slavery in America</title>
+<style>
+  body {
+    background-color: #ffffff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #333;
+    padding: 20px;
+    line-height: 1.6;
+  }
+  h1 {
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 4px solid #000;
+    padding-bottom: 10px;
+    font-size: 2.5em;
+  }
+  .intro {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    font-style: italic;
+  }
+  .timeline-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+  /* The Vertical Line */
+  .timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #333;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+    border-radius: 3px;
+  }
+  .card {
+    box-sizing: border-box;
+    padding: 20px;
+    width: 45%;
+    background-color: #f9f9f9;
+    border: 3px solid #333;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    position: relative;
+    box-shadow: 5px 5px 0px #000;
+    transition: transform 0.2s;
+  }
+  .card:hover {
+    transform: scale(1.02);
+  }
+  /* Left and Right positioning */
+  .left {
+    left: 0;
+  }
+  .right {
+    left: 55%;
+  }
+  .date-badge {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+  }
+  h2 {
+    margin-top: 0;
+    text-decoration: underline;
+    text-decoration-thickness: 3px; 
+    font-size: 1.3em;
+    line-height: 1.3;
+  }
+  p {
+    font-size: 0.95em;
+  }
+  .highlight-yellow {
+    background-color: #ffeb3b;
+    padding: 0 4px;
+    font-weight: bold;
+  }
+  .highlight-pink {
+    background-color: #ff80ab;
+    padding: 0 4px;
+    font-weight: bold;
+  }
+  .highlight-blue {
+    background-color: #80d8ff;
+    padding: 0 4px;
+    font-weight: bold;
+  }
+  .highlight-green {
+    background-color: #ccff90;
+    padding: 0 4px;
+    font-weight: bold;
+  }
+  /* Responsive stuff for mobile/small screens */
+  @media screen and (max-width: 600px) {
+    .timeline-container::after {
+      left: 31px;
+    }
+    .card {
+      width: 100%;
+      padding-left: 70px;
+      padding-right: 25px;
+      left: 0;
+    }
+    .card::before {
+      left: 60px;
+      border: medium solid white;
+      border-width: 10px 10px 10px 0;
+      border-color: transparent white transparent transparent;
+    }
+    .left, .right {
+      left: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <h1>🇺🇸 Roots of the System 🌱</h1>
+  <p class="intro">How & Why Slavery Grew (1619-1830)<br> <strong><span style="background-color: #000; color: #fff; padding: 2px 5px;">THE BUILD UP</span></strong></p>
+
+  <div class="timeline-container">
+
+    <!-- 1619 -->
+    <div class="card left" style="border-color: #e91e63;">
+      <div class="date-badge">1619</div>
+      <h2 style="text-decoration-color: #e91e63;">🚢 The First Arrival</h2>
+      <p>A Dutch trading ship brings the first captured Africans to the colonies.<br><br>
+      <span class="highlight-pink">The Start:</span> Originally sold as "indentured servants" (meaning it wasn't permanent <em>yet</em>), this was the seed that started it all.</p>
+      <p>🌊⛓️😞</p>
+    </div>
+
+    <!-- 1664 -->
+    <div class="card right" style="border-color: #3f51b5;">
+      <div class="date-badge">1664</div>
+      <h2 style="text-decoration-color: #3f51b5;">🔒 Lifelong Servitude Laws</h2>
+      <p>Maryland mandates that slavery is for <strong>LIFE</strong>. NY, NJ, the Carolinas, and VA copy them immediately.<br><br>
+      <span class="highlight-blue">The Shift:</span> It wasn't just a job anymore. It became a life sentence based on skin color.</p>
+      <p>📜⚖️🔒</p>
+    </div>
+
+    <!-- Late 1600s -->
+    <div class="card left" style="border-color: #ff9800;">
+      <div class="date-badge">Late 1600s</div>
+      <h2 style="text-decoration-color: #ff9800;">🌾 The Cash Crop Boom</h2>
+      <p>The 13 Colonies settle in. The South creates massive farms for tobacco, cotton, and rice.<br><br>
+      <span class="highlight-yellow">The Economics:</span> The weather down South was perfect for farming, so they "needed" cheap labor to get rich. Slavery became the engine of their economy.</p>
+      <p>💰🌿🏗️</p>
+    </div>
+
+    <!-- 1705 -->
+    <div class="card right" style="border-color: #9c27b0;">
+      <div class="date-badge">1705</div>
+      <h2 style="text-decoration-color: #9c27b0;">🏷️ Virginia Slave Codes</h2>
+      <p>New laws decree that all Black and "Mulatto" people are considered <strong>real property</strong> (like a chair or a wagon).<br><br>
+      <span class="highlight-pink">Dehumanization:</span> This legally stripped people of their humanity. They weren't citizens; they were assets.</p>
+      <p>🚫👤🏷️</p>
+    </div>
+
+    <!-- 1760s -->
+    <div class="card left" style="border-color: #f44336;">
+      <div class="date-badge">1760s</div>
+      <h2 style="text-decoration-color: #f44336;">🏭 Industrial Revolution (UK)</h2>
+      <p>England invents machines to make cloth faster. They need TONS of cotton.<br><br>
+      <span class="highlight-yellow">Global Demand:</span> The world wanted cotton, and the US South was ready to provide it—at the cost of Black lives.</p>
+      <p>🇬🇧👕📈</p>
+    </div>
+
+    <!-- 1776 -->
+    <div class="card right" style="border-color: #009688;">
+      <div class="date-badge">1776</div>
+      <h2 style="text-decoration-color: #009688;">✍️ Declaration of Independence</h2>
+      <p>US declares "All men are created equal."<br><br>
+      <span class="highlight-green">The Contradiction:</span> Huge side-eye here. 👀 They talked about freedom from Britain while owning people. The document <strong>did not</strong> abolish or even mention slavery.</p>
+      <p>🇺🇸🦅📜</p>
+    </div>
+
+    <!-- 1787 -->
+    <div class="card left" style="border-color: #2196f3;">
+      <div class="date-badge">1787</div>
+      <h2 style="text-decoration-color: #2196f3;">🗺️ Northwest Ordinance</h2>
+      <p>Laws for the new Midwest territory. It <strong>forbidden slavery</strong> there.<br><br>
+      <span class="highlight-blue">The Catch:</span> It <em>required</em> residents to return fugitive enslaved people who ran away there. Freedom was already complicated.</p>
+      <p>⛰️🚫🏃🏾‍♂️</p>
+    </div>
+
+    <!-- 1788 -->
+    <div class="card right" style="border-color: #795548;">
+      <div class="date-badge">1788</div>
+      <h2 style="text-decoration-color: #795548;">⚖️ The U.S. Constitution</h2>
+      <p>The rulebook for the country. It mentioned slavery twice (without saying the word).<br><br>
+      <span class="highlight-yellow">3/5ths Clause:</span> Enslaved people counted as 3/5 of a person for taxes and voting power.<br>
+      <span class="highlight-yellow">Fugitive Clause:</span> If you run, they can legally drag you back.</p>
+      <p>🔢🏛️👮‍♂️</p>
+    </div>
+
+    <!-- 1793 -->
+    <div class="card left" style="border-color: #e91e63;">
+      <div class="date-badge">1793</div>
+      <h2 style="text-decoration-color: #e91e63;">⚙️ The Cotton Gin</h2>
+      <p>Eli Whitney invents a machine to clean cotton fast. <br><br>
+      <span class="highlight-pink">The Game Changer:</span> Before this, slavery was dying out slightly. This machine made cotton SUPER profitable, so the value (and suffering) of enslaved people skyrocketed.</p>
+      <p>☁️💸🔥</p>
+    </div>
+
+    <!-- 1803 -->
+    <div class="card right" style="border-color: #3f51b5;">
+      <div class="date-badge">1803</div>
+      <h2 style="text-decoration-color: #3f51b5;">🗺️ Louisiana Purchase</h2>
+      <p>President Jefferson buys massive land from France.<br><br>
+      <span class="highlight-blue">Westward Expansion:</span> Doubled the size of the US. This meant Americans—and their slaves—could move West. More land = more plantations.</p>
+      <p>💰🇺🇸📍</p>
+    </div>
+
+    <!-- 1807 -->
+    <div class="card left" style="border-color: #ff9800;">
+      <div class="date-badge">1807</div>
+      <h2 style="text-decoration-color: #ff9800;">🛑 Act of 1807</h2>
+      <p>Congress bans importing slaves from Africa (starting 1808).<br><br>
+      <span class="highlight-yellow">Important Note:</span> This <strong>DID NOT</strong> ban slavery inside the US. It just stopped the ships. The "Internal Trade" (selling people between states) exploded after this.</p>
+      <p>🚢🚫⛓️</p>
+    </div>
+
+    <!-- 1813 -->
+    <div class="card right" style="border-color: #9c27b0;">
+      <div class="date-badge">1813</div>
+      <h2 style="text-decoration-color: #9c27b0;">🏭 Lowell Mills Opens</h2>
+      <p>First big factory in Boston to turn raw cotton into cloth.<br><br>
+      <span class="highlight-pink">The Connection:</span> Now the North needed cotton just as bad as England. The Northern industrial economy was <u>fueling</u> Southern slavery.</p>
+      <p>🏙️🧵🤝</p>
+    </div>
+
+    <!-- 1830 -->
+    <div class="card left" style="border-color: #f44336;">
+      <div class="date-badge">1830</div>
+      <h2 style="text-decoration-color: #f44336;">🏹 Indian Removal Act</h2>
+      <p>Forced Native Americans west of the Mississippi River (Trail of Tears).<br><br>
+      <span class="highlight-yellow">The Why:</span> They wanted that land in AL, MS, GA to grow more cotton. They stole land to expand slavery.</p>
+      <p>🥀🚶🏽‍♂️🩸</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
