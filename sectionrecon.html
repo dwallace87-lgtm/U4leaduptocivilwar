@@ -1,0 +1,3168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Age of Jackson to Reconstruction Vocabulary Slides</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #020617;
+      --card: #0f172a;
+      --card-soft: #111827;
+      --accent: #fbbf24;
+      --accent-2: #38bdf8;
+      --accent-3: #a855f7;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --danger: #f97316;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1d283a 0, #020617 50%, #000 100%);
+      color: var(--text-main);
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .slide {
+      display: none;
+      min-height: 100vh;
+      width: 100%;
+      padding: 24px;
+      padding-bottom: 90px;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    .slide-inner {
+      margin: 0 auto;
+      max-width: 1100px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .chip {
+      border-radius: 999px;
+      padding: 4px 10px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .chip-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent-2);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
+    }
+
+    .main-card {
+      background: radial-gradient(circle at top left, rgba(250, 204, 21, 0.08), transparent 55%),
+                  radial-gradient(circle at top right, rgba(56, 189, 248, 0.09), transparent 55%),
+                  linear-gradient(135deg, rgba(15,23,42,0.98), rgba(15,23,42,0.96));
+      border-radius: 22px;
+      padding: 24px 22px 22px;
+      box-shadow:
+        0 20px 45px rgba(15, 23, 42, 0.95),
+        0 0 0 1px rgba(148, 163, 184, 0.25);
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 20px;
+    }
+
+    .main-card.single {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .term-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-2);
+      margin-bottom: 8px;
+    }
+
+    .term-title {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .term-highlight {
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: rgba(248, 250, 252, 0.08);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      max-width: 620px;
+    }
+
+    .cloze-box {
+      margin-top: 18px;
+      padding: 14px 14px 16px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(17, 24, 39, 0.98));
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.9);
+    }
+
+    .cloze-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-3);
+      margin-bottom: 4px;
+    }
+
+    .cloze-instructions {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .cloze-sentence {
+      font-size: 1.02rem;
+      line-height: 1.6;
+    }
+
+    .blank {
+      display: inline-block;
+      min-width: 70px;
+      padding: 0 4px 2px;
+      border-bottom: 2px dashed var(--accent);
+      text-align: center;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .blank.short {
+      min-width: 45px;
+    }
+
+    .blank.long {
+      min-width: 110px;
+    }
+
+    .hint {
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .memory-card {
+      border-radius: 18px;
+      padding: 14px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.9);
+    }
+
+    .memory-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .memory-emoji {
+      font-size: 1.1rem;
+    }
+
+    .memory-text {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .memory-options {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.92rem;
+    }
+
+    .memory-options li {
+      padding: 6px 8px;
+      border-radius: 10px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(75, 85, 99, 0.8);
+    }
+
+    .memory-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-2);
+      margin-bottom: 1px;
+      display: block;
+    }
+
+    .bottom-note {
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .nav-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px 16px 14px;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.8), transparent);
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-inner {
+      width: 100%;
+      max-width: 1100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-center {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .nav-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: radial-gradient(circle at top left, rgba(250, 204, 21, 0.12), rgba(15, 23, 42, 0.98));
+      color: #e5e7eb;
+      padding: 6px 14px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+    }
+
+    .nav-btn span.icon {
+      font-size: 1.1rem;
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: default;
+      box-shadow: none;
+    }
+
+    .nav-btn:not(:disabled):hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.9);
+      border-color: rgba(250, 204, 21, 0.8);
+    }
+
+    .nav-progress {
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(31, 41, 55, 0.9);
+      overflow: hidden;
+      margin-top: 3px;
+    }
+
+    .nav-progress-bar {
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #facc15, #38bdf8, #a855f7);
+      box-shadow: 0 0 10px rgba(250, 204, 21, 0.6);
+      transition: width 0.2s ease;
+    }
+
+    .shortcut-hint {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .shortcut-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+      margin-left: 4px;
+    }
+
+    .shortcut-key {
+      padding: 1px 4px;
+      border-radius: 4px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      font-size: 0.7rem;
+    }
+
+    .intro-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .intro-title {
+      font-size: clamp(2.1rem, 3.1vw, 2.7rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 10px;
+    }
+
+    .intro-tagline {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      max-width: 620px;
+    }
+
+    .intro-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+      font-size: 0.82rem;
+    }
+
+    .intro-pill {
+      border-radius: 999px;
+      padding: 4px 10px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .intro-pill-emoji {
+      font-size: 1rem;
+    }
+
+    .intro-steps {
+      margin-top: 6px;
+      font-size: 0.95rem;
+      padding-left: 18px;
+      color: var(--text-muted);
+    }
+
+    .intro-steps li {
+      margin-bottom: 4px;
+    }
+
+    .intro-box {
+      border-radius: 18px;
+      padding: 14px 14px 16px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(17, 24, 39, 0.98));
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    .intro-box-title {
+      font-size: 0.9rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      margin-bottom: 6px;
+    }
+
+    .intro-box-list {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      padding-left: 16px;
+      margin: 4px 0;
+    }
+
+    @media (max-width: 900px) {
+      .main-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .intro-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .slide {
+        padding: 16px;
+        padding-bottom: 90px;
+      }
+      .main-card {
+        padding: 16px 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 0: Intro -->
+  <section class="slide active" data-index="0">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Age of Jackson to Reconstruction</span>
+        </div>
+        <div>Slide 1 of 37</div>
+      </div>
+
+      <div class="main-card single">
+        <div class="intro-layout">
+          <div>
+            <div class="term-label">Unit vocab</div>
+            <div class="intro-title">
+              Age of Jackson → Reconstruction
+              <span class="term-highlight">Vocab Cloze Deck</span>
+            </div>
+            <p class="intro-tagline">
+              We are locking in some core history language from the Age of Jackson through Reconstruction. You will fill in the blanks and pick your own memory tricks so these words actually stick in your brain, not just on the paper.
+            </p>
+
+            <div class="intro-pill-row">
+              <div class="intro-pill">
+                <span class="intro-pill-emoji">✏️</span>
+                <span>Fill in each blank in your own words</span>
+              </div>
+              <div class="intro-pill">
+                <span class="intro-pill-emoji">🧠</span>
+                <span>Pick a picture, emoji, or bar you can remember</span>
+              </div>
+              <div class="intro-pill">
+                <span class="intro-pill-emoji">🚂</span>
+                <span>Content runs from slavery debates to Reconstruction</span>
+              </div>
+            </div>
+
+            <ol class="intro-steps">
+              <li>On each slide, read the sentence and fill in the missing words in your notebook or on your paper copy.</li>
+              <li>Then choose one memory trick from the right side or create your own version of it.</li>
+              <li>Talk it out with your partner. If it does not make sense when you say it out loud, fix it.</li>
+            </ol>
+          </div>
+
+          <div>
+            <div class="intro-box">
+              <div class="intro-box-title">How to move through the slides</div>
+              <ul class="intro-box-list">
+                <li>Use <strong>Next</strong> and <strong>Back</strong> at the bottom.</li>
+                <li>On a keyboard, you can also press the <strong>←</strong> and <strong>→</strong> arrow keys.</li>
+                <li>Stay on a word if it is confusing, and write a quick question in the margin to ask the teacher.</li>
+              </ul>
+            </div>
+
+            <div class="intro-box" style="margin-top:10px;">
+              <div class="intro-box-title">Your job, not perfection</div>
+              <ul class="intro-box-list">
+                <li>These are <strong>your</strong> notes. Real language is fine as long as you understand it.</li>
+                <li>Do not stress about spelling every single word perfectly on the first try.</li>
+                <li>The goal is that if someone asks you this vocab word on the street in Brooklyn, you can explain it without looking it up.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Teacher tip: you can pause on any slide and have students share out their cloze answers or memory tricks before clicking Next.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 1: Missouri Compromise -->
+  <section class="slide" data-index="1">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Slavery debates before the Civil War</span>
+        </div>
+        <div>Slide 2 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Word</div>
+          <div class="term-title">
+            Missouri Compromise
+            <span class="term-highlight">Keeping slave and free states "balanced"</span>
+          </div>
+          <p class="subtitle">
+            An early attempt by the government to calm down fights over slavery by keeping the number of slave states and free states equal.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Fill in the blanks so the sentence makes sense in your own words.
+            </div>
+            <div class="cloze-sentence">
+              In <span class="blank short"></span>, the Missouri Compromise was a deal that tried to keep the number of
+              <span class="blank short"></span> states and <span class="blank short"></span> states equal as the United States added new
+              <span class="blank long"></span>.
+            </div>
+            <div class="hint">
+              Think: year, type of states, and what was being added to the country.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">🧠</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              Choose one of these or remix it. Draw it, emoji it, or write a quick bar in your notes.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                Map of the U.S. with a bright line in the middle and the word "Balance" written across it.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                ⚖️ + 🤝 + 🇺🇸 to remember a "balance deal" for the United States.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Missouri tried to keep slave and free states even, not leaning heavy on one side."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Say it out loud: In one sentence, explain to your partner what problem the Missouri Compromise was trying to fix.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 2: Compromise of 1850 -->
+  <section class="slide" data-index="2">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Slavery debates before the Civil War</span>
+        </div>
+        <div>Slide 3 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Word</div>
+          <div class="term-title">
+            Compromise of 1850
+            <span class="term-highlight">Trying to calm North and South again</span>
+          </div>
+          <p class="subtitle">
+            A bundle of laws in 1850 that tried to keep peace between free and slave states, but also made life more dangerous for escaped slaves.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Fill in the main moves this deal made.
+            </div>
+            <div class="cloze-sentence">
+              The Compromise of <span class="blank short"></span> let <span class="blank long"></span> enter as a
+              <span class="blank short"></span> state, passed a stricter
+              <span class="blank long"></span> Act, and used
+              <span class="blank long"></span> so people in new territories could vote on slavery.
+            </div>
+            <div class="hint">
+              Think: a new free state, a law chasing runaways, and people voting.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">⚖️</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              The North got some wins, the South got some wins, but tension got worse.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A scale with "California free" on one side and "Fugitive Slave Act" heavy on the other.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🌉 (California) + 🆓 + 🚨 (for the Fugitive Slave Act).
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "1850 tried to calm the beef but the slave catcher law turned the heat up."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Turn and talk: Did the Compromise of 1850 really fix the slavery problem, or just delay a bigger fight?
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 3: Kansas-Nebraska Act -->
+  <section class="slide" data-index="3">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Road to Civil War</span>
+        </div>
+        <div>Slide 4 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Word</div>
+          <div class="term-title">
+            Kansas–Nebraska Act
+            <span class="term-highlight">Let the people vote on slavery</span>
+          </div>
+          <p class="subtitle">
+            This law opened Kansas and Nebraska to popular sovereignty and led to violent fights over slavery.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Fill in what the law did and what happened next.
+            </div>
+            <div class="cloze-sentence">
+              The Kansas–Nebraska Act said people living in
+              <span class="blank long"></span> and <span class="blank long"></span> could vote if they wanted
+              <span class="blank long"></span>, which led to
+              <span class="blank long"></span> when pro and anti slavery groups started fighting.
+            </div>
+            <div class="hint">
+              Think: which two places, what they voted on, and what kind of conflict started.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">🩸</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              People literally moved there just to vote and fight about slavery. It got messy.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A voting box with blood splatter labeled "Bleeding Kansas."
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🗳️ + ⚔️ + 🩸 for voting that turns into violence.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Kansas–Nebraska said, 'you decide on slavery,' and the streets turned to Bleeding Kansas."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Write one sentence: Why did letting people vote on slavery not automatically create peace here?
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 4: Popular Sovereignty -->
+  <section class="slide" data-index="4">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Key political ideas</span>
+        </div>
+        <div>Slide 5 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Word</div>
+          <div class="term-title">
+            Popular Sovereignty
+            <span class="term-highlight">People power in government</span>
+          </div>
+          <p class="subtitle">
+            The idea that the people are the real source of power in a government and can vote on major issues.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Put it in your own words with these blanks.
+            </div>
+            <div class="cloze-sentence">
+              Popular sovereignty is the belief that real
+              <span class="blank long"></span> comes from the
+              <span class="blank long"></span>, so they should be able to
+              <span class="blank long"></span> on big decisions like slavery.
+            </div>
+            <div class="hint">
+              Think: who has power and what they get to do with it.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">🗳️</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              "Popular" means people. "Sovereignty" means power. Put them together.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A crown sitting on top of a group of regular people, not a king.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                👑 ➡️ 🧑🏾‍🤝‍🧑🏻🧑🏼‍🤝‍🧑🏽 (crown passed from king to the people).
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Popular sovereignty means the power is with the people, not one dude at the top."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        With a partner, name one issue today that you think should be decided by a direct vote from the people.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 5: Sectionalism -->
+  <section class="slide" data-index="5">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>North vs South vs West</span>
+        </div>
+        <div>Slide 6 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Word</div>
+          <div class="term-title">
+            Sectionalism
+            <span class="term-highlight">Loyal to your section, not the whole country</span>
+          </div>
+          <p class="subtitle">
+            When people care more about their region (North, South, West) than about the United States as a whole.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Explain what is split and how.
+            </div>
+            <div class="cloze-sentence">
+              Sectionalism is when different parts, or
+              <span class="blank long"></span>, of a country build their own
+              <span class="blank long"></span> and interests, so people feel more loyal to their
+              <span class="blank short"></span> than to the
+              <span class="blank long"></span>.
+            </div>
+            <div class="hint">
+              Think: sections, culture, and where their loyalty goes.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">🧩</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              The country is one puzzle, but the pieces want to do their own thing.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                U.S. map split into North, South, and West puzzle pieces pulling in different directions.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🧭 + 💔 to show the regions are split.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Sectionalism is team South vs team North instead of team United States."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Quick jot: Is there sectionalism in the U.S. today, just in a different way? Give one example.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 6: Uncle Tom's Cabin -->
+  <section class="slide" data-index="6">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Culture and slavery</span>
+        </div>
+        <div>Slide 7 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Word</div>
+          <div class="term-title">
+            Uncle Tom’s Cabin
+            <span class="term-highlight">Book that shook people on slavery</span>
+          </div>
+          <p class="subtitle">
+            A powerful novel that showed the cruelty of slavery and pushed more people to support abolition.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Use the blanks to explain what it was and why it mattered.
+            </div>
+            <div class="cloze-sentence">
+              <span class="blank long"></span> wrote <span class="blank long"></span>, a book that showed how
+              <span class="blank long"></span> slavery was and helped more people join the
+              <span class="blank long"></span> movement.
+            </div>
+            <div class="hint">
+              Think: author, title, and what the book pushed people to do.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">📚</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              This is like a viral story of its time that made people see slavery differently.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                An open book with broken chains coming off the pages.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                📖 + 😢 + ⛓️➡️❌ for a sad book that made people want slavery gone.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Uncle Tom’s Cabin put slavery in people’s faces, no more pretending it was gentle."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Write one sentence: Why would a book be dangerous to a system like slavery?
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 7: John Brown and Harpers Ferry -->
+  <section class="slide" data-index="7">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Road to Civil War</span>
+        </div>
+        <div>Slide 8 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Word</div>
+          <div class="term-title">
+            John Brown and Harpers Ferry
+            <span class="term-highlight">Violent raid to spark a slave rebellion</span>
+          </div>
+          <p class="subtitle">
+            John Brown tried to steal weapons at Harpers Ferry to start a huge slave uprising, but he was caught and executed.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Focus on what he tried to do and how people reacted.
+            </div>
+            <div class="cloze-sentence">
+              In <span class="blank short"></span>, abolitionist <span class="blank long"></span> attacked the
+              <span class="blank long"></span> at Harpers Ferry to start a
+              <span class="blank long"></span> rebellion, but he was caught and
+              <span class="blank long"></span>, which made the North and South see him very differently.
+            </div>
+            <div class="hint">
+              Think: year, who, where he attacked, what he hoped for, and what happened to him.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">💣</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              Some saw him as a hero, some as a terrorist. Either way, he scared the South.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A match lighting a powder keg labeled "slavery."
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                ⚔️ + ⛓️ + ✝️ (fight, slavery, and how some saw him as a martyr).
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "John Brown hit Harpers Ferry like a spark, trying to blow up slavery from the inside."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Quick write: Why would this raid make Southern slaveholders feel unsafe?
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 8: Abolitionist Movement -->
+  <section class="slide" data-index="8">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Fight against slavery</span>
+        </div>
+        <div>Slide 9 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Word</div>
+          <div class="term-title">
+            Abolitionist Movement
+            <span class="term-highlight">Organized push to end slavery</span>
+          </div>
+          <p class="subtitle">
+            A movement of people and groups working together to completely end slavery in the United States.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Use the blanks to show what they wanted and how serious it was.
+            </div>
+            <div class="cloze-sentence">
+              The Abolitionist Movement was a group of people and organizations who wanted to
+              <span class="blank long"></span> slavery
+              <span class="blank long"></span>, not just slow it down, by using
+              <span class="blank long"></span>, speeches, and direct action.
+            </div>
+            <div class="hint">
+              Think: their main goal and some methods they used.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">⛓️</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              "Abolish" means destroy or end completely. Connect that to this movement.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A big red X over chains with the word "ABOLISH" on top.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                📣 + ✊🏾 + ⛓️➡️❌.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Abolitionists were not asking nicely for slower slavery, they wanted it gone."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        List two famous abolitionists you remember. If you cannot think of any, star this slide to ask in class.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 9: Dred Scott Case -->
+  <section class="slide" data-index="9">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Court cases on slavery</span>
+        </div>
+        <div>Slide 10 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Word</div>
+          <div class="term-title">
+            Dred Scott Case
+            <span class="term-highlight">Supreme Court calls enslaved people "property"</span>
+          </div>
+          <p class="subtitle">
+            A Supreme Court case that said African Americans could not be citizens and that enslaved people were property, even in free states.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Fill in what Dred Scott wanted and what the Court said back.
+            </div>
+            <div class="cloze-sentence">
+              Enslaved man <span class="blank long"></span> sued for his
+              <span class="blank long"></span>, but the Supreme Court ruled that
+              <span class="blank long"></span> were property, not
+              <span class="blank long"></span>, and could not sue in federal court.
+            </div>
+            <div class="hint">
+              Think: his name, what he wanted, and how the Court labeled Black people.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">⚖️</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              This case basically shouted that the system was built to protect slavery.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A courtroom where one side has a human and the judge stamps "PROPERTY" on them.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                👨🏾 + ⚖️ + 📄 "PROPERTY" sign.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Dred Scott showed the Supreme Court was riding for slavery, not for Black freedom."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Quick reflection: How would this ruling make abolitionists feel about using the legal system to fight slavery?
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 10: Differences between North and South -->
+  <section class="slide" data-index="10">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Economy and society</span>
+        </div>
+        <div>Slide 11 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Phrase</div>
+          <div class="term-title">
+            Differences between North and South
+            <span class="term-highlight">Factory vs farm, free vs slave labor</span>
+          </div>
+          <p class="subtitle">
+            The North focused more on factories, railroads, and industry, while the South depended on farming and slave labor.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Catch both sides in one sentence.
+            </div>
+            <div class="cloze-sentence">
+              Before the Civil War, the <span class="blank short"></span> had more
+              <span class="blank long"></span>, railroads, and
+              <span class="blank long"></span>, while the <span class="blank short"></span> had an economy built on
+              <span class="blank long"></span> and
+              <span class="blank long"></span> labor.
+            </div>
+            <div class="hint">
+              Think: which region had factories, which had plantations, and who was doing the work.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">🧭</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              Two different money systems, two different lifestyles, same country.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                Split page: on one side smokestacks and trains, on the other cotton fields and slaves.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🏭 + 🚂 (North) vs 🌾 + 🧑🏾‍🌾⛓️ (South).
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "North runs on factories and tracks, South runs on cotton and Black backs."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Star the one difference you think was most important in causing the Civil War.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 11: Lincoln's Election -->
+  <section class="slide" data-index="11">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Road to Civil War</span>
+        </div>
+        <div>Slide 12 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Event</div>
+          <div class="term-title">
+            Lincoln’s Election
+            <span class="term-highlight">The win that pushed Southern states to leave</span>
+          </div>
+          <p class="subtitle">
+            Abraham Lincoln won the presidency in 1860 without any Southern electoral votes, which pushed many Southern states to secede.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Hit who, when, and why the South was mad.
+            </div>
+            <div class="cloze-sentence">
+              In <span class="blank short"></span>, <span class="blank long"></span> was elected president as a
+              <span class="blank long"></span> and won
+              <span class="blank long"></span> votes from the South, which made many Southern states decide to
+              <span class="blank long"></span> from the Union.
+            </div>
+            <div class="hint">
+              Think: year, party, Southern reaction.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">🗳️</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              The election showed how split the country already was before any shots were fired.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                Election map with the whole South blank for Lincoln.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🧔🏻🎩 + 🗳️ + 💢 + 🚪 for Lincoln winning, South storming out.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Lincoln wins, South spins, and the Union starts to crack."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Quick jot: Why would Southern leaders fear a president who was against the spread of slavery?
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 12: Secession -->
+  <section class="slide" data-index="12">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Road to Civil War</span>
+        </div>
+        <div>Slide 13 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Word</div>
+          <div class="term-title">
+            Secession
+            <span class="term-highlight">When states walk away from the country</span>
+          </div>
+          <p class="subtitle">
+            Secession means a state officially breaking away from a country or union.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Use these blanks to define what the South tried to do.
+            </div>
+            <div class="cloze-sentence">
+              Secession is when a state or group
+              <span class="blank long"></span> itself from a country and forms its own
+              <span class="blank long"></span>, like Southern states leaving the
+              <span class="blank long"></span> to create the Confederacy.
+            </div>
+            <div class="hint">
+              Think: leaving, disconnecting, breaking away.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">🚪</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              Picture a state literally walking out of a group chat and starting its own.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A map with one state stepping through a door out of the United States.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🧭 + 🚪 + ↘️ for regions exiting down and out.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Secession is a state saying, 'we are out,' and trying to start a new squad."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Write one reason Southern leaders gave for why they had the right to secede.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 13: Grant/Lee -->
+  <section class="slide" data-index="13">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Civil War leaders</span>
+        </div>
+        <div>Slide 14 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">People</div>
+          <div class="term-title">
+            Grant and Lee
+            <span class="term-highlight">Top generals of each side</span>
+          </div>
+          <p class="subtitle">
+            Ulysses S. Grant led the Union army, and Robert E. Lee led the Confederate army during the Civil War.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Match each man to his side.
+            </div>
+            <div class="cloze-sentence">
+              During the Civil War, <span class="blank long"></span> was the main general for the
+              <span class="blank long"></span> Army, and <span class="blank long"></span> was the main general for the
+              <span class="blank long"></span> Army.
+            </div>
+            <div class="hint">
+              Think: who fought for the United States and who fought for the Confederacy.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">⚔️</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              Two big names, two different teams. Keep Grant with the U for Union and Ulysses.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                Two chess kings facing each other, labeled Grant (Union) and Lee (Confederacy).
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🇺🇸 + 🎖️ for Grant vs 🚩 + 🎖️ for Lee.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Grant grinds for the Union, Lee leads the breakaway South."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        With a partner, decide which general you think had the harder job and why.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 14: Sherman's March -->
+  <section class="slide" data-index="14">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Civil War strategy</span>
+        </div>
+        <div>Slide 15 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Event</div>
+          <div class="term-title">
+            Sherman’s March
+            <span class="term-highlight">Destroying the South’s ability to fight</span>
+          </div>
+          <p class="subtitle">
+            General Sherman led Union troops through the South, burning and destroying supplies, railroads, and cities to break the Confederacy’s will.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Capture where he went and what he did.
+            </div>
+            <div class="cloze-sentence">
+              In Sherman’s March, Union general <span class="blank long"></span> led troops from
+              <span class="blank long"></span> to <span class="blank long"></span>, destroying
+              <span class="blank long"></span>, supplies, and railroads to weaken the
+              <span class="blank long"></span>.
+            </div>
+            <div class="hint">
+              Think: leader, path, and what he destroyed.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">🔥</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              This was "total war" against anything that helped the Confederate army survive.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A line of fire cutting across the South on a map.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🥾 + 🔥 + 🚂 (soldiers stomping, burning, and wrecking trains).
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Sherman did not just fight soldiers, he burned the South’s ability to keep fighting."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Do you think total war against civilians’ property is ever justified? Write one honest sentence.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 15: Gettysburg -->
+  <section class="slide" data-index="15">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Civil War battles</span>
+        </div>
+        <div>Slide 16 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Battle</div>
+          <div class="term-title">
+            Gettysburg
+            <span class="term-highlight">Turning point of the Civil War</span>
+          </div>
+          <p class="subtitle">
+            A huge battle in Pennsylvania where the Union victory stopped Lee’s invasion of the North and turned the war in the Union’s favor.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Use the blanks to show place, winner, and impact.
+            </div>
+            <div class="cloze-sentence">
+              The Battle of <span class="blank long"></span> in
+              <span class="blank long"></span> was a major
+              <span class="blank long"></span> victory that stopped Lee’s army from invading the
+              <span class="blank long"></span> and became a turning point in the Civil War.
+            </div>
+            <div class="hint">
+              Think: state, which side won, what that win prevented.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">📍</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              After Gettysburg, the South mostly fought on defense instead of attacking the North.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A big red X over an arrow pointing North labeled "Lee’s plan."
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                ⛰️ + ⚔️ + 🔄 for a battle in the hills that flipped the war.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Gettysburg is where the South stopped climbing and started sliding down."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Write one reason why a single battle could change the mood of an entire war.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 16: Emancipation Proclamation -->
+  <section class="slide" data-index="16">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>End of slavery in war</span>
+        </div>
+        <div>Slide 17 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Document</div>
+          <div class="term-title">
+            Emancipation Proclamation
+            <span class="term-highlight">War turns into a freedom fight</span>
+          </div>
+          <p class="subtitle">
+            A war order from Lincoln in 1863 that declared enslaved people in Confederate states to be free.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Lock in who gave it, when, and to whom it applied.
+            </div>
+            <div class="cloze-sentence">
+              In <span class="blank short"></span>, President <span class="blank long"></span> issued the
+              <span class="blank long"></span>, saying that enslaved people in
+              <span class="blank long"></span> states were now
+              <span class="blank short"></span>.
+            </div>
+            <div class="hint">
+              Remember: this hit Confederate states, not all enslaved people everywhere at once.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">📜</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              It changed the Civil War from just "save the Union" to "save the Union and end slavery."
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A scroll with chains breaking when the words are spoken.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🧔🏻🎩 + 📜 + ⛓️➡️❌.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "The Emancipation Proclamation turned the war into a freedom mission too."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Quick write: Why would enslaved people and abolitionists care about this even if it did not free everyone yet?
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 17: Reconstruction -->
+  <section class="slide" data-index="17">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>After the Civil War</span>
+        </div>
+        <div>Slide 18 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Era</div>
+          <div class="term-title">
+            Reconstruction
+            <span class="term-highlight">Trying to rebuild the South and the country</span>
+          </div>
+          <p class="subtitle">
+            The time period after the Civil War when the U.S. tried to bring the Southern states back and figure out rights for freed African Americans.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Focus on when and what the country was trying to fix.
+            </div>
+            <div class="cloze-sentence">
+              Reconstruction is the period after the <span class="blank long"></span> when the United States
+              <span class="blank long"></span> the South and worked to decide
+              <span class="blank long"></span> for formerly enslaved African Americans.
+            </div>
+            <div class="hint">
+              Think: rebuild and rights at the same time.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">🏗️</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              Imagine trying to rebuild a house while people are arguing over who is allowed to live in it.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A broken house labeled "South" with scaffolding and people arguing at the door.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🧱 + 🤝 + ⚖️ for building, rejoining, and rights.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Reconstruction tried to put the country back together and decide if freedom was real or fake."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Rate Reconstruction so far in one word: hopeful, messy, or hopeless. Circle it and explain why.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 18: Radical Republicans -->
+  <section class="slide" data-index="18">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Reconstruction politics</span>
+        </div>
+        <div>Slide 19 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Group</div>
+          <div class="term-title">
+            Radical Republicans
+            <span class="term-highlight">Wanted strict rules for the South</span>
+          </div>
+          <p class="subtitle">
+            A group in Congress that wanted to punish former Confederates and protect rights for freed African Americans.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Describe what they wanted for the South and for freed people.
+            </div>
+            <div class="cloze-sentence">
+              Radical Republicans were members of <span class="blank long"></span> who wanted the South to be
+              <span class="blank long"></span> for seceding and to give strong
+              <span class="blank long"></span> and protection to formerly
+              <span class="blank long"></span> people.
+            </div>
+            <div class="hint">
+              Think: punish and protect at the same time.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">📢</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              "Radical" here means they wanted big change, not soft half steps.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                Angry lawmakers holding up signs saying "Real freedom" and "Punish traitors."
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🏛️ + 🔨 + ✊🏾.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Radical Republicans wanted the South checked and Black rights respected."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Do you think their approach was fair, too harsh, or not harsh enough? Write one honest sentence.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 19: 13th Amendment -->
+  <section class="slide" data-index="19">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Reconstruction Amendments</span>
+        </div>
+        <div>Slide 20 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Law</div>
+          <div class="term-title">
+            13th Amendment
+            <span class="term-highlight">Ends slavery in the Constitution</span>
+          </div>
+          <p class="subtitle">
+            The Constitutional amendment that officially abolished slavery in the United States (except as punishment for a crime).
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Keep it tight and clear.
+            </div>
+            <div class="cloze-sentence">
+              The <span class="blank short"></span> Amendment ended
+              <span class="blank long"></span> in the United States, making it
+              <span class="blank long"></span> except as punishment for a
+              <span class="blank long"></span>.
+            </div>
+            <div class="hint">
+              Notice that small "crime" part. That matters later in history.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">🔏</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              Think 1 and 3: one nation, three letters in "end." 13 ends slavery.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                The number 13 snapping a chain in half.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                1️⃣3️⃣ + ⛓️➡️❌.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "13 put slavery in the ground, at least on paper."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Write one way people later used the "punishment for crime" part in unfair ways.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 20: 14th Amendment -->
+  <section class="slide" data-index="20">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Reconstruction Amendments</span>
+        </div>
+        <div>Slide 21 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Law</div>
+          <div class="term-title">
+            14th Amendment
+            <span class="term-highlight">Citizenship and equal protection</span>
+          </div>
+          <p class="subtitle">
+            The amendment that gave citizenship to people born in the U.S., including former slaves, and promised equal protection under the law.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Focus on who became citizens and what protection they got.
+            </div>
+            <div class="cloze-sentence">
+              The <span class="blank short"></span> Amendment said anyone
+              <span class="blank long"></span> in the United States is a
+              <span class="blank long"></span> and that states must give them
+              <span class="blank long"></span> protection under the
+              <span class="blank long"></span>.
+            </div>
+            <div class="hint">
+              Think: born here, belong here, protected here.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">🛡️</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              14 is like a shield. It is supposed to cover everyone under the law.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A shield with "14" on it covering a group of diverse people.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                1️⃣4️⃣ + 🧒🏾🧒🏻🧒🏼 + ⚖️.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "14 says if you are born here, this law is your armor too."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Name one modern issue where people still argue about the meaning of "equal protection."
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 21: 15th Amendment -->
+  <section class="slide" data-index="21">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Reconstruction Amendments</span>
+        </div>
+        <div>Slide 22 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Law</div>
+          <div class="term-title">
+            15th Amendment
+            <span class="term-highlight">Voting rights for Black men</span>
+          </div>
+          <p class="subtitle">
+            The amendment that said you cannot deny someone the right to vote because of their race, color, or previous condition of slavery.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Keep it focused on voting and discrimination.
+            </div>
+            <div class="cloze-sentence">
+              The <span class="blank short"></span> Amendment said the government cannot take away a person’s right to
+              <span class="blank long"></span> because of their
+              <span class="blank long"></span>, color, or because they used to be
+              <span class="blank long"></span>.
+            </div>
+            <div class="hint">
+              It did not say anything about women yet, just men.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">🗳️</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              15 ties voting to race. Remember: 1 and 5 look like a person walking to the polls.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A Black man dropping a ballot in a box labeled "15."
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                1️⃣5️⃣ + 🧑🏾 + 🗳️.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "15 said your race cannot block your ballot."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        List one way Southern states still tried to block Black people from voting even after this.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 22: Black Codes / Jim Crow Laws -->
+  <section class="slide" data-index="22">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Racism after slavery</span>
+        </div>
+        <div>Slide 23 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Laws</div>
+          <div class="term-title">
+            Black Codes and Jim Crow Laws
+            <span class="term-highlight">Legal ways to keep Black people down</span>
+          </div>
+          <p class="subtitle">
+            Laws in the South that limited the freedom of Black people and forced segregation after slavery ended.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Explain what these laws did and to whom.
+            </div>
+            <div class="cloze-sentence">
+              Black Codes and Jim Crow Laws were <span class="blank long"></span> rules in the
+              <span class="blank long"></span> that took away rights and forced
+              <span class="blank long"></span> on African Americans even after
+              <span class="blank long"></span> ended.
+            </div>
+            <div class="hint">
+              Think: where, who they targeted, and what they forced (separation).
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">🚫</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              These laws were like slavery’s little cousins dressed up as "law and order."
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                "Whites Only" and "Colored Only" signs on doors.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🚻 + 🚫 + ✊🏾.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Black Codes and Jim Crow kept freedom on a short leash."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Circle one word that describes these laws: fair, neutral, or rigged. Then explain why.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 23: Plessy v. Ferguson -->
+  <section class="slide" data-index="23">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Supreme Court and segregation</span>
+        </div>
+        <div>Slide 24 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Court case</div>
+          <div class="term-title">
+            Plessy v. Ferguson
+            <span class="term-highlight">"Separate but equal" lie</span>
+          </div>
+          <p class="subtitle">
+            The Supreme Court case that said segregation was legal as long as facilities were supposedly "equal."
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Fill in the rule this case created.
+            </div>
+            <div class="cloze-sentence">
+              In <span class="blank long"></span>, the Supreme Court case
+              <span class="blank long"></span> v. <span class="blank long"></span> said segregation was allowed if it was
+              <span class="blank long"></span> but equal, giving legal support to Jim Crow.
+            </div>
+            <div class="hint">
+              The "equal" part was rarely real in real life.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">🚉</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              Think of train cars and waiting rooms split by race.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                Two water fountains, one cracked and dirty, both labeled "equal?"
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🚆 + 🚻 + ➗.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Plessy v. Ferguson blessed 'separate but equal' that was separate and not equal."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Quick jot: How would you feel hearing the Supreme Court say your separation is "equal" when you know it is not?
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 24: Ku Klux Klan -->
+  <section class="slide" data-index="24">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Violent backlash</span>
+        </div>
+        <div>Slide 25 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Group</div>
+          <div class="term-title">
+            Ku Klux Klan
+            <span class="term-highlight">Terror group against Black freedom</span>
+          </div>
+          <p class="subtitle">
+            A racist terrorist group that used violence, threats, and murder to keep African Americans and their allies from gaining power.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Keep it clear and not sugar coated.
+            </div>
+            <div class="cloze-sentence">
+              The Ku Klux Klan was a secret <span class="blank long"></span> group in the South that used
+              <span class="blank long"></span>, threats, and
+              <span class="blank long"></span> to scare African Americans and stop them from
+              <span class="blank long"></span> or holding office.
+            </div>
+            <div class="hint">
+              Think: what they did and what they wanted to block.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">👻</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              They wore white hoods like fake ghosts but were real life terrorists.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                Shadowy figures in white hoods standing in front of a burned cross.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                👻 + 🔥 + ✊🏾🚫.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "The Klan tried to scare Black power back into the shadows."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Why would some white Southerners support or ignore the Klan instead of fighting it?
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 25: Poll Tax -->
+  <section class="slide" data-index="25">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Voter suppression tools</span>
+        </div>
+        <div>Slide 26 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Tactic</div>
+          <div class="term-title">
+            Poll Tax
+            <span class="term-highlight">Pay to vote</span>
+          </div>
+          <p class="subtitle">
+            A fee people had to pay before voting, often used to keep poor Black and poor white people from voting.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Focus on who it blocked and how.
+            </div>
+            <div class="cloze-sentence">
+              A poll tax was a <span class="blank long"></span> people had to pay before they could
+              <span class="blank long"></span>, which made it hard for many
+              <span class="blank long"></span> and African Americans to take part in
+              <span class="blank long"></span>.
+            </div>
+            <div class="hint">
+              Money gatekeeping the ballot box.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">💸</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              Imagine getting to the voting line and being told you need cash just to step in.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A ballot box with a price tag hanging off it.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                💵 + 🚫 + 🗳️.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Poll tax turned voting into a paywall."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        How would a poll tax hit differently for a rich landowner versus a sharecropper?
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 26: Literacy Test -->
+  <section class="slide" data-index="26">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Voter suppression tools</span>
+        </div>
+        <div>Slide 27 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Tactic</div>
+          <div class="term-title">
+            Literacy Test
+            <span class="term-highlight">Fake "reading" test to block voters</span>
+          </div>
+          <p class="subtitle">
+            Tests used before voting that claimed to measure reading and writing but were really used to keep Black people from voting.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Put the goal behind the test in the blank.
+            </div>
+            <div class="cloze-sentence">
+              A literacy test was a test people had to pass to show they could
+              <span class="blank long"></span> and
+              <span class="blank long"></span> before voting, but in the South it was mostly used to stop
+              <span class="blank long"></span> from
+              <span class="blank long"></span>.
+            </div>
+            <div class="hint">
+              Think: skill on paper vs real goal in practice.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">📄</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              The test was the excuse, not the real reason, for turning people away.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A test stamped "FAILED" over a person at the voting booth.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                📚 + ❌ + 🗳️.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Literacy tests graded you on skin color, not reading."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        How does this connect to the fact that enslaved people were banned from learning to read for generations?
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 27: Grandfather Clause -->
+  <section class="slide" data-index="27">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Voter suppression tools</span>
+        </div>
+        <div>Slide 28 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Tactic</div>
+          <div class="term-title">
+            Grandfather Clause
+            <span class="term-highlight">If your people voted, you are good</span>
+          </div>
+          <p class="subtitle">
+            A rule that let people vote only if their grandfather had been allowed to vote, which automatically blocked most Black people.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Show how it used the past to limit the present.
+            </div>
+            <div class="cloze-sentence">
+              A grandfather clause said you could only
+              <span class="blank long"></span> if your
+              <span class="blank long"></span> had voted before
+              <span class="blank long"></span>, which kept many African Americans from voting since their ancestors had been
+              <span class="blank long"></span>.
+            </div>
+            <div class="hint">
+              Think: whose grandfathers could legally vote before the Civil War.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">🧓</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              Your voting rights depended on your grandfather’s status, not your own.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A voting line with a big sign: "Did your granddad vote? Yes or No."
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🧓 + ✅ / ❌ + 🗳️.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Grandfather clause pulled your rights out of your family history."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Write one reason most Black people’s grandfathers could not vote before the Civil War.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 28: Compromise of 1877 -->
+  <section class="slide" data-index="28">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>End of Reconstruction</span>
+        </div>
+        <div>Slide 29 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Event</div>
+          <div class="term-title">
+            Compromise of 1877
+            <span class="term-highlight">Deal that ended Reconstruction</span>
+          </div>
+          <p class="subtitle">
+            A political deal that gave Hayes the presidency and removed federal troops from the South, ending Reconstruction.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Focus on who got what in the deal.
+            </div>
+            <div class="cloze-sentence">
+              In the Compromise of <span class="blank short"></span>, <span class="blank long"></span> became president, and in return
+              <span class="blank long"></span> troops were removed from the
+              <span class="blank long"></span>, which effectively ended
+              <span class="blank long"></span>.
+            </div>
+            <div class="hint">
+              Think: year, who won, what happened to troops, and what era ended.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">🤝</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              This was a "you get the White House, we get our troops out" style backroom deal.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                Two men shaking hands while soldiers walk away from the South on a map.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🏛️ + 🤝 + 🪖➡️🚶‍♂️.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Compromise of 1877 traded Black protection for political peace."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Quick write: What do you think happened to Black rights in the South after federal troops left?
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 29: Manifest Destiny -->
+  <section class="slide" data-index="29">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Westward expansion</span>
+        </div>
+        <div>Slide 30 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Idea</div>
+          <div class="term-title">
+            Manifest Destiny
+            <span class="term-highlight">Belief that U.S. should spread west</span>
+          </div>
+          <p class="subtitle">
+            The belief that it was the United States’ God given right to expand across the whole continent to the Pacific Ocean.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Show belief and direction.
+            </div>
+            <div class="cloze-sentence">
+              Manifest Destiny was the belief that the United States was meant to
+              <span class="blank long"></span> across North America from the
+              <span class="blank long"></span> Ocean to the
+              <span class="blank long"></span> Ocean, and that this expansion was
+              <span class="blank long"></span> and justified.
+            </div>
+            <div class="hint">
+              Think: westward, coast to coast, and feeling "meant to be."
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">🌅</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              Picture the country sliding west like it is on a conveyor belt it thinks it owns.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                The U.S. flag stretching from the East Coast all the way to California.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🇺🇸➡️🌄.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Manifest Destiny said, 'This whole continent is ours, obviously.'"
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Who already lived on the land that Manifest Destiny claimed? Write it down.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 30: Mexican Cession -->
+  <section class="slide" data-index="30">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Westward expansion</span>
+        </div>
+        <div>Slide 31 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Land gain</div>
+          <div class="term-title">
+            Mexican Cession
+            <span class="term-highlight">Huge land chunk from Mexico</span>
+          </div>
+          <p class="subtitle">
+            Land the U.S. took from Mexico after the Mexican American War and paid for in the Treaty of Guadalupe Hidalgo.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Show who lost land, who gained land, and how.
+            </div>
+            <div class="cloze-sentence">
+              The Mexican Cession was a large area of land that
+              <span class="blank long"></span> gave to the
+              <span class="blank long"></span> after the Mexican American War in the
+              <span class="blank long"></span> of Guadalupe Hidalgo, in exchange for
+              <span class="blank long"></span> million dollars.
+            </div>
+            <div class="hint">
+              Think: which country is giving up land, which one is paying.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">🗺️</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              This land becomes states like California, Nevada, Utah, and more.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                Map showing half of today’s Southwest changing color from Mexico to U.S.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🇲🇽↔️💵↔️🇺🇸.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Mexican Cession is Mexico losing a huge chunk so the U.S. can keep growing west."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Write the name of one modern state that came from the Mexican Cession.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 31: Andrew Jackson -->
+  <section class="slide" data-index="31">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Age of Jackson</span>
+        </div>
+        <div>Slide 32 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Person</div>
+          <div class="term-title">
+            Andrew Jackson
+            <span class="term-highlight">President with big power moves</span>
+          </div>
+          <p class="subtitle">
+            The seventh president, known for being a "common man" president, attacking the national bank, and pushing Native Americans off their land.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Hit what he fought against and who he hurt.
+            </div>
+            <div class="cloze-sentence">
+              Andrew Jackson was the <span class="blank long"></span> president of the United States, who opposed the
+              <span class="blank long"></span> of the United States, increased
+              <span class="blank long"></span> power, and supported removing
+              <span class="blank long"></span> Americans from their lands.
+            </div>
+            <div class="hint">
+              Think: his number, the bank, and Indian removal.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">💵</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              His face is on the twenty dollar bill, even though his legacy is very complicated.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A twenty dollar bill with arrows pointing to "bank fighter" and "Indian Removal."
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🧔🏻 + 💰 + 🚫🏦 + 🚶‍♂️➡️.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Andrew Jackson flexed presidential power and pushed Native people out."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Write one positive and one negative thing people say about Jackson today.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 32: Homestead Act -->
+  <section class="slide" data-index="32">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Westward migration</span>
+        </div>
+        <div>Slide 33 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Law</div>
+          <div class="term-title">
+            Homestead Act
+            <span class="term-highlight">Free land if you work it</span>
+          </div>
+          <p class="subtitle">
+            A law that gave free or cheap land in the West to people who agreed to live on it and farm it for several years.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Show what you had to do to claim land.
+            </div>
+            <div class="cloze-sentence">
+              The Homestead Act offered <span class="blank long"></span> land in the
+              <span class="blank long"></span> to people who were willing to
+              <span class="blank long"></span> there and
+              <span class="blank long"></span> it for several years.
+            </div>
+            <div class="hint">
+              Think: free land but not free work, you had to improve it.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">🏡</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              The government was basically saying, "move out there and build a life, and you can keep it."
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A tiny house on a huge empty field labeled "free if you farm it."
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                📝 + 🌾 + 🏡.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Homestead Act was free land with sweat required."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Who already lived on some of the land the Homestead Act gave away?
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 33: Indian Removal Act -->
+  <section class="slide" data-index="33">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Native American policy</span>
+        </div>
+        <div>Slide 34 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Law</div>
+          <div class="term-title">
+            Indian Removal Act
+            <span class="term-highlight">Forcing Native people off their land</span>
+          </div>
+          <p class="subtitle">
+            A law that allowed the government to move Native American tribes from their homelands in the Southeast to lands west of the Mississippi River.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Explain who was moved and where.
+            </div>
+            <div class="cloze-sentence">
+              The Indian Removal Act gave the president power to
+              <span class="blank long"></span> Native American tribes from their
+              <span class="blank long"></span> lands in the Southeast to new land
+              <span class="blank long"></span> of the <span class="blank long"></span> River.
+            </div>
+            <div class="hint">
+              Think: forced relocation, not a friendly move.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">🚶‍♂️</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              This leads to the Trail of Tears and other deadly marches.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A line of Native families walking with tears and broken hearts.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🧑‍🦱 + 🎒 + 😢 + ➡️.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Indian Removal Act turned Native homelands into someone else’s real estate."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Write one feeling word you think Native people had about this law.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 34: Worcester v. Georgia -->
+  <section class="slide" data-index="34">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Native American rights</span>
+        </div>
+        <div>Slide 35 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Court case</div>
+          <div class="term-title">
+            Worcester v. Georgia
+            <span class="term-highlight">Court sides with Cherokee, Jackson ignores</span>
+          </div>
+          <p class="subtitle">
+            A case where the Supreme Court said Georgia could not force Cherokee people off their land, but Jackson refused to follow the ruling.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Show what the Court said and what Jackson did.
+            </div>
+            <div class="cloze-sentence">
+              In <span class="blank long"></span> v. <span class="blank long"></span>, the Supreme Court ruled that the
+              <span class="blank long"></span> Nation had the right to control its own land and that
+              <span class="blank long"></span> could not force them out, but President
+              <span class="blank long"></span> ignored the decision.
+            </div>
+            <div class="hint">
+              Think: tribe, state, and the president who said no thanks to the ruling.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">⚖️</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              This is a moment where the Court talked one way and the president acted another way.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A judge’s gavel on one side, Jackson turning his back on the other.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🏛️⚖️➡️📢 vs 🧔🏻🙉.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Worcester v. Georgia said Cherokee land is theirs, Jackson said, 'I am doing what I want.'"
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Why is it a problem when a president ignores a Supreme Court ruling?
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 35: Declaration of Sentiments -->
+  <section class="slide" data-index="35">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Women’s rights</span>
+        </div>
+        <div>Slide 36 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Document</div>
+          <div class="term-title">
+            Declaration of Sentiments
+            <span class="term-highlight">Women say, "we want rights too"</span>
+          </div>
+          <p class="subtitle">
+            A document written at Seneca Falls that listed the ways women were being treated unfairly and demanded equal rights.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Connect it to the Declaration of Independence vibe.
+            </div>
+            <div class="cloze-sentence">
+              The Declaration of Sentiments was written at the
+              <span class="blank long"></span> Falls Convention and listed
+              <span class="blank long"></span> against women, calling for
+              <span class="blank long"></span> rights, including the right to
+              <span class="blank long"></span>.
+            </div>
+            <div class="hint">
+              Think: convention name, list of problems, and key right they wanted.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">✍️</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              They remixed the Declaration of Independence language to say women deserve the same rights.
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A Declaration scroll with "all men and women are created equal" highlighted.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                👩🏻👩🏽👩🏾 + 📜 + ⚖️.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Declaration of Sentiments said, 'your freedom speech forgot women, fix that.'"
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        Pick one complaint women had in this document that is still an issue in some form today.
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 36: Seneca Falls Convention -->
+  <section class="slide" data-index="36">
+    <div class="slide-inner">
+      <div class="top-bar">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          <span>Women’s rights</span>
+        </div>
+        <div>Slide 37 of 37</div>
+      </div>
+
+      <div class="main-card">
+        <div>
+          <div class="term-label">Event</div>
+          <div class="term-title">
+            Seneca Falls Convention
+            <span class="term-highlight">Kickoff meeting for women’s rights</span>
+          </div>
+          <p class="subtitle">
+            The first major women’s rights convention in the U.S., where activists met and wrote the Declaration of Sentiments.
+          </p>
+
+          <div class="cloze-box">
+            <div class="cloze-label">Cloze definition</div>
+            <div class="cloze-instructions">
+              Lock in what happened there.
+            </div>
+            <div class="cloze-sentence">
+              The Seneca Falls Convention was a women’s rights meeting held in
+              <span class="blank long"></span>, where leaders like
+              <span class="blank long"></span> and others wrote the
+              <span class="blank long"></span> of Sentiments to demand
+              <span class="blank long"></span> for women.
+            </div>
+            <div class="hint">
+              Think: location, at least one leader, and the document they wrote.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="memory-card">
+            <div class="memory-title">
+              <span class="memory-emoji">📣</span> Pick a memory trick
+            </div>
+            <p class="memory-text">
+              This was like the first big conference saying loudly, "women deserve equal rights."
+            </p>
+            <ul class="memory-options">
+              <li>
+                <span class="memory-tag">Picture idea</span>
+                A crowded hall with women speaking from a stage holding the Declaration of Sentiments.
+              </li>
+              <li>
+                <span class="memory-tag">Emoji combo</span>
+                🏛️ + 👩🏽‍🏫 + 👩🏻‍💼 + 👩🏾‍⚖️.
+              </li>
+              <li>
+                <span class="memory-tag">Quick bar</span>
+                "Seneca Falls is where the women’s rights movement put its foot down in public."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-note">
+        End check: Which three vocab words from this whole deck feel the most important to you, and why?
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation bar -->
+  <div class="nav-bar">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <button class="nav-btn" id="prevBtn">
+          <span class="icon">←</span>
+          <span>Back</span>
+        </button>
+      </div>
+      <div class="nav-center">
+        <div id="slideIndicator">Slide 1 of 37</div>
+        <div class="nav-progress">
+          <div class="nav-progress-bar" id="progressBar"></div>
+        </div>
+        <div class="shortcut-hint">
+          Use arrow keys
+          <span class="shortcut-pill">
+            <span class="shortcut-key">←</span>
+            <span class="shortcut-key">→</span>
+          </span>
+          to move
+        </div>
+      </div>
+      <div class="nav-right">
+        <button class="nav-btn" id="nextBtn">
+          <span>Next</span>
+          <span class="icon">→</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const totalSlides = slides.length;
+    let currentIndex = 0;
+
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const slideIndicator = document.getElementById('slideIndicator');
+    const progressBar = document.getElementById('progressBar');
+
+    function updateSlides() {
+      slides.forEach((slide, index) => {
+        slide.classList.toggle('active', index === currentIndex);
+      });
+      const humanNumber = currentIndex + 1;
+      slideIndicator.textContent = `Slide ${humanNumber} of ${totalSlides}`;
+      const progress = (humanNumber / totalSlides) * 100;
+      progressBar.style.width = progress + '%';
+
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex === totalSlides - 1;
+    }
+
+    function goToSlide(index) {
+      if (index < 0 || index >= totalSlides) return;
+      currentIndex = index;
+      updateSlides();
+    }
+
+    prevBtn.addEventListener('click', () => {
+      goToSlide(currentIndex - 1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      goToSlide(currentIndex + 1);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowRight') {
+        goToSlide(currentIndex + 1);
+      } else if (event.key === 'ArrowLeft') {
+        goToSlide(currentIndex - 1);
+      }
+    });
+
+    updateSlides();
+  </script>
+</body>
+</html>
