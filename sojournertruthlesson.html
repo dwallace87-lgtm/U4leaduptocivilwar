@@ -142,42 +142,62 @@
       margin-bottom: 4px;
     }
 
-    /* 5 W's graphic organizer styles */
-    .fivew-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 10px;
-      margin-top: 8px;
-    }
-
-    .fivew-card {
-      border: 2px solid #000000;
-      padding: 8px 10px;
-      min-height: 110px;
-    }
-
-    .fivew-header {
+    /* 5 W's organizer styles (like the image) */
+    .fivew-wrapper-title {
       font-weight: 700;
-      font-size: 1rem;
-      text-transform: uppercase;
-      margin-bottom: 4px;
       text-align: center;
-      border-bottom: 1px solid #000000;
-      padding-bottom: 2px;
+      font-size: 0.98rem;
+      margin-bottom: 2px;
     }
 
-    .fivew-question {
+    .fivew-instructions {
+      text-align: center;
       font-size: 0.85rem;
-      margin: 4px 0 6px;
+      margin-bottom: 6px;
       font-style: italic;
     }
 
-    .fivew-line {
-      display: block;
-      border-bottom: 1px solid #000000;
-      width: 100%;
-      height: 1.1em;
-      margin: 2px 0 6px;
+    .fivew-organizer {
+      margin-top: 4px;
+    }
+
+    .fivew-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .fivew-box {
+      flex: 1;
+      background: #fff9e6;
+      border: 2px solid #e1c98c;
+      border-radius: 14px;
+      padding: 6px 8px;
+      box-shadow: 0 1px 0 #e5d5a5;
+      min-height: 95px;
+    }
+
+    .fivew-box-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .fivew-box-inner {
+      background: #ffffff;
+      border-radius: 8px;
+      border: 1px solid #e1e1e1;
+      min-height: 60px;
+      padding: 4px 5px;
+    }
+
+    .fivew-title-box {
+      flex: 1.3;
+    }
+
+    .fivew-why-box {
+      flex: 1.3;
     }
 
     @media print {
@@ -230,60 +250,69 @@
       </p>
     </section>
 
-    <!-- Part B: 5 W's graphic organizer -->
+    <!-- Part B: 5 W's graphic organizer like the example -->
     <section class="section">
       <p class="section-title">Part B: The Speaker - Sojourner Truth (5 W's)</p>
-      <p class="section-subtitle">Fill in the graphic organizer using what you learned from the lesson and the speech.</p>
+      <div class="fivew-wrapper-title">
+        The 5 W's: Who? Where? When? What? Why?
+      </div>
+      <div class="fivew-instructions">
+        Instructions: Complete each box using complete sentences.
+      </div>
 
-      <div class="fivew-grid">
-        <!-- Who -->
-        <div class="fivew-card">
-          <div class="fivew-header">Who?</div>
-          <p class="fivew-question">Who is talking in this speech?</p>
-          <p style="font-size: 0.85rem;">The speaker is:</p>
-          <span class="fivew-line"></span>
-          <p style="font-size: 0.85rem;">She is a __________ woman.</p>
-          <span class="fivew-line"></span>
+      <div class="fivew-organizer">
+        <!-- Top row: Who / Title / When -->
+        <div class="fivew-row">
+          <div class="fivew-box">
+            <div class="fivew-box-title">Who?</div>
+            <div class="fivew-box-inner">
+              The speaker is ____________________________________.<br />
+              She is a ____________________________________ woman.
+            </div>
+          </div>
+
+          <div class="fivew-box fivew-title-box">
+            <div class="fivew-box-title">Title:</div>
+            <div class="fivew-box-inner">
+              _______________________________________________________<br />
+              (Write the title of the speech.)
+            </div>
+          </div>
+
+          <div class="fivew-box">
+            <div class="fivew-box-title">When?</div>
+            <div class="fivew-box-inner">
+              She lived and spoke in the ____________________________.<br />
+              This is before the _________________________________.
+            </div>
+          </div>
         </div>
 
-        <!-- What -->
-        <div class="fivew-card">
-          <div class="fivew-header">What?</div>
-          <p class="fivew-question">What was her life like before this speech?</p>
-          <p style="font-size: 0.85rem;">Before this speech, she was:</p>
-          <span class="fivew-line"></span>
-          <p style="font-size: 0.85rem;">Later, she became a:</p>
-          <span class="fivew-line"></span>
-        </div>
+        <!-- Bottom row: Where / Why / What -->
+        <div class="fivew-row">
+          <div class="fivew-box">
+            <div class="fivew-box-title">Where?</div>
+            <div class="fivew-box-inner">
+              She is speaking in the ______________________________.<br />
+              She is at a ______________ in ________________________.
+            </div>
+          </div>
 
-        <!-- When -->
-        <div class="fivew-card">
-          <div class="fivew-header">When?</div>
-          <p class="fivew-question">When did she live and give this speech?</p>
-          <p style="font-size: 0.85rem;">She lived and spoke in the:</p>
-          <span class="fivew-line"></span>
-          <p style="font-size: 0.85rem;">This is before the:</p>
-          <span class="fivew-line"></span>
-        </div>
+          <div class="fivew-box fivew-why-box">
+            <div class="fivew-box-title">Why?</div>
+            <div class="fivew-box-inner">
+              She is speaking to fight against ______________________.<br />
+              She is speaking to fight for _________________________.
+            </div>
+          </div>
 
-        <!-- Where -->
-        <div class="fivew-card">
-          <div class="fivew-header">Where?</div>
-          <p class="fivew-question">Where is she in the United States when she speaks?</p>
-          <p style="font-size: 0.85rem;">She is speaking in the:</p>
-          <span class="fivew-line"></span>
-          <p style="font-size: 0.85rem;">She is at a ________ in ________.</p>
-          <span class="fivew-line"></span>
-        </div>
-
-        <!-- Why -->
-        <div class="fivew-card">
-          <div class="fivew-header">Why?</div>
-          <p class="fivew-question">Why is she giving this speech? What is she fighting for?</p>
-          <p style="font-size: 0.85rem;">She is speaking to fight against:</p>
-          <span class="fivew-line"></span>
-          <p style="font-size: 0.85rem;">She is speaking to fight for:</p>
-          <span class="fivew-line"></span>
+          <div class="fivew-box">
+            <div class="fivew-box-title">What?</div>
+            <div class="fivew-box-inner">
+              She talks about ______________________________________.<br />
+              She wants people to understand _______________________.
+            </div>
+          </div>
         </div>
       </div>
     </section>
