@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sojourner Truth – Speaker, Audience, Context Organizer</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #000000;
+    }
+
+    .page {
+      width: 8.5in;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0.5in;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .header-row {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: 12px;
+      margin-bottom: 12px;
+      align-items: center;
+    }
+
+    .header-left, .header-right {
+      border: 2px solid #000;
+      padding: 8px 10px;
+      font-size: 0.9rem;
+    }
+
+    .header-right h1 {
+      font-size: 1.1rem;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .label-line {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 4px;
+      align-items: center;
+    }
+
+    .label {
+      min-width: 50px;
+      font-size: 0.85rem;
+    }
+
+    .line {
+      flex: 1;
+      border-bottom: 1px solid #000;
+      height: 1.1em;
+    }
+
+    .section {
+      border: 2px solid #000;
+      margin-bottom: 10px;
+      padding: 8px 10px;
+    }
+
+    .section-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+
+    .objective-text {
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .prompt-text {
+      font-size: 0.85rem;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .writing-lines {
+      border-top: 1px solid #000;
+      margin-top: 4px;
+    }
+
+    .writing-line {
+      border-bottom: 1px solid #000;
+      height: 1.1em;
+    }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 3fr;
+      gap: 6px;
+      font-size: 0.9rem;
+    }
+
+    .vocab-term {
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    .vocab-def {
+      border-bottom: 1px solid #000;
+      padding-bottom: 2px;
+    }
+
+    .blank {
+      display: inline-block;
+      border-bottom: 1px solid #000;
+      min-width: 60px;
+      height: 1.05em;
+    }
+
+    .sac-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+      font-size: 0.9rem;
+    }
+
+    .sac-box {
+      border: 1.5px solid #000;
+      padding: 6px 8px;
+      min-height: 70px;
+    }
+
+    .sac-title {
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+    }
+
+    .sac-frame {
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .paragraph-frame {
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+    }
+
+    .tiny-note {
+      font-size: 0.7rem;
+      opacity: 0.85;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+      .page {
+        padding: 0.5in;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Header -->
+    <div class="header-row">
+      <div class="header-left">
+        <div class="label-line">
+          <span class="label">Name:</span>
+          <span class="line"></span>
+        </div>
+        <div class="label-line">
+          <span class="label">Date:</span>
+          <span class="line"></span>
+        </div>
+        <div class="label-line">
+          <span class="label">Period:</span>
+          <span class="line"></span>
+        </div>
+      </div>
+      <div class="header-right">
+        <h1>Sojourner Truth – Speaker, Audience & Context</h1>
+      </div>
+    </div>
+
+    <!-- Objective -->
+    <div class="section">
+      <div class="section-title">Objective</div>
+      <p class="objective-text">
+        Today I will explain <strong>who Sojourner Truth is talking to</strong> (audience),
+        <strong>who she is</strong> (speaker), and <strong>what is going on around her</strong> (context)
+        in the speech “Ain’t I a Woman?”.
+      </p>
+    </div>
+
+    <!-- Do Now -->
+    <div class="section">
+      <div class="section-title">Do Now</div>
+      <p class="prompt-text">
+        Think about TikTok, Instagram, or text messages.
+      </p>
+      <p class="prompt-text">
+        1. When you talk to a <strong>teacher</strong>, how does your language change?
+      </p>
+      <p class="prompt-text">
+        2. When you talk to your <strong>best friend</strong>, how does it change?
+      </p>
+      <p class="prompt-text">
+        3. Why do you change how you speak?
+      </p>
+      <div class="writing-lines">
+        <div class="writing-line"></div>
+        <div class="writing-line"></div>
+        <div class="writing-line"></div>
+        <div class="writing-line"></div>
+        <div class="writing-line"></div>
+      </div>
+    </div>
+
+    <!-- Vocabulary -->
+    <div class="section">
+      <div class="section-title">Key Vocabulary (Fill in the blanks)</div>
+      <div class="vocab-grid">
+        <div class="vocab-term">Speaker</div>
+        <div class="vocab-def">
+          the person <span class="blank"></span> or <span class="blank"></span>.
+        </div>
+
+        <div class="vocab-term">Audience</div>
+        <div class="vocab-def">
+          the people who are meant to <span class="blank"></span> or
+          <span class="blank"></span> the message.
+        </div>
+
+        <div class="vocab-term">Context</div>
+        <div class="vocab-def">
+          what is going on in the <span class="blank"></span> and in the
+          <span class="blank"></span> when the message happens.
+        </div>
+      </div>
+    </div>
+
+    <!-- Speaker / Audience / Context Organizer -->
+    <div class="section">
+      <div class="section-title">Speaker, Audience & Context Organizer</div>
+      <div class="sac-grid">
+        <!-- Speaker -->
+        <div class="sac-box">
+          <div class="sac-title">Speaker – Who is she?</div>
+          <p class="sac-frame">
+            Sojourner Truth is a
+            <span class="blank"></span>
+            woman who used to be
+            <span class="blank"></span>
+            and now speaks for
+            <span class="blank"></span>.
+          </p>
+        </div>
+
+        <!-- Audience -->
+        <div class="sac-box">
+          <div class="sac-title">Audience – Who is she talking to that day?</div>
+          <p class="sac-frame">
+            Her main audience that day is
+            <span class="blank"></span>
+            at a
+            <span class="blank"></span>
+            in
+            <span class="blank"></span>.
+          </p>
+        </div>
+
+        <!-- Context -->
+        <div class="sac-box">
+          <div class="sac-title">Context – What is happening in the country?</div>
+          <p class="sac-frame">
+            The speech happens before the Civil War, when people in the North are arguing about
+            <span class="blank"></span>
+            and about
+            <span class="blank"></span>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Short Writing -->
+    <div class="section">
+      <div class="section-title">Short Writing – Paragraph</div>
+      <p class="prompt-text">
+        In your own words, explain the <strong>speaker</strong>, <strong>audience</strong>, and
+        <strong>context</strong> of Sojourner Truth’s speech “Ain’t I a Woman?”
+        Use at least <strong>one quote or detail</strong> from the speech.
+      </p>
+      <p class="paragraph-frame tiny-note">
+        Optional sentence starters: In the speech “Ain’t I a Woman?” the speaker is…
+        The main audience is… The context is… This matters because…
+      </p>
+      <div class="writing-lines">
+        <div class="writing-line"></div>
+        <div class="writing-line"></div>
+        <div class="writing-line"></div>
+        <div class="writing-line"></div>
+        <div class="writing-line"></div>
+        <div class="writing-line"></div>
+        <div class="writing-line"></div>
+        <div class="writing-line"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
