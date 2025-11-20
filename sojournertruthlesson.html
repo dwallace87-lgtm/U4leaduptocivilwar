@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Sojourner Truth – Speaker, Audience, Context Organizer</title>
+  <title>Ain't I a Woman? – Speaker, Audience, Context Worksheet</title>
   <style>
     * {
       box-sizing: border-box;
@@ -10,314 +10,383 @@
 
     body {
       margin: 0;
-      padding: 0;
+      padding: 24px;
       background: #ffffff;
-      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      color: #000000;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #111111;
+      display: flex;
+      justify-content: center;
     }
 
     .page {
       width: 8.5in;
-      max-width: 100%;
-      margin: 0 auto;
-      padding: 0.5in;
+      max-width: 8.5in;
+      min-height: 11in;
+      padding: 24px 32px;
+      border: 1px solid #cccccc;
     }
 
-    h1, h2, h3 {
-      margin: 0;
-      font-weight: 600;
-    }
-
-    .header-row {
-      display: grid;
-      grid-template-columns: 2fr 3fr;
-      gap: 12px;
-      margin-bottom: 12px;
-      align-items: center;
-    }
-
-    .header-left, .header-right {
-      border: 2px solid #000;
-      padding: 8px 10px;
-      font-size: 0.9rem;
-    }
-
-    .header-right h1 {
-      font-size: 1.1rem;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .label-line {
+    header {
       display: flex;
-      gap: 4px;
-      margin-bottom: 4px;
-      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
     }
 
-    .label {
-      min-width: 50px;
-      font-size: 0.85rem;
+    header div {
+      flex: 1 1 30%;
     }
 
-    .line {
-      flex: 1;
-      border-bottom: 1px solid #000;
-      height: 1.1em;
+    header span.label {
+      font-weight: 600;
+      margin-right: 4px;
+    }
+
+    .title-block {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .title-block h1 {
+      margin: 0;
+      font-size: 1.35rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .title-block h2 {
+      margin: 4px 0 0;
+      font-size: 1rem;
+      font-weight: 500;
     }
 
     .section {
-      border: 2px solid #000;
-      margin-bottom: 10px;
-      padding: 8px 10px;
+      margin-bottom: 16px;
+      padding: 10px 12px;
+      border: 1px solid #cccccc;
     }
 
     .section-title {
-      font-size: 0.95rem;
       font-weight: 700;
+      font-size: 1rem;
+      margin: 0 0 4px;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 4px;
+      letter-spacing: 0.03em;
     }
 
-    .objective-text {
+    .section-subtitle {
+      font-size: 0.9rem;
+      margin: 0 0 8px;
+      font-style: italic;
+    }
+
+    p {
+      margin: 4px 0;
       font-size: 0.9rem;
       line-height: 1.4;
     }
 
-    .prompt-text {
-      font-size: 0.85rem;
-      line-height: 1.4;
-      margin-bottom: 4px;
+    .numbered {
+      margin: 4px 0;
+      font-size: 0.9rem;
     }
 
-    .writing-lines {
-      border-top: 1px solid #000;
-      margin-top: 4px;
+    .numbered span.q-number {
+      font-weight: 600;
+      margin-right: 4px;
     }
 
-    .writing-line {
-      border-bottom: 1px solid #000;
+    .blank-line {
+      display: inline-block;
+      border-bottom: 1px solid #000000;
+      min-width: 140px;
       height: 1.1em;
     }
 
-    .vocab-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 3fr;
-      gap: 6px;
+    .long-blank {
+      display: block;
+      border-bottom: 1px solid #000000;
+      width: 100%;
+      height: 1.1em;
+      margin: 4px 0 8px;
+    }
+
+    .word-bank {
       font-size: 0.9rem;
-    }
-
-    .vocab-term {
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-    }
-
-    .vocab-def {
-      border-bottom: 1px solid #000;
-      padding-bottom: 2px;
-    }
-
-    .blank {
-      display: inline-block;
-      border-bottom: 1px solid #000;
-      min-width: 60px;
-      height: 1.05em;
-    }
-
-    .sac-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 6px;
-      font-size: 0.9rem;
-    }
-
-    .sac-box {
-      border: 1.5px solid #000;
-      padding: 6px 8px;
-      min-height: 70px;
-    }
-
-    .sac-title {
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 0.85rem;
       margin-bottom: 4px;
+      font-style: italic;
     }
 
-    .sac-frame {
-      font-size: 0.85rem;
-      line-height: 1.4;
+    .quote {
+      margin: 6px 0;
+      padding-left: 10px;
+      border-left: 3px solid #dddddd;
+      font-size: 0.88rem;
     }
 
-    .paragraph-frame {
-      font-size: 0.85rem;
+    .indent {
+      margin-left: 12px;
+    }
+
+    .paragraph-box {
+      border: 1px solid #bbbbbb;
+      padding: 8px 10px;
+      margin-top: 6px;
+    }
+
+    .line {
+      border-bottom: 1px solid #000000;
+      width: 100%;
+      height: 1.1em;
       margin-bottom: 4px;
-    }
-
-    .tiny-note {
-      font-size: 0.7rem;
-      opacity: 0.85;
     }
 
     @media print {
       body {
-        background: #ffffff;
+        padding: 0;
       }
       .page {
-        padding: 0.5in;
+        border: none;
+        margin: 0;
       }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <!-- Header -->
-    <div class="header-row">
-      <div class="header-left">
-        <div class="label-line">
-          <span class="label">Name:</span>
-          <span class="line"></span>
-        </div>
-        <div class="label-line">
-          <span class="label">Date:</span>
-          <span class="line"></span>
-        </div>
-        <div class="label-line">
-          <span class="label">Period:</span>
-          <span class="line"></span>
-        </div>
+    <header>
+      <div>
+        <span class="label">Name:</span> ______________________________
       </div>
-      <div class="header-right">
-        <h1>Sojourner Truth – Speaker, Audience & Context</h1>
+      <div>
+        <span class="label">Date:</span> ______________________________
       </div>
+      <div>
+        <span class="label">Class:</span> ______________________________
+      </div>
+    </header>
+
+    <div class="title-block">
+      <h1>"Ain't I a Woman?" – Sojourner Truth</h1>
+      <h2>Speaker, Audience, and Context Worksheet</h2>
     </div>
 
-    <!-- Objective -->
-    <div class="section">
-      <div class="section-title">Objective</div>
-      <p class="objective-text">
-        Today I will explain <strong>who Sojourner Truth is talking to</strong> (audience),
-        <strong>who she is</strong> (speaker), and <strong>what is going on around her</strong> (context)
-        in the speech “Ain’t I a Woman?”.
-      </p>
-    </div>
+    <!-- Part A -->
+    <section class="section">
+      <p class="section-title">Part A: Key Words</p>
+      <p class="section-subtitle">Use the word bank to fill in each blank.</p>
+      <p class="word-bank">Word bank: <strong>context</strong>, <strong>audience</strong>, <strong>speaker</strong></p>
 
-    <!-- Do Now -->
-    <div class="section">
-      <div class="section-title">Do Now</div>
-      <p class="prompt-text">
-        Think about TikTok, Instagram, or text messages.
+      <p class="numbered">
+        <span class="q-number">1.</span>
+        The <span class="blank-line"></span> is the person who is talking or writing.
       </p>
-      <p class="prompt-text">
-        1. When you talk to a <strong>teacher</strong>, how does your language change?
+      <p class="numbered">
+        <span class="q-number">2.</span>
+        The <span class="blank-line"></span> is the people who are meant to hear or read the message.
       </p>
-      <p class="prompt-text">
-        2. When you talk to your <strong>best friend</strong>, how does it change?
+      <p class="numbered">
+        <span class="q-number">3.</span>
+        The <span class="blank-line"></span> is what is going on in the world and in the room when the message happens.
       </p>
-      <p class="prompt-text">
-        3. Why do you change how you speak?
+    </section>
+
+    <!-- Part B -->
+    <section class="section">
+      <p class="section-title">Part B: The Speaker – Sojourner Truth (5 W's)</p>
+      <p class="section-subtitle">Fill in the blanks using what you learned from the lesson and the speech.</p>
+
+      <p><strong>Who?</strong></p>
+      <p class="numbered">
+        <span class="q-number">1.</span>
+        The speaker is <span class="long-blank"></span>
       </p>
-      <div class="writing-lines">
-        <div class="writing-line"></div>
-        <div class="writing-line"></div>
-        <div class="writing-line"></div>
-        <div class="writing-line"></div>
-        <div class="writing-line"></div>
+      <p class="numbered indent">
+        She is a <span class="long-blank"></span> woman.
+      </p>
+
+      <p><strong>What?</strong></p>
+      <p class="numbered">
+        <span class="q-number">3.</span>
+        Before this speech, she was <span class="long-blank"></span>
+      </p>
+      <p class="numbered indent">
+        Later, she became a <span class="long-blank"></span>
+      </p>
+
+      <p><strong>When?</strong></p>
+      <p class="numbered">
+        <span class="q-number">5.</span>
+        She lived and spoke in the <span class="long-blank"></span>
+      </p>
+      <p class="numbered indent">
+        This is before the <span class="long-blank"></span>
+      </p>
+
+      <p><strong>Where?</strong></p>
+      <p class="numbered">
+        <span class="q-number">7.</span>
+        She is speaking in the <span class="long-blank"></span>
+      </p>
+      <p class="numbered indent">
+        She is at a <span class="blank-line"></span> in <span class="blank-line"></span>
+      </p>
+
+      <p><strong>Why?</strong></p>
+      <p class="numbered">
+        <span class="q-number">9.</span>
+        She is speaking to fight against <span class="long-blank"></span>
+      </p>
+      <p class="numbered indent">
+        She is speaking to fight for <span class="long-blank"></span>
+      </p>
+    </section>
+
+    <!-- Part C -->
+    <section class="section">
+      <p class="section-title">Part C: Looking for Audience Clues</p>
+      <p class="section-subtitle">Read each line from the speech and answer the questions.</p>
+
+      <!-- Quote 1 -->
+      <p class="quote">
+        “I have as much muscle as any man, and can do as much work as any man.”
+      </p>
+      <p class="numbered">
+        <span class="q-number">1a.</span>
+        What does this line tell you about what some people in the audience might think about women?
+      </p>
+      <div class="line"></div>
+      <div class="line"></div>
+
+      <p class="numbered">
+        <span class="q-number">1b.</span>
+        Who is she trying to prove something to here: men, women, both, or someone else? Explain.
+      </p>
+      <div class="line"></div>
+      <div class="line"></div>
+
+      <!-- Quote 2 -->
+      <p class="quote">
+        “As for intellect, all I can say is, if women have a pint and man a quart, why can’t she have her little pint full?”
+      </p>
+      <p class="numbered">
+        <span class="q-number">2a.</span>
+        What is she saying about women’s minds and rights in this line?
+      </p>
+      <div class="line"></div>
+      <div class="line"></div>
+
+      <p class="numbered">
+        <span class="q-number">2b.</span>
+        What kind of audience would understand this joke about “pint” and “quart”?
+      </p>
+      <div class="line"></div>
+
+      <!-- Quote 3 -->
+      <p class="quote">
+        “I cant read, but I can hear. I have heard the bible and have learned that Eve caused man to sin.”
+      </p>
+      <p class="numbered">
+        <span class="q-number">3a.</span>
+        What does this tell you about the audience’s beliefs or what they care about?
+      </p>
+      <div class="line"></div>
+      <div class="line"></div>
+
+      <p class="numbered">
+        <span class="q-number">3b.</span>
+        Why do you think she brings up the Bible when she talks to this audience?
+      </p>
+      <div class="line"></div>
+      <div class="line"></div>
+
+      <!-- Quote 4 -->
+      <p class="quote">
+        “And how came Jesus into the world? Through God who created him and woman who bore him. Man, where is your part?”
+      </p>
+      <p class="numbered">
+        <span class="q-number">4a.</span>
+        Who is she speaking directly to in this line?
+      </p>
+      <div class="line"></div>
+
+      <p class="numbered">
+        <span class="q-number">4b.</span>
+        What is she trying to make this audience think or feel?
+      </p>
+      <div class="line"></div>
+      <div class="line"></div>
+    </section>
+
+    <!-- Part D -->
+    <section class="section">
+      <p class="section-title">Part D: Speaker, Audience, and Context Organizer</p>
+      <p class="section-subtitle">Use your notes and the speech to complete the organizer.</p>
+
+      <p><strong>Speaker</strong></p>
+      <p>Who is giving the speech? What important facts about her life matter for this speech?</p>
+      <div class="paragraph-box">
+        <p>
+          Sojourner Truth is a <span class="blank-line"></span> who used to be
+          <span class="blank-line"></span> and now <span class="blank-line"></span>.
+        </p>
       </div>
-    </div>
 
-    <!-- Vocabulary -->
-    <div class="section">
-      <div class="section-title">Key Vocabulary (Fill in the blanks)</div>
-      <div class="vocab-grid">
-        <div class="vocab-term">Speaker</div>
-        <div class="vocab-def">
-          the person <span class="blank"></span> or <span class="blank"></span>.
-        </div>
-
-        <div class="vocab-term">Audience</div>
-        <div class="vocab-def">
-          the people who are meant to <span class="blank"></span> or
-          <span class="blank"></span> the message.
-        </div>
-
-        <div class="vocab-term">Context</div>
-        <div class="vocab-def">
-          what is going on in the <span class="blank"></span> and in the
-          <span class="blank"></span> when the message happens.
-        </div>
+      <p><strong>Audience</strong></p>
+      <p>Who is she talking to that day? Think about the people in the room and who might read the speech later.</p>
+      <div class="paragraph-box">
+        <p>
+          Her main audience that day is <span class="blank-line"></span> at a
+          <span class="blank-line"></span> in <span class="blank-line"></span>.
+        </p>
       </div>
-    </div>
 
-    <!-- Speaker / Audience / Context Organizer -->
-    <div class="section">
-      <div class="section-title">Speaker, Audience & Context Organizer</div>
-      <div class="sac-grid">
-        <!-- Speaker -->
-        <div class="sac-box">
-          <div class="sac-title">Speaker – Who is she?</div>
-          <p class="sac-frame">
-            Sojourner Truth is a
-            <span class="blank"></span>
-            woman who used to be
-            <span class="blank"></span>
-            and now speaks for
-            <span class="blank"></span>.
-          </p>
-        </div>
-
-        <!-- Audience -->
-        <div class="sac-box">
-          <div class="sac-title">Audience – Who is she talking to that day?</div>
-          <p class="sac-frame">
-            Her main audience that day is
-            <span class="blank"></span>
-            at a
-            <span class="blank"></span>
-            in
-            <span class="blank"></span>.
-          </p>
-        </div>
-
-        <!-- Context -->
-        <div class="sac-box">
-          <div class="sac-title">Context – What is happening in the country?</div>
-          <p class="sac-frame">
-            The speech happens before the Civil War, when people in the North are arguing about
-            <span class="blank"></span>
-            and about
-            <span class="blank"></span>.
-          </p>
-        </div>
+      <p><strong>Context</strong></p>
+      <p>What is happening in the country at that time? What big issues are connected to this speech?</p>
+      <div class="paragraph-box">
+        <p>
+          The speech happens before the Civil War, when people in the North are arguing about
+          <span class="blank-line"></span> and about <span class="blank-line"></span>.
+        </p>
       </div>
-    </div>
+    </section>
 
-    <!-- Short Writing -->
-    <div class="section">
-      <div class="section-title">Short Writing – Paragraph</div>
-      <p class="prompt-text">
-        In your own words, explain the <strong>speaker</strong>, <strong>audience</strong>, and
-        <strong>context</strong> of Sojourner Truth’s speech “Ain’t I a Woman?”
-        Use at least <strong>one quote or detail</strong> from the speech.
+    <!-- Part E -->
+    <section class="section">
+      <p class="section-title">Part E: Short Paragraph Response</p>
+      <p class="section-subtitle">
+        Use your organizer to write a paragraph. Use at least one quote or detail from the speech.
       </p>
-      <p class="paragraph-frame tiny-note">
-        Optional sentence starters: In the speech “Ain’t I a Woman?” the speaker is…
-        The main audience is… The context is… This matters because…
+
+      <p><strong>Prompt:</strong></p>
+      <p>
+        In your own words, explain the speaker, audience, and context of Sojourner Truth’s speech
+        “Ain’t I a Woman?” Use at least one quote or detail from the speech.
       </p>
-      <div class="writing-lines">
-        <div class="writing-line"></div>
-        <div class="writing-line"></div>
-        <div class="writing-line"></div>
-        <div class="writing-line"></div>
-        <div class="writing-line"></div>
-        <div class="writing-line"></div>
-        <div class="writing-line"></div>
-        <div class="writing-line"></div>
+
+      <p style="font-size: 0.85rem; margin-top: 6px;">
+        Sentence starters if you need them:
+      </p>
+      <p style="font-size: 0.85rem; margin-left: 12px;">
+        In the speech “Ain’t I a Woman?” the speaker is ____________________________.<br />
+        She is important because ________________________________________________.<br />
+        Her main audience is ___________________________________________________.<br />
+        The context of the speech is ____________________________________________.<br />
+        One line that shows this is, “___________________________________________.”<br />
+        This matters because ___________________________________________________.
+      </p>
+
+      <div class="paragraph-box">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
       </div>
-    </div>
+    </section>
   </div>
 </body>
 </html>
