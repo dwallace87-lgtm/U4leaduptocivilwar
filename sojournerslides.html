@@ -48,7 +48,7 @@
         0 0 0 1px rgba(0, 0, 0, 0.15);
     }
 
-    /* Fancy frame */
+    /* Fancy frame with multiple borders and corner ornaments */
     .deck::before {
       content: "";
       position: absolute;
@@ -345,37 +345,6 @@
       background: #000;
     }
 
-    /* Language tabs for Slide 1 */
-    .lang-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 4px 0 10px;
-    }
-
-    .lang-tabs button {
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--bg);
-      font-size: 0.85rem;
-      padding: 4px 12px;
-      cursor: pointer;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .lang-tabs button.active {
-      background: var(--accent-soft);
-    }
-
-    .lang-panel {
-      display: none;
-    }
-
-    .lang-panel.active {
-      display: block;
-    }
-
     .nav {
       position: absolute;
       left: 0;
@@ -497,43 +466,12 @@
 
             <div class="prompt-box">
               <div class="prompt-label">Directions</div>
-
-              <!-- Language tabs -->
-              <div class="lang-tabs">
-                <button type="button" data-lang="en" class="active">English</button>
-                <button type="button" data-lang="es">Español</button>
-                <button type="button" data-lang="ar">العربية</button>
-              </div>
-
-              <!-- English panel -->
-              <div class="lang-panel lang-en active">
-                <p>Answer in your notebook or on the Do Now space on your paper.</p>
-                <ol>
-                  <li>Do you think one speech can change people’s minds? <span class="highlight">Why or why not?</span></li>
-                  <li>Write about one time you saw or heard someone speak up about something unfair.</li>
-                </ol>
-                <p class="note">Write in complete sentences. Be real and honest. This is about your thinking.</p>
-              </div>
-
-              <!-- Spanish panel -->
-              <div class="lang-panel lang-es">
-                <p>Responde en tu cuaderno o en el espacio del Do Now en tu hoja.</p>
-                <ol>
-                  <li>¿Crees que un solo discurso puede cambiar la opinión de las personas? <span class="highlight">¿Por qué sí o por qué no?</span></li>
-                  <li>Escribe sobre una vez en que viste o escuchaste a alguien hablar contra algo injusto.</li>
-                </ol>
-                <p class="note">Escribe en oraciones completas. Sé real y honesto/a. Esto se trata de lo que tú piensas.</p>
-              </div>
-
-              <!-- Arabic panel -->
-              <div class="lang-panel lang-ar" dir="rtl">
-                <p>أجب في دفتر الملاحظات أو في خانة الـ Do Now على الورقة.</p>
-                <ol>
-                  <li>هل تعتقد أن خطابًا واحدًا يمكن أن يغيّر عقول الناس؟ <span class="highlight">لماذا نعم أو لماذا لا؟</span></li>
-                  <li>اكتب عن مرة رأيتَ أو سمعتَ فيها شخصًا يتكلم ضد شيء غير عادل.</li>
-                </ol>
-                <p class="note">اكتب بجمل كاملة. كن صادقًا وحقيقيًا. هذا عن أفكارك أنت.</p>
-              </div>
+              <p>Answer in your notebook or on the Do Now space on your paper.</p>
+              <ol>
+                <li>Do you think one speech can change people’s minds? <span class="highlight">Why or why not?</span></li>
+                <li>Write about one time you saw or heard someone speak up about something unfair.</li>
+              </ol>
+              <p class="note">Write in complete sentences. Be real and honest. This is about your thinking.</p>
             </div>
           </div>
 
@@ -1037,4 +975,165 @@
     </section>
 
     <!-- SLIDE 16 -->
-    <section class="slide
+    <section class="slide" data-slide="16">
+      <div class="slide-header">
+        <div class="slide-heading-group">
+          <div class="slide-meta">Organizer</div>
+          <div class="slide-title">Part D</div>
+          <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-gem"></div>
+          </div>
+        </div>
+        <div class="part-label">Speaker · Audience · Context</div>
+      </div>
+
+      <div class="slide-body">
+        <h2>Putting It All Together</h2>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Use Your Notes</div>
+          <p>Use your notes from the <strong>video</strong> (Part B) and the <strong>speech questions</strong> (Part C) to complete Part D of your worksheet.</p>
+        </div>
+
+        <h3>Speaker</h3>
+        <p><strong>Sojourner Truth is a ______ who used to be ______ and now ______.</strong></p>
+
+        <h3>Audience</h3>
+        <p><strong>Her main audience that day is ______ at a ______ in ______.</strong></p>
+
+        <h3>Context</h3>
+        <p><strong>The speech happens before the Civil War, when people in the North are arguing about ______ and about ______.</strong></p>
+
+        <p class="note">Fill in each blank with clear information in your own words.</p>
+      </div>
+    </section>
+
+    <!-- SLIDE 17 -->
+    <section class="slide" data-slide="17">
+      <div class="slide-header">
+        <div class="slide-heading-group">
+          <div class="slide-meta">Reflection</div>
+          <div class="slide-title">Part E</div>
+          <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-gem"></div>
+          </div>
+        </div>
+        <div class="part-label">Why It Still Matters</div>
+      </div>
+
+      <div class="slide-body">
+        <h2>Your Line · Your Voice</h2>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Part E On Your Worksheet</div>
+          <ol>
+            <li>
+              <strong>Choose one line</strong> from Sojourner Truth’s speech that stands out to you.  
+              <br />Write the line in the box.
+            </li>
+            <li>
+              What does this line show about the <span class="highlight">speaker</span>, the <span class="highlight">audience</span>, or the <span class="highlight">context</span>?  
+              <br />Sentence starter:  
+              <em>This line shows that Sojourner Truth is / her audience is / the time period is…</em>
+            </li>
+            <li>
+              Why does this line matter to you or to people today?  
+              <br />Sentence starter:  
+              <em>This line matters today because…</em>
+            </li>
+          </ol>
+        </div>
+
+        <p class="note">Pick a line that actually hits you. Not just the first one you see.</p>
+      </div>
+    </section>
+
+    <!-- SLIDE 18 -->
+    <section class="slide" data-slide="18">
+      <div class="slide-header">
+        <div class="slide-heading-group">
+          <div class="slide-meta">Exit Ticket</div>
+          <div class="slide-title">Check Your Work</div>
+          <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-gem"></div>
+          </div>
+        </div>
+        <div class="part-label">Before You Leave</div>
+      </div>
+
+      <div class="slide-body">
+        <h2>Ready To Turn In?</h2>
+
+        <h3>Make sure these parts are complete:</h3>
+        <ul>
+          <li><strong>Part A</strong> – Key words: speaker, audience, context</li>
+          <li><strong>Part B</strong> – 5 W's about Sojourner Truth and the video</li>
+          <li><strong>Part C</strong> – Audience clues from the speech</li>
+          <li><strong>Part D</strong> – Speaker, Audience, and Context organizer</li>
+          <li><strong>Part E</strong> – Reflection: why this speech still matters</li>
+        </ul>
+
+        <p class="note">Your completed worksheet is your exit ticket for today.</p>
+      </div>
+    </section>
+
+    <!-- NAV -->
+    <div class="nav">
+      <button id="prevBtn" disabled>
+        ◀ Previous
+      </button>
+      <div class="nav-status" id="navStatus">
+        Slide 1 of 18
+      </div>
+      <button id="nextBtn">
+        Next ▶
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const navStatus = document.getElementById("navStatus");
+
+    let currentIndex = 0;
+
+    function updateSlides() {
+      slides.forEach((s, i) => {
+        s.classList.toggle("active", i === currentIndex);
+      });
+
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex === slides.length - 1;
+      navStatus.textContent = "Slide " + (currentIndex + 1) + " of " + slides.length;
+    }
+
+    prevBtn.addEventListener("click", () => {
+      if (currentIndex > 0) {
+        currentIndex -= 1;
+        updateSlides();
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (currentIndex < slides.length - 1) {
+        currentIndex += 1;
+        updateSlides();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") {
+        nextBtn.click();
+      }
+      if (e.key === "ArrowLeft") {
+        prevBtn.click();
+      }
+    });
+  </script>
+</body>
+</html>
