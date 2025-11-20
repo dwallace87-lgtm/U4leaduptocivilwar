@@ -311,7 +311,22 @@
       border-radius: 12px;
       border: 2px solid var(--border);
       box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-      margin: 8px 0 4px;
+      margin: 0;
+    }
+
+    .map-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 18px;
+      margin: 10px 0 6px;
+      align-items: flex-start;
+    }
+
+    .map-caption {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      margin-top: 4px;
     }
 
     .video-wrapper {
@@ -410,7 +425,8 @@
         font-size: 1.02rem;
       }
 
-      .two-column {
+      .two-column,
+      .map-grid {
         grid-template-columns: 1fr;
       }
 
@@ -764,7 +780,7 @@
       </div>
     </section>
 
-    <!-- SLIDE 11 (MAP) -->
+    <!-- SLIDE 11 (MAPS SIDE BY SIDE) -->
     <section class="slide" data-slide="11">
       <div class="slide-header">
         <div class="slide-heading-group">
@@ -782,14 +798,30 @@
         <h2>Akron In A Divided Country</h2>
 
         <div class="prompt-box">
-          <div class="prompt-label">Look At The Map</div>
-          <p>Find <strong>Akron</strong> on this map of the United States.</p>
-          <img
-            src="https://ontheworldmap.com/usa/city/akron/akron-location-on-the-us-map-min.jpg"
-            alt="Akron, Ohio on a map of the United States"
-            class="map-image"
-          />
-          <p class="note">Notice that Akron is in <strong>Ohio</strong>, near the Great Lakes, in the free North.</p>
+          <div class="prompt-label">Look At The Maps</div>
+          <p>Use both maps to see <strong>where Akron is</strong> and <strong>how the country is split</strong> over slavery.</p>
+
+          <div class="map-grid">
+            <div>
+              <img
+                src="https://ontheworldmap.com/usa/city/akron/akron-location-on-the-us-map-min.jpg"
+                alt="Akron, Ohio on a map of the United States"
+                class="map-image"
+              />
+              <p class="map-caption">Map 1: Akron, Ohio’s location in the United States.</p>
+            </div>
+
+            <div>
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/1/1d/US_SlaveFree1861.gif"
+                alt="Map of free and slave states in 1861"
+                class="map-image"
+              />
+              <p class="map-caption">Map 2: 1861 map showing <span class="highlight">free states</span> and <span class="highlight">slave states</span>.</p>
+            </div>
+          </div>
+
+          <p class="note">Notice that Akron is in <strong>Ohio</strong>, a free state in the North.</p>
         </div>
 
         <ul>
