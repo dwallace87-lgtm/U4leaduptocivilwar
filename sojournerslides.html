@@ -43,7 +43,6 @@
       position: relative;
       padding: 40px 50px 88px;
       overflow: hidden;
-      /* outer shadow for modern contrast */
       box-shadow:
         0 24px 60px rgba(0, 0, 0, 0.18),
         0 0 0 1px rgba(0, 0, 0, 0.15);
@@ -289,9 +288,46 @@
 
     .two-column {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
       gap: 26px;
-      margin-top: 12px;
+      margin-top: 6px;
+      align-items: flex-start;
+    }
+
+    .portrait-image {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 16px;
+      border: 2px solid var(--border);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+      background: #f8f4ec;
+    }
+
+    .map-image {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 2px solid var(--border);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+      margin: 8px 0 4px;
+    }
+
+    .video-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 14px 0 10px;
+    }
+
+    .video-frame {
+      width: 100%;
+      max-width: 800px;
+      aspect-ratio: 16 / 9;
+      border-radius: 14px;
+      border: 2px solid var(--border);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+      background: #000;
     }
 
     .nav {
@@ -408,22 +444,71 @@
       </div>
 
       <div class="slide-body">
-        <h2>Can One Speech Change Minds?</h2>
+        <div class="two-column">
+          <div>
+            <h2>Can One Speech Change Minds?</h2>
 
-        <div class="prompt-box">
-          <div class="prompt-label">Directions</div>
-          <p>Answer in your notebook or on the Do Now space on your paper.</p>
-          <ol>
-            <li>Do you think one speech can change people’s minds? <span class="highlight">Why or why not?</span></li>
-            <li>Write about one time you saw or heard someone speak up about something unfair.</li>
-          </ol>
-          <p class="note">Write in complete sentences. Be real and honest. This is about your thinking.</p>
+            <div class="prompt-box">
+              <div class="prompt-label">Directions</div>
+              <p>Answer in your notebook or on the Do Now space on your paper.</p>
+              <ol>
+                <li>Do you think one speech can change people’s minds? <span class="highlight">Why or why not?</span></li>
+                <li>Write about one time you saw or heard someone speak up about something unfair.</li>
+              </ol>
+              <p class="note">Write in complete sentences. Be real and honest. This is about your thinking.</p>
+            </div>
+          </div>
+
+          <div>
+            <img
+              src="https://www.womenshistory.org/sites/default/files/styles/main_image/public/images/2020-08/Sojourner%20Truth%20Square.png"
+              alt="Portrait of Sojourner Truth"
+              class="portrait-image"
+            />
+            <p class="note">Sojourner Truth, a Black woman who fought against slavery and for women’s rights.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 2 -->
+    <!-- SLIDE 2 · ABOLITIONIST -->
     <section class="slide" data-slide="2">
+      <div class="slide-header">
+        <div class="slide-heading-group">
+          <div class="slide-meta">Key Word Focus</div>
+          <div class="slide-title">ABOLITIONIST</div>
+          <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-gem"></div>
+          </div>
+        </div>
+        <div class="part-label">Unit Vocabulary</div>
+      </div>
+
+      <div class="slide-body">
+        <h2>What Is An Abolitionist?</h2>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Break It Down</div>
+          <ul>
+            <li><strong>ABOLISH</strong> = to <span class="highlight">end</span> something unfair or wrong.</li>
+            <li><strong>ABOLITION</strong> = the <span class="highlight">ending of slavery</span>.</li>
+            <li><strong>-IST</strong> = a person who believes in or fights for something.</li>
+          </ul>
+          <p><strong>ABOLITIONIST = a person who wants slavery to end and works against it.</strong></p>
+        </div>
+
+        <h3>In This Unit</h3>
+        <ul>
+          <li>Sojourner Truth is an <strong>abolitionist</strong> because she speaks out against slavery.</li>
+          <li>Other abolitionists use speeches, newspapers, and organizing to fight slavery.</li>
+          <li>When you see the word <span class="highlight">abolitionist</span>, think: <strong>“person fighting to end slavery.”</strong></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SLIDE 3 -->
+    <section class="slide" data-slide="3">
       <div class="slide-header">
         <div class="slide-heading-group">
           <div class="slide-meta">Unit · Abolition and Women's Rights</div>
@@ -449,8 +534,8 @@
       </div>
     </section>
 
-    <!-- SLIDE 3 -->
-    <section class="slide" data-slide="3">
+    <!-- SLIDE 4 -->
+    <section class="slide" data-slide="4">
       <div class="slide-header">
         <div class="slide-heading-group">
           <div class="slide-meta">Class Roadmap</div>
@@ -466,10 +551,12 @@
       <div class="slide-body">
         <h2>How Class Will Run</h2>
         <ol>
-          <li><strong>Do Now</strong> and Objective</li>
+          <li><strong>Do Now</strong> and Key Word: Abolitionist</li>
+          <li>Objective and Agenda</li>
           <li>Key Words: <span class="highlight">speaker, audience, context</span> (Part A)</li>
           <li>Watch TED style video about Sojourner Truth (Part B)</li>
           <li>Set the scene for the speech in Akron, Ohio</li>
+          <li>See where Akron is on the map and which side it connects to</li>
           <li>Special guest: <strong>Trishia Cadette</strong> reads <em>"Ain't I a Woman?"</em></li>
           <li>Audience clues from the speech (Part C)</li>
           <li>Speaker, Audience, Context organizer (Part D)</li>
@@ -478,8 +565,8 @@
       </div>
     </section>
 
-    <!-- SLIDE 4 -->
-    <section class="slide" data-slide="4">
+    <!-- SLIDE 5 -->
+    <section class="slide" data-slide="5">
       <div class="slide-header">
         <div class="slide-heading-group">
           <div class="slide-meta">Key Concepts</div>
@@ -510,8 +597,8 @@
       </div>
     </section>
 
-    <!-- SLIDE 5 -->
-    <section class="slide" data-slide="5">
+    <!-- SLIDE 6 -->
+    <section class="slide" data-slide="6">
       <div class="slide-header">
         <div class="slide-heading-group">
           <div class="slide-meta">Key Word One</div>
@@ -540,8 +627,8 @@
       </div>
     </section>
 
-    <!-- SLIDE 6 -->
-    <section class="slide" data-slide="6">
+    <!-- SLIDE 7 -->
+    <section class="slide" data-slide="7">
       <div class="slide-header">
         <div class="slide-heading-group">
           <div class="slide-meta">Key Words Two and Three</div>
@@ -567,8 +654,8 @@
       </div>
     </section>
 
-    <!-- SLIDE 7 -->
-    <section class="slide" data-slide="7">
+    <!-- SLIDE 8 -->
+    <section class="slide" data-slide="8">
       <div class="slide-header">
         <div class="slide-heading-group">
           <div class="slide-meta">Video Notes</div>
@@ -602,8 +689,51 @@
       </div>
     </section>
 
-    <!-- SLIDE 8 (NEW SCENE SETTER) -->
-    <section class="slide" data-slide="8">
+    <!-- SLIDE 9 (VIDEO EMBED) -->
+    <section class="slide" data-slide="9">
+      <div class="slide-header">
+        <div class="slide-heading-group">
+          <div class="slide-meta">Watch The Video</div>
+          <div class="slide-title">TED-Ed · Sojourner Truth</div>
+          <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-gem"></div>
+          </div>
+        </div>
+        <div class="part-label">Video</div>
+      </div>
+
+      <div class="slide-body">
+        <h2>"The Electrifying Speeches of Sojourner Truth"</h2>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Instructions</div>
+          <ul>
+            <li>Watch the video all the way through.</li>
+            <li>Use your Part B 5 W’s chart to take notes as you watch.</li>
+            <li>Pause if you need to replay a part to catch important details.</li>
+          </ul>
+        </div>
+
+        <div class="video-wrapper">
+          <iframe
+            class="video-frame"
+            src="https://drive.google.com/file/d/1-x3ZUgwul566Igzdb2axSJiX2zJjErfv/preview"
+            allow="autoplay"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <p class="note">
+          <strong>Source:</strong>
+          Berry, Daina Ramey. "The Electrifying Speeches of Sojourner Truth." TED-Ed, Apr. 2020,
+          <em>ed.ted.com/lessons/the-electrifying-speeches-of-sojourner-truth-daina-ramey-berry</em>.
+        </p>
+      </div>
+    </section>
+
+    <!-- SLIDE 10 -->
+    <section class="slide" data-slide="10">
       <div class="slide-header">
         <div class="slide-heading-group">
           <div class="slide-meta">Setting The Scene</div>
@@ -634,8 +764,44 @@
       </div>
     </section>
 
-    <!-- SLIDE 9 -->
-    <section class="slide" data-slide="9">
+    <!-- SLIDE 11 (MAP) -->
+    <section class="slide" data-slide="11">
+      <div class="slide-header">
+        <div class="slide-heading-group">
+          <div class="slide-meta">Map & Sectionalism</div>
+          <div class="slide-title">Where Is Akron?</div>
+          <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-gem"></div>
+          </div>
+        </div>
+        <div class="part-label">North vs South</div>
+      </div>
+
+      <div class="slide-body">
+        <h2>Akron In A Divided Country</h2>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Look At The Map</div>
+          <p>Find <strong>Akron</strong> on this map of the United States.</p>
+          <img
+            src="https://ontheworldmap.com/usa/city/akron/akron-location-on-the-us-map-min.jpg"
+            alt="Akron, Ohio on a map of the United States"
+            class="map-image"
+          />
+          <p class="note">Notice that Akron is in <strong>Ohio</strong>, near the Great Lakes, in the free North.</p>
+        </div>
+
+        <ul>
+          <li>Before the Civil War, the country is splitting into two big sections: states that allow <span class="highlight">slavery</span> and states that do not.</li>
+          <li>Ohio is a <strong>free state</strong>, part of the Northern states that are arguing against the spread of slavery.</li>
+          <li>People in places like Akron are caught in debates about <strong>slavery</strong>, <strong>race</strong>, and <strong>women’s rights</strong>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SLIDE 12 -->
+    <section class="slide" data-slide="12">
       <div class="slide-header">
         <div class="slide-heading-group">
           <div class="slide-meta">Live Reading</div>
@@ -664,8 +830,8 @@
       </div>
     </section>
 
-    <!-- SLIDE 10 -->
-    <section class="slide" data-slide="10">
+    <!-- SLIDE 13 -->
+    <section class="slide" data-slide="13">
       <div class="slide-header">
         <div class="slide-heading-group">
           <div class="slide-meta">Audience Clues One</div>
@@ -699,8 +865,8 @@
       </div>
     </section>
 
-    <!-- SLIDE 11 -->
-    <section class="slide" data-slide="11">
+    <!-- SLIDE 14 -->
+    <section class="slide" data-slide="14">
       <div class="slide-header">
         <div class="slide-heading-group">
           <div class="slide-meta">Audience Clues Two</div>
@@ -733,8 +899,8 @@
       </div>
     </section>
 
-    <!-- SLIDE 12 -->
-    <section class="slide" data-slide="12">
+    <!-- SLIDE 15 -->
+    <section class="slide" data-slide="15">
       <div class="slide-header">
         <div class="slide-heading-group">
           <div class="slide-meta">Audience Clues Three and Four</div>
@@ -776,8 +942,8 @@
       </div>
     </section>
 
-    <!-- SLIDE 13 -->
-    <section class="slide" data-slide="13">
+    <!-- SLIDE 16 -->
+    <section class="slide" data-slide="16">
       <div class="slide-header">
         <div class="slide-heading-group">
           <div class="slide-meta">Organizer</div>
@@ -811,8 +977,8 @@
       </div>
     </section>
 
-    <!-- SLIDE 14 -->
-    <section class="slide" data-slide="14">
+    <!-- SLIDE 17 -->
+    <section class="slide" data-slide="17">
       <div class="slide-header">
         <div class="slide-heading-group">
           <div class="slide-meta">Reflection</div>
@@ -852,8 +1018,8 @@
       </div>
     </section>
 
-    <!-- SLIDE 15 -->
-    <section class="slide" data-slide="15">
+    <!-- SLIDE 18 -->
+    <section class="slide" data-slide="18">
       <div class="slide-header">
         <div class="slide-heading-group">
           <div class="slide-meta">Exit Ticket</div>
@@ -888,7 +1054,7 @@
         ◀ Previous
       </button>
       <div class="nav-status" id="navStatus">
-        Slide 1 of 15
+        Slide 1 of 18
       </div>
       <button id="nextBtn">
         Next ▶
