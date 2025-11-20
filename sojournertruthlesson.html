@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Ain't I a Woman? – Speaker, Audience, Context Worksheet</title>
+  <title>Ain't I a Woman? - Speaker, Audience, Context Worksheet</title>
   <style>
     * {
       box-sizing: border-box;
@@ -142,6 +142,44 @@
       margin-bottom: 4px;
     }
 
+    /* 5 W's graphic organizer styles */
+    .fivew-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .fivew-card {
+      border: 2px solid #000000;
+      padding: 8px 10px;
+      min-height: 110px;
+    }
+
+    .fivew-header {
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      text-align: center;
+      border-bottom: 1px solid #000000;
+      padding-bottom: 2px;
+    }
+
+    .fivew-question {
+      font-size: 0.85rem;
+      margin: 4px 0 6px;
+      font-style: italic;
+    }
+
+    .fivew-line {
+      display: block;
+      border-bottom: 1px solid #000000;
+      width: 100%;
+      height: 1.1em;
+      margin: 2px 0 6px;
+    }
+
     @media print {
       body {
         padding: 0;
@@ -168,7 +206,7 @@
     </header>
 
     <div class="title-block">
-      <h1>"Ain't I a Woman?" – Sojourner Truth</h1>
+      <h1>"Ain't I a Woman?" - Sojourner Truth</h1>
       <h2>Speaker, Audience, and Context Worksheet</h2>
     </div>
 
@@ -192,55 +230,62 @@
       </p>
     </section>
 
-    <!-- Part B -->
+    <!-- Part B: 5 W's graphic organizer -->
     <section class="section">
-      <p class="section-title">Part B: The Speaker – Sojourner Truth (5 W's)</p>
-      <p class="section-subtitle">Fill in the blanks using what you learned from the lesson and the speech.</p>
+      <p class="section-title">Part B: The Speaker - Sojourner Truth (5 W's)</p>
+      <p class="section-subtitle">Fill in the graphic organizer using what you learned from the lesson and the speech.</p>
 
-      <p><strong>Who?</strong></p>
-      <p class="numbered">
-        <span class="q-number">1.</span>
-        The speaker is <span class="long-blank"></span>
-      </p>
-      <p class="numbered indent">
-        She is a <span class="long-blank"></span> woman.
-      </p>
+      <div class="fivew-grid">
+        <!-- Who -->
+        <div class="fivew-card">
+          <div class="fivew-header">Who?</div>
+          <p class="fivew-question">Who is talking in this speech?</p>
+          <p style="font-size: 0.85rem;">The speaker is:</p>
+          <span class="fivew-line"></span>
+          <p style="font-size: 0.85rem;">She is a __________ woman.</p>
+          <span class="fivew-line"></span>
+        </div>
 
-      <p><strong>What?</strong></p>
-      <p class="numbered">
-        <span class="q-number">3.</span>
-        Before this speech, she was <span class="long-blank"></span>
-      </p>
-      <p class="numbered indent">
-        Later, she became a <span class="long-blank"></span>
-      </p>
+        <!-- What -->
+        <div class="fivew-card">
+          <div class="fivew-header">What?</div>
+          <p class="fivew-question">What was her life like before this speech?</p>
+          <p style="font-size: 0.85rem;">Before this speech, she was:</p>
+          <span class="fivew-line"></span>
+          <p style="font-size: 0.85rem;">Later, she became a:</p>
+          <span class="fivew-line"></span>
+        </div>
 
-      <p><strong>When?</strong></p>
-      <p class="numbered">
-        <span class="q-number">5.</span>
-        She lived and spoke in the <span class="long-blank"></span>
-      </p>
-      <p class="numbered indent">
-        This is before the <span class="long-blank"></span>
-      </p>
+        <!-- When -->
+        <div class="fivew-card">
+          <div class="fivew-header">When?</div>
+          <p class="fivew-question">When did she live and give this speech?</p>
+          <p style="font-size: 0.85rem;">She lived and spoke in the:</p>
+          <span class="fivew-line"></span>
+          <p style="font-size: 0.85rem;">This is before the:</p>
+          <span class="fivew-line"></span>
+        </div>
 
-      <p><strong>Where?</strong></p>
-      <p class="numbered">
-        <span class="q-number">7.</span>
-        She is speaking in the <span class="long-blank"></span>
-      </p>
-      <p class="numbered indent">
-        She is at a <span class="blank-line"></span> in <span class="blank-line"></span>
-      </p>
+        <!-- Where -->
+        <div class="fivew-card">
+          <div class="fivew-header">Where?</div>
+          <p class="fivew-question">Where is she in the United States when she speaks?</p>
+          <p style="font-size: 0.85rem;">She is speaking in the:</p>
+          <span class="fivew-line"></span>
+          <p style="font-size: 0.85rem;">She is at a ________ in ________.</p>
+          <span class="fivew-line"></span>
+        </div>
 
-      <p><strong>Why?</strong></p>
-      <p class="numbered">
-        <span class="q-number">9.</span>
-        She is speaking to fight against <span class="long-blank"></span>
-      </p>
-      <p class="numbered indent">
-        She is speaking to fight for <span class="long-blank"></span>
-      </p>
+        <!-- Why -->
+        <div class="fivew-card">
+          <div class="fivew-header">Why?</div>
+          <p class="fivew-question">Why is she giving this speech? What is she fighting for?</p>
+          <p style="font-size: 0.85rem;">She is speaking to fight against:</p>
+          <span class="fivew-line"></span>
+          <p style="font-size: 0.85rem;">She is speaking to fight for:</p>
+          <span class="fivew-line"></span>
+        </div>
+      </div>
     </section>
 
     <!-- Part C -->
