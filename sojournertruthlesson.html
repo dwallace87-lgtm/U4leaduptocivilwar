@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Ain't I a Woman? - Speaker, Audience, Context Worksheet</title>
+  <title>Ain't I a Woman? - Sojourner Truth Worksheet</title>
   <style>
     * {
       box-sizing: border-box;
@@ -44,21 +44,43 @@
     }
 
     .title-block {
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
       margin-bottom: 16px;
     }
 
-    .title-block h1 {
-      margin: 0;
-      font-size: 1.35rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+    .title-text {
+      flex: 1 1 auto;
     }
 
-    .title-block h2 {
+    .title-text h1 {
+      margin: 0;
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: center;
+    }
+
+    .title-text h2 {
       margin: 4px 0 0;
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 500;
+      text-align: center;
+    }
+
+    .title-image {
+      flex: 0 0 auto;
+    }
+
+    .title-image img {
+      max-height: 130px;
+      width: auto;
+      display: block;
+      border: 1px solid #dddddd;
+      padding: 4px;
+      background: #ffffff;
     }
 
     .section {
@@ -125,10 +147,6 @@
       font-size: 0.88rem;
     }
 
-    .indent {
-      margin-left: 12px;
-    }
-
     .paragraph-box {
       border: 1px solid #bbbbbb;
       padding: 8px 10px;
@@ -142,7 +160,7 @@
       margin-bottom: 4px;
     }
 
-    /* 5 W's organizer styles (like the image) */
+    /* 5 W's organizer styles */
     .fivew-wrapper-title {
       font-weight: 700;
       text-align: center;
@@ -190,6 +208,7 @@
       border: 1px solid #e1e1e1;
       min-height: 60px;
       padding: 4px 5px;
+      font-size: 0.85rem;
     }
 
     .fivew-title-box {
@@ -226,8 +245,15 @@
     </header>
 
     <div class="title-block">
-      <h1>"Ain't I a Woman?" - Sojourner Truth</h1>
-      <h2>Speaker, Audience, and Context Worksheet</h2>
+      <div class="title-text">
+        <h1>"Ain't I a Woman?" - Sojourner Truth</h1>
+        <h2>Speaker, Audience, and Context Worksheet</h2>
+      </div>
+      <div class="title-image">
+        <!-- Uses the image URL you gave -->
+        <img src="https://lh3.googleusercontent.com/d/1z0y8u69XePeX3uH5fqoIdRtvr54Vvlxc"
+             alt="Sojourner Truth portrait" />
+      </div>
     </div>
 
     <!-- Part A -->
@@ -250,7 +276,7 @@
       </p>
     </section>
 
-    <!-- Part B: 5 W's graphic organizer like the example -->
+    <!-- Part B: 5 W's graphic organizer -->
     <section class="section">
       <p class="section-title">Part B: The Speaker - Sojourner Truth (5 W's)</p>
       <div class="fivew-wrapper-title">
