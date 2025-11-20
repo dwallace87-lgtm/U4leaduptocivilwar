@@ -2,19 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Sojourner Truth – "Ain't I a Woman?" Slide Deck</title>
+  <title>Sojourner Truth: "Ain't I a Woman?" Slide Deck</title>
 
-  <!-- Mid 1800s style fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Old-timey serif + modern sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Serif+4:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --ink: #1e1b18;
-      --ink-soft: #4a4038;
-      --accent: #b8860b;
-      --accent-soft: #f0e3c2;
-      --border: #2b2520;
+      --ink: #15110f;
+      --ink-soft: #4f4136;
+      --accent: #b37a1e;
+      --accent-soft: #f7e7c3;
+      --border: #2b2118;
       --bg: #ffffff;
+      --highlight: #fff6c4;
     }
 
     * {
@@ -23,46 +24,90 @@
 
     body {
       margin: 0;
-      font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--ink);
+      padding: 24px;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      padding: 24px;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     .deck {
       width: 100%;
-      max-width: 1100px;
-      min-height: 600px;
+      max-width: 1180px;
+      min-height: 640px;
       background: var(--bg);
       border-radius: 18px;
-      box-shadow:
-        0 0 0 2px rgba(0,0,0,0.06),
-        0 18px 45px rgba(0,0,0,0.12);
-      padding: 32px 40px 72px;
       position: relative;
+      padding: 40px 50px 88px;
       overflow: hidden;
+      /* outer shadow for modern contrast */
+      box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.18),
+        0 0 0 1px rgba(0, 0, 0, 0.15);
     }
 
-    /* Decorative frame, mid 1800s print vibe */
-    .deck::before,
-    .deck::after {
+    /* Fancy frame with multiple borders and corner ornaments */
+    .deck::before {
       content: "";
       position: absolute;
-      inset: 16px;
-      border: 2px solid rgba(0,0,0,0.12);
+      inset: 14px;
+      border-radius: 14px;
+      border: 3px double rgba(0, 0, 0, 0.65);
       pointer-events: none;
     }
 
     .deck::after {
-      inset: 24px;
-      border-style: double;
-      border-width: 4px;
-      border-color: rgba(0,0,0,0.18);
+      content: "";
+      position: absolute;
+      inset: 26px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.6),
+        inset 0 0 24px rgba(0, 0, 0, 0.08);
+      pointer-events: none;
     }
+
+    .corner {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      border: 2px solid rgba(0, 0, 0, 0.6);
+      border-radius: 4px;
+      background: radial-gradient(circle at 25% 25%, rgba(255,255,255,0.9), transparent 60%);
+      pointer-events: none;
+    }
+
+    .corner::before,
+    .corner::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.5);
+    }
+
+    .corner::before {
+      width: 14px;
+      height: 14px;
+      top: 7px;
+      left: 7px;
+    }
+
+    .corner::after {
+      width: 6px;
+      height: 6px;
+      top: 13px;
+      left: 13px;
+      background: rgba(179,122,30,0.2);
+    }
+
+    .corner.tl { top: 14px; left: 14px; border-right: none; border-bottom: none; }
+    .corner.tr { top: 14px; right: 14px; border-left: none; border-bottom: none; }
+    .corner.bl { bottom: 14px; left: 14px; border-right: none; border-top: none; }
+    .corner.br { bottom: 14px; right: 14px; border-left: none; border-top: none; }
 
     .slide {
       display: none;
@@ -78,106 +123,146 @@
     .slide-header {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: flex-end;
       gap: 16px;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
+    }
+
+    .slide-heading-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
 
     .slide-title {
-      font-family: "Playfair Display", "Times New Roman", serif;
-      font-weight: 800;
-      font-size: 2.1rem;
+      font-family: "Cinzel", "Times New Roman", serif;
+      font-weight: 700;
+      font-size: 2.4rem;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.16em;
       color: var(--ink);
     }
 
-    .slide-subtitle {
-      font-size: 0.9rem;
+    .slide-meta {
+      font-family: "Cinzel", serif;
+      font-size: 0.92rem;
       text-transform: uppercase;
       letter-spacing: 0.18em;
       color: var(--ink-soft);
-      border-top: 1px solid rgba(0,0,0,0.25);
-      padding-top: 4px;
+    }
+
+    .part-label {
+      font-family: "Cinzel", serif;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.85rem;
+      padding: 6px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.4);
+      background: linear-gradient(to right, rgba(247, 231, 195, 0.9), rgba(255, 255, 255, 0.95));
+      color: var(--border);
     }
 
     .ornament {
-      width: 80px;
-      height: 8px;
-      border-top: 2px solid var(--border);
-      border-bottom: 1px solid rgba(0,0,0,0.28);
-      margin: 8px 0 20px;
+      width: 110px;
+      height: 10px;
       position: relative;
+      margin-top: 4px;
     }
 
     .ornament::before,
     .ornament::after {
       content: "";
       position: absolute;
-      top: -4px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      border: 1px solid rgba(0,0,0,0.3);
-      background: var(--bg);
+      top: 50%;
+      width: 38px;
+      border-top: 2px solid rgba(0,0,0,0.7);
     }
 
     .ornament::before {
-      left: -6px;
+      left: 0;
     }
 
     .ornament::after {
-      right: -6px;
+      right: 0;
+    }
+
+    .ornament-line {
+      position: absolute;
+      inset: 1px 38px;
+      border-top: 1px dashed rgba(0,0,0,0.5);
+    }
+
+    .ornament-gem {
+      position: absolute;
+      top: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.7);
+      background:
+        radial-gradient(circle at 30% 30%, #ffffff, transparent 60%),
+        radial-gradient(circle at 70% 70%, rgba(179,122,30,0.4), transparent 60%);
     }
 
     .slide-body {
-      font-size: 1.02rem;
-      line-height: 1.6;
-      max-width: 900px;
+      max-width: 940px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      font-family: "Source Serif 4", "Times New Roman", serif;
     }
 
     h2 {
-      font-family: "Playfair Display", serif;
-      font-size: 1.4rem;
+      font-family: "Cinzel", serif;
+      font-size: 1.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
-      margin: 0 0 10px;
+      letter-spacing: 0.16em;
+      margin: 0 0 14px;
       color: var(--ink);
     }
 
     h3 {
-      font-family: "Playfair Display", serif;
-      font-size: 1.1rem;
+      font-family: "Cinzel", serif;
+      font-size: 1.2rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      margin: 18px 0 8px;
+      margin: 18px 0 10px;
       color: var(--ink-soft);
     }
 
     p {
-      margin: 6px 0 10px;
+      margin: 6px 0 12px;
+    }
+
+    .highlight {
+      background: var(--highlight);
+      padding: 0 4px;
+      border-radius: 4px;
     }
 
     .prompt-box {
+      border-radius: 16px;
       border: 2px solid var(--border);
-      border-radius: 14px;
-      padding: 12px 16px;
-      margin: 10px 0 16px;
-      background: rgba(240, 227, 194, 0.18);
+      padding: 14px 18px;
+      margin: 10px 0 20px;
+      background:
+        linear-gradient(to bottom right, rgba(247,231,195,0.35), rgba(255,255,255,0.9));
     }
 
     .prompt-label {
-      font-family: "Playfair Display", serif;
+      font-family: "Cinzel", serif;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.85rem;
+      letter-spacing: 0.16em;
+      font-size: 0.95rem;
       color: var(--accent);
       margin-bottom: 4px;
     }
 
     ul, ol {
-      padding-left: 1.2em;
-      margin: 8px 0 10px;
+      padding-left: 1.3em;
+      margin: 8px 0 12px;
     }
 
     li {
@@ -185,16 +270,18 @@
     }
 
     .quote {
-      font-family: "Playfair Display", serif;
-      font-size: 1.05rem;
+      font-family: "Source Serif 4", serif;
+      font-size: 1.15rem;
       border-left: 4px solid var(--accent);
-      padding-left: 14px;
-      margin: 10px 0 14px;
+      padding-left: 16px;
+      margin: 10px 0 16px;
       color: var(--ink-soft);
+      background: rgba(247, 231, 195, 0.18);
+      border-radius: 8px;
     }
 
     .note {
-      font-size: 0.9rem;
+      font-size: 0.96rem;
       color: var(--ink-soft);
       font-style: italic;
       margin-top: 6px;
@@ -203,36 +290,15 @@
     .two-column {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 22px;
+      gap: 26px;
       margin-top: 12px;
-    }
-
-    .stamp {
-      position: absolute;
-      right: 40px;
-      bottom: 90px;
-      font-family: "Playfair Display", serif;
-      font-size: 0.84rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      padding: 6px 14px;
-      border: 2px solid rgba(0,0,0,0.4);
-      border-radius: 999px;
-      transform: rotate(-4deg);
-      background: rgba(248, 244, 232, 0.9);
-      color: #4a3724;
-    }
-
-    .stamp span {
-      color: var(--accent);
-      font-weight: 700;
     }
 
     .nav {
       position: absolute;
       left: 0;
       right: 0;
-      bottom: 22px;
+      bottom: 26px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -244,11 +310,11 @@
       border-radius: 999px;
       border: 2px solid var(--border);
       background: var(--bg);
-      font-family: "Playfair Display", serif;
+      font-family: "Cinzel", serif;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.78rem;
-      padding: 9px 20px;
+      letter-spacing: 0.16em;
+      font-size: 0.88rem;
+      padding: 10px 22px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -261,43 +327,59 @@
     }
 
     .nav button:hover:not([disabled]) {
-      box-shadow: 0 0 0 2px rgba(0,0,0,0.06);
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.06);
       transform: translateY(-1px);
     }
 
     .nav-status {
-      font-size: 0.9rem;
-      letter-spacing: 0.16em;
+      font-size: 0.92rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--ink-soft);
-      font-family: "Playfair Display", serif;
+      font-family: "Cinzel", serif;
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
+      body {
+        padding: 10px;
+      }
+
       .deck {
-        padding: 20px 18px 70px;
+        padding: 26px 18px 80px;
       }
+
       .deck::before {
-        inset: 10px;
+        inset: 8px;
       }
+
       .deck::after {
         inset: 18px;
       }
+
+      .corner {
+        display: none;
+      }
+
       .slide-header {
         flex-direction: column;
-        gap: 4px;
+        align-items: flex-start;
+        gap: 6px;
       }
+
       .slide-title {
-        font-size: 1.7rem;
+        font-size: 2rem;
       }
+
+      .slide-body {
+        font-size: 1.02rem;
+      }
+
       .two-column {
         grid-template-columns: 1fr;
       }
-      .stamp {
-        display: none;
-      }
+
       .nav {
-        padding: 0 18px;
+        padding: 0 16px;
       }
     }
   </style>
@@ -305,14 +387,24 @@
 
 <body>
   <div class="deck">
+    <!-- Decorative corners -->
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+
     <!-- SLIDE 1 -->
     <section class="slide active" data-slide="1">
       <div class="slide-header">
-        <div>
+        <div class="slide-heading-group">
+          <div class="slide-meta">Sojourner Truth: "Ain't I a Woman?"</div>
           <div class="slide-title">Do Now</div>
-          <div class="ornament"></div>
+          <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-gem"></div>
+          </div>
         </div>
-        <div class="slide-subtitle">Sojourner Truth · "Ain't I a Woman?"</div>
+        <div class="part-label">Part A · Warm Up</div>
       </div>
 
       <div class="slide-body">
@@ -322,83 +414,89 @@
           <div class="prompt-label">Directions</div>
           <p>Answer in your notebook or on the Do Now space on your paper.</p>
           <ol>
-            <li>Do you think one speech can change people’s minds? Why or why not?</li>
+            <li>Do you think one speech can change people’s minds? <span class="highlight">Why or why not?</span></li>
             <li>Write about one time you saw or heard someone speak up about something unfair.</li>
           </ol>
           <p class="note">Write in complete sentences. Be real and honest. This is about your thinking.</p>
         </div>
       </div>
-
-      <div class="stamp"><span>Part A</span> · Warm Up</div>
     </section>
 
     <!-- SLIDE 2 -->
     <section class="slide" data-slide="2">
       <div class="slide-header">
-        <div>
+        <div class="slide-heading-group">
+          <div class="slide-meta">Unit · Abolition and Women's Rights</div>
           <div class="slide-title">Today's Goal</div>
-          <div class="ornament"></div>
+          <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-gem"></div>
+          </div>
         </div>
-        <div class="slide-subtitle">Objective & Success Criteria</div>
+        <div class="part-label">Objective</div>
       </div>
 
       <div class="slide-body">
         <h2>Objective</h2>
-        <p>Today you will analyze <strong>speaker</strong>, <strong>audience</strong>, and <strong>context</strong> in Sojourner Truth’s speech “Ain’t I a Woman?” so that you can explain <strong>why this speech still matters today</strong>.</p>
+        <p>Today you will analyze <span class="highlight"><strong>speaker</strong>, <strong>audience</strong>, and <strong>context</strong></span> in Sojourner Truth’s speech <em>"Ain't I a Woman?"</em> so that you can explain <strong>why this speech still matters today</strong>.</p>
 
         <h3>By the end of class you should be able to:</h3>
         <ul>
           <li>Define <strong>speaker</strong>, <strong>audience</strong>, and <strong>context</strong>.</li>
-          <li>Use clues from a <strong>video</strong> and the <strong>speech</strong> to fill out your worksheet.</li>
-          <li>Explain one line from the speech and why it still matters today.</li>
+          <li>Use clues from a <strong>video</strong> and the <strong>speech</strong> to complete your worksheet.</li>
+          <li>Explain one line from the speech and why it still matters.</li>
         </ul>
       </div>
-
-      <div class="stamp"><span>Goal</span> · Big Picture</div>
     </section>
 
     <!-- SLIDE 3 -->
     <section class="slide" data-slide="3">
       <div class="slide-header">
-        <div>
+        <div class="slide-heading-group">
+          <div class="slide-meta">Class Roadmap</div>
           <div class="slide-title">Agenda</div>
-          <div class="ornament"></div>
+          <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-gem"></div>
+          </div>
         </div>
-        <div class="slide-subtitle">How Class Will Run Today</div>
+        <div class="part-label">Today's Plan</div>
       </div>
 
       <div class="slide-body">
-        <h2>Today's Plan</h2>
+        <h2>How Class Will Run</h2>
         <ol>
-          <li>Do Now and Objective</li>
-          <li>Key Words: <strong>speaker, audience, context</strong> (Part A)</li>
+          <li><strong>Do Now</strong> and Objective</li>
+          <li>Key Words: <span class="highlight">speaker, audience, context</span> (Part A)</li>
           <li>Watch TED style video about Sojourner Truth (Part B)</li>
-          <li>Special guest: <strong>Trishia Cadette</strong> reads “Ain’t I a Woman?”</li>
+          <li>Special guest: <strong>Trishia Cadette</strong> reads <em>"Ain't I a Woman?"</em></li>
           <li>Audience clues from the speech (Part C)</li>
           <li>Speaker, Audience, Context organizer (Part D)</li>
-          <li>Reflection: Why does this speech still matter? (Part E / Exit Ticket)</li>
+          <li>Reflection: Why this speech still matters (Part E / Exit Ticket)</li>
         </ol>
       </div>
-
-      <div class="stamp"><span>Map</span> · Start To Finish</div>
     </section>
 
     <!-- SLIDE 4 -->
     <section class="slide" data-slide="4">
       <div class="slide-header">
-        <div>
+        <div class="slide-heading-group">
+          <div class="slide-meta">Key Concepts</div>
           <div class="slide-title">Key Words</div>
-          <div class="ornament"></div>
+          <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-gem"></div>
+          </div>
         </div>
-        <div class="slide-subtitle">Speaker · Audience · Context</div>
+        <div class="part-label">Part A · Vocabulary</div>
       </div>
 
       <div class="slide-body">
-        <h2>Part A: Fill In The Blanks</h2>
+        <h2>Speaker · Audience · Context</h2>
 
         <div class="prompt-box">
           <div class="prompt-label">Word Bank</div>
-          <p><strong>speaker, audience, context</strong></p>
+          <p><strong>speaker</strong>, <strong>audience</strong>, <strong>context</strong></p>
         </div>
 
         <ol>
@@ -407,77 +505,83 @@
           <li>The ______ is what is going on in the world and in the room when the message happens.</li>
         </ol>
 
-        <p class="note">Use the word bank to fill in each blank on your worksheet. Write neatly.</p>
+        <p class="note">Use the word bank to fill in each blank on your worksheet. Make each answer clear and neat.</p>
       </div>
-
-      <div class="stamp"><span>Part A</span> · Vocabulary</div>
     </section>
 
     <!-- SLIDE 5 -->
     <section class="slide" data-slide="5">
       <div class="slide-header">
-        <div>
+        <div class="slide-heading-group">
+          <div class="slide-meta">Key Word One</div>
           <div class="slide-title">Speaker</div>
-          <div class="ornament"></div>
+          <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-gem"></div>
+          </div>
         </div>
-        <div class="slide-subtitle">Who Is Talking?</div>
+        <div class="part-label">Definition</div>
       </div>
 
       <div class="slide-body">
-        <h2>What Is The Speaker?</h2>
+        <h2>Who Is Talking?</h2>
 
-        <p><strong>The speaker is the person who is talking or writing.</strong></p>
+        <p><strong>The <span class="highlight">speaker</span> is the person who is talking or writing.</strong></p>
 
         <h3>Examples</h3>
         <ul>
           <li>A rapper performing a verse on stage</li>
           <li>A teacher giving directions in class</li>
-          <li>A person giving a speech at a protest or meeting</li>
+          <li>A person speaking at a rally or protest</li>
         </ul>
 
-        <p class="note">On your worksheet, question 1 should say: “The <strong>speaker</strong> is the person who is talking or writing.”</p>
+        <p class="note">On your worksheet, question 1 should use the word <strong>speaker</strong>.</p>
       </div>
-
-      <div class="stamp"><span>Key Term</span> · Speaker</div>
     </section>
 
     <!-- SLIDE 6 -->
     <section class="slide" data-slide="6">
       <div class="slide-header">
-        <div>
+        <div class="slide-heading-group">
+          <div class="slide-meta">Key Words Two and Three</div>
           <div class="slide-title">Audience</div>
-          <div class="ornament"></div>
+          <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-gem"></div>
+          </div>
         </div>
-        <div class="slide-subtitle">Who Is Listening?</div>
+        <div class="part-label">Audience · Context</div>
       </div>
 
       <div class="slide-body">
-        <h2>Audience & Context</h2>
+        <h2>Who Is Listening? What Is Going On?</h2>
 
         <h3>Audience</h3>
-        <p><strong>The audience is the people who are meant to hear or read the message.</strong></p>
+        <p><strong>The <span class="highlight">audience</span> is the people who are meant to hear or read the message.</strong></p>
 
         <h3>Context</h3>
-        <p><strong>The context is what is going on in the world and in the room when the message happens.</strong></p>
+        <p><strong>The <span class="highlight">context</span> is what is going on in the world and in the room when the message happens.</strong></p>
 
         <p class="note">On your worksheet, questions 2 and 3 should use the words <strong>audience</strong> and <strong>context</strong>.</p>
       </div>
-
-      <div class="stamp"><span>Key Terms</span> · Audience & Context</div>
     </section>
 
     <!-- SLIDE 7 -->
     <section class="slide" data-slide="7">
       <div class="slide-header">
-        <div>
-          <div class="slide-title">Video</div>
-          <div class="ornament"></div>
+        <div class="slide-heading-group">
+          <div class="slide-meta">Video Notes</div>
+          <div class="slide-title">The Speaker</div>
+          <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-gem"></div>
+          </div>
         </div>
-        <div class="slide-subtitle">The Speaker – Sojourner Truth</div>
+        <div class="part-label">Part B · 5 W's</div>
       </div>
 
       <div class="slide-body">
-        <h2>Part B: The 5 W's</h2>
+        <h2>Sojourner Truth In The Video</h2>
 
         <div class="prompt-box">
           <div class="prompt-label">While You Watch The TED Style Video</div>
@@ -489,56 +593,60 @@
             <li><strong>When</strong> – When did most of these events happen?</li>
             <li><strong>Where</strong> – Where did she live and travel in the video?</li>
             <li><strong>What</strong> – What important things did she do in her life?</li>
-            <li><strong>Why</strong> – Why did she keep traveling and speaking?</li>
+            <li><strong>Why</strong> – Why did she keep traveling and speaking, even when people threatened her?</li>
           </ul>
         </div>
 
-        <p class="note">Do not try to write every detail. Focus on the most important information.</p>
+        <p class="note">Do not try to write every detail. Focus on the most important information about her life and actions.</p>
       </div>
-
-      <div class="stamp"><span>Part B</span> · Video Notes</div>
     </section>
 
     <!-- SLIDE 8 -->
     <section class="slide" data-slide="8">
       <div class="slide-header">
-        <div>
-          <div class="slide-title">Guest Reading</div>
-          <div class="ornament"></div>
+        <div class="slide-heading-group">
+          <div class="slide-meta">Live Reading</div>
+          <div class="slide-title">Guest Reader</div>
+          <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-gem"></div>
+          </div>
         </div>
-        <div class="slide-subtitle">Trishia Cadette Reads</div>
+        <div class="part-label">"Ain't I a Woman?"</div>
       </div>
 
       <div class="slide-body">
-        <h2>"Ain't I a Woman?"</h2>
+        <h2>Trishia Cadette Reads</h2>
 
         <div class="prompt-box">
-          <div class="prompt-label">As You Listen</div>
+          <div class="prompt-label">As You Listen To The Speech</div>
           <ul>
-            <li>Follow along with your copy of the speech.</li>
-            <li>Use your pen or pencil to put a star ★ next to any line that feels powerful or stands out to you.</li>
-            <li>Pay attention to how Sojourner Truth talks to her audience.</li>
+            <li>Follow along with your copy of the speech <em>"Ain't I a Woman?"</em></li>
+            <li>Use your pen or pencil to put a star ★ next to any line that feels powerful or important to you.</li>
+            <li>Pay attention to how Sojourner Truth talks to her <span class="highlight">audience</span>.</li>
           </ul>
         </div>
 
-        <p class="note">You will use these starred lines later in Part C and Part E.</p>
+        <p class="note">You will use these starred lines in Part C and Part E of your worksheet.</p>
       </div>
-
-      <div class="stamp"><span>Live</span> · Spoken Word</div>
     </section>
 
     <!-- SLIDE 9 -->
     <section class="slide" data-slide="9">
       <div class="slide-header">
-        <div>
-          <div class="slide-title">Audience Clues</div>
-          <div class="ornament"></div>
+        <div class="slide-heading-group">
+          <div class="slide-meta">Audience Clues One</div>
+          <div class="slide-title">Part C</div>
+          <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-gem"></div>
+          </div>
         </div>
-        <div class="slide-subtitle">Part C – Question 1</div>
+        <div class="part-label">Question 1</div>
       </div>
 
       <div class="slide-body">
-        <h2>Looking For Audience Clues</h2>
+        <h2>What Does Her Audience Think?</h2>
 
         <div class="quote">
           “I have as much muscle as any man, and can do as much work as any man.”
@@ -554,24 +662,26 @@
           </li>
         </ol>
 
-        <p class="note">Use complete sentences. Think about what kind of beliefs she is arguing against.</p>
+        <p class="note">Use complete sentences. Think about what kind of stereotypes she is arguing against.</p>
       </div>
-
-      <div class="stamp"><span>Part C</span> · Audience Clues</div>
     </section>
 
     <!-- SLIDE 10 -->
     <section class="slide" data-slide="10">
       <div class="slide-header">
-        <div>
-          <div class="slide-title">Audience Clues</div>
-          <div class="ornament"></div>
+        <div class="slide-heading-group">
+          <div class="slide-meta">Audience Clues Two</div>
+          <div class="slide-title">Part C</div>
+          <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-gem"></div>
+          </div>
         </div>
-        <div class="slide-subtitle">Part C – Question 2</div>
+        <div class="part-label">Question 2</div>
       </div>
 
       <div class="slide-body">
-        <h2>Thinking About Minds & Rights</h2>
+        <h2>Minds, Rights, And Everyday Life</h2>
 
         <div class="quote">
           “As for intellect, all I can say is, if women have a pint and man a quart, why can’t she have her little pint full?”
@@ -586,20 +696,22 @@
           </li>
         </ol>
 
-        <p class="note">Hint: Think about who uses pints and quarts, and what it means to be “full.”</p>
+        <p class="note">Hint: Think about who uses pints and quarts in daily life, and what it means to be “full.”</p>
       </div>
-
-      <div class="stamp"><span>Part C</span> · Audience Clues</div>
     </section>
 
     <!-- SLIDE 11 -->
     <section class="slide" data-slide="11">
       <div class="slide-header">
-        <div>
-          <div class="slide-title">Audience Clues</div>
-          <div class="ornament"></div>
+        <div class="slide-heading-group">
+          <div class="slide-meta">Audience Clues Three and Four</div>
+          <div class="slide-title">Part C</div>
+          <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-gem"></div>
+          </div>
         </div>
-        <div class="slide-subtitle">Part C – Questions 3 & 4</div>
+        <div class="part-label">Questions 3 · 4</div>
       </div>
 
       <div class="slide-body">
@@ -627,20 +739,22 @@
           </div>
         </div>
 
-        <p class="note">Finish all of Part C on your worksheet. Use evidence from the lines to support your thinking.</p>
+        <p class="note">Finish all of Part C on your worksheet. Use evidence from the lines to support your answers.</p>
       </div>
-
-      <div class="stamp"><span>Part C</span> · Belief & Power</div>
     </section>
 
     <!-- SLIDE 12 -->
     <section class="slide" data-slide="12">
       <div class="slide-header">
-        <div>
-          <div class="slide-title">Organizer</div>
-          <div class="ornament"></div>
+        <div class="slide-heading-group">
+          <div class="slide-meta">Organizer</div>
+          <div class="slide-title">Part D</div>
+          <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-gem"></div>
+          </div>
         </div>
-        <div class="slide-subtitle">Part D – Speaker · Audience · Context</div>
+        <div class="part-label">Speaker · Audience · Context</div>
       </div>
 
       <div class="slide-body">
@@ -648,7 +762,7 @@
 
         <div class="prompt-box">
           <div class="prompt-label">Use Your Notes</div>
-          <p>Use your notes from the video (Part B) and the speech questions (Part C) to complete Part D of your worksheet.</p>
+          <p>Use your notes from the <strong>video</strong> (Part B) and the <strong>speech questions</strong> (Part C) to complete Part D of your worksheet.</p>
         </div>
 
         <h3>Speaker</h3>
@@ -660,89 +774,91 @@
         <h3>Context</h3>
         <p><strong>The speech happens before the Civil War, when people in the North are arguing about ______ and about ______.</strong></p>
 
-        <p class="note">Fill in each blank with information you learned today. Use your own words.</p>
+        <p class="note">Fill in each blank with clear information in your own words.</p>
       </div>
-
-      <div class="stamp"><span>Part D</span> · Big Picture</div>
     </section>
 
     <!-- SLIDE 13 -->
     <section class="slide" data-slide="13">
       <div class="slide-header">
-        <div>
-          <div class="slide-title">Reflection</div>
-          <div class="ornament"></div>
+        <div class="slide-heading-group">
+          <div class="slide-meta">Reflection</div>
+          <div class="slide-title">Part E</div>
+          <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-gem"></div>
+          </div>
         </div>
-        <div class="slide-subtitle">Part E – Why It Still Matters</div>
+        <div class="part-label">Why It Still Matters</div>
       </div>
 
       <div class="slide-body">
-        <h2>Why Does This Speech Still Matter?</h2>
+        <h2>Your Line · Your Voice</h2>
 
         <div class="prompt-box">
-          <div class="prompt-label">Part E – On Your Worksheet</div>
+          <div class="prompt-label">Part E On Your Worksheet</div>
           <ol>
             <li>
               <strong>Choose one line</strong> from Sojourner Truth’s speech that stands out to you.  
               <br />Write the line in the box.
             </li>
             <li>
-              What does this line show about the speaker, the audience, or the context?<br />
-              Sentence starter:  
+              What does this line show about the <span class="highlight">speaker</span>, the <span class="highlight">audience</span>, or the <span class="highlight">context</span>?  
+              <br />Sentence starter:  
               <em>This line shows that Sojourner Truth is / her audience is / the time period is…</em>
             </li>
             <li>
-              Why does this line matter to you or to people today?<br />
-              Sentence starter:  
+              Why does this line matter to you or to people today?  
+              <br />Sentence starter:  
               <em>This line matters today because…</em>
             </li>
           </ol>
         </div>
 
-        <p class="note">Choose a line that feels powerful or real to you, not just the first one you see.</p>
+        <p class="note">Pick a line that actually hits you. Not just the first one you see.</p>
       </div>
-
-      <div class="stamp"><span>Part E</span> · Your Voice</div>
     </section>
 
     <!-- SLIDE 14 -->
     <section class="slide" data-slide="14">
       <div class="slide-header">
-        <div>
-          <div class="slide-title">Exit Ticket</div>
-          <div class="ornament"></div>
+        <div class="slide-heading-group">
+          <div class="slide-meta">Exit Ticket</div>
+          <div class="slide-title">Check Your Work</div>
+          <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-gem"></div>
+          </div>
         </div>
-        <div class="slide-subtitle">Check Your Work</div>
+        <div class="part-label">Before You Leave</div>
       </div>
 
       <div class="slide-body">
-        <h2>Before You Leave</h2>
+        <h2>Ready To Turn In?</h2>
 
-        <h3>Make sure these are complete:</h3>
+        <h3>Make sure these parts are complete:</h3>
         <ul>
           <li><strong>Part A</strong> – Key words: speaker, audience, context</li>
           <li><strong>Part B</strong> – 5 W's about Sojourner Truth and the video</li>
           <li><strong>Part C</strong> – Audience clues from the speech</li>
           <li><strong>Part D</strong> – Speaker, Audience, and Context organizer</li>
-          <li><strong>Part E</strong> – Reflection: Why this speech still matters</li>
+          <li><strong>Part E</strong> – Reflection: why this speech still matters</li>
         </ul>
 
         <p class="note">Your completed worksheet is your exit ticket for today.</p>
       </div>
-
-      <div class="stamp"><span>Done</span> · Turn It In</div>
     </section>
 
     <!-- NAV -->
     <div class="nav">
       <button id="prevBtn" disabled>
-        &#9664; Previous
+        ◀ Previous
       </button>
       <div class="nav-status" id="navStatus">
         Slide 1 of 14
       </div>
       <button id="nextBtn">
-        Next &#9654;
+        Next ▶
       </button>
     </div>
   </div>
